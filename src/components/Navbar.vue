@@ -13,27 +13,29 @@ const mobileMenuOpen = ref(false)
 const activeSection = ref('hero')
 
 const navLinks = [
-  { name: '01. About', href: '#about' },
-  { name: '02. Systems', href: '#fintech' },
-  { name: '03. Experience', href: '#experience' },
-  { name: '04. Stack', href: '#skills' },
-  { name: '05. Education', href: '#education' },
-  { name: '06. Contact', href: '#contact' }
+  { name: 'Systems', href: '#systems' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Capabilities', href: '#capabilities' },
+  { name: 'About', href: '#about' },
+  { name: 'Contact', href: '#contact' }
 ]
 
 const toggleSound = () => {
   isMuted.value = soundManager.toggleMute()
 }
 
-const handleLinkClick = (_href?: string) => {
+const handleLinkClick = (href?: string) => {
   soundManager.playClick()
   mobileMenuOpen.value = false
+  if (href) {
+    activeSection.value = href.replace('#', '')
+  }
 }
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 30
 
-  const sections = ['contact', 'education', 'skills', 'experience', 'fintech', 'about', 'hero']
+  const sections = ['contact', 'about', 'capabilities', 'experience', 'systems', 'hero']
   for (const section of sections) {
     const el = document.getElementById(section)
     if (el) {
@@ -58,48 +60,42 @@ onUnmounted(() => {
 
 <template>
   <header 
-    class="fixed top-0 left-0 right-0 z-50 flex justify-center items-center px-3 sm:px-4 pt-3 sm:pt-5 pointer-events-none transition-all duration-300 w-full"
+    class="fixed top-0 left-0 right-0 z-50 flex justify-center items-center px-4 pt-4 sm:pt-6 pointer-events-none transition-all duration-300 w-full"
   >
     <nav 
-      class="pointer-events-auto w-full max-w-6xl flex items-center justify-between gap-2 sm:gap-4 px-3 py-2 sm:px-5 sm:py-2.5 rounded-2xl sm:rounded-full border transition-all duration-300 shadow-2xl backdrop-blur-xl"
+      class="pointer-events-auto w-full max-w-5xl flex items-center justify-between gap-3 sm:gap-6 px-4 py-2.5 sm:px-6 sm:py-3 rounded-2xl sm:rounded-full border transition-all duration-300 shadow-2xl backdrop-blur-2xl"
       :class="[
         isScrolled 
-          ? 'bg-[#05080D]/95 border-[#39C5BB]/40 shadow-[0_0_30px_rgba(57,197,187,0.18)]' 
-          : 'bg-[#0A1118]/90 border-[#162432] shadow-[0_4px_24px_rgba(0,0,0,0.6)]'
+          ? 'bg-[#05080D]/95 border-[#39C5BB]/30 shadow-[0_8px_32px_rgba(0,0,0,0.8)]' 
+          : 'bg-[#0A1118]/85 border-[#162436] shadow-[0_4px_24px_rgba(0,0,0,0.5)]'
       ]"
     >
-      <!-- Brand Logo / Decal (No name repetition) -->
+      <!-- Brand Logo / Emblem -->
       <a 
         href="#hero" 
-        class="flex items-center gap-2 group shrink-0"
+        class="flex items-center gap-2.5 group shrink-0 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#39C5BB]"
         @click="handleLinkClick('#hero')"
         @mouseenter="soundManager.playHover()"
       >
-        <div class="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#0E1722] border border-[#162432] group-hover:border-[#39C5BB] transition-colors relative overflow-hidden shrink-0">
-          <span class="font-mono text-[11px] sm:text-xs font-bold text-[#39C5BB] group-hover:text-[#6FF7EC]">01</span>
-          <div class="absolute bottom-0 inset-x-0 h-[2px] bg-[#39C5BB]/70" />
+        <div class="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#0E1724] border border-[#162436] group-hover:border-[#39C5BB]/60 transition-colors relative overflow-hidden shrink-0">
+          <span class="font-mono text-xs font-bold text-[#39C5BB] group-hover:text-[#6FF7EC]">01</span>
         </div>
-        <div class="flex flex-col text-left">
-          <span class="font-display font-bold text-xs sm:text-sm tracking-wider text-[#EAF7F6] group-hover:text-[#6FF7EC] transition-colors leading-tight">
-            MIKU_PULSE
-          </span>
-          <span class="font-mono text-[8px] sm:text-[9px] text-[#7C9399] tracking-widest leading-none hidden xs:inline-block">
-            SYS // FRONTEND_DEV
-          </span>
-        </div>
+        <span class="font-display font-bold text-xs sm:text-sm tracking-wider text-[#EAF7F6] group-hover:text-[#6FF7EC] transition-colors">
+          MIKU PULSE
+        </span>
       </a>
 
       <!-- Desktop Navigation Links -->
-      <div class="hidden md:flex items-center gap-0.5 lg:gap-1">
+      <div class="hidden md:flex items-center gap-1">
         <a
           v-for="link in navLinks"
           :key="link.name"
           :href="link.href"
-          class="relative px-2.5 lg:px-3 py-1 text-[11px] lg:text-xs font-mono tracking-wider transition-all duration-200 rounded-lg whitespace-nowrap"
+          class="relative px-3.5 py-1.5 text-xs font-mono tracking-wider transition-all duration-200 rounded-lg whitespace-nowrap focus:outline-none focus-visible:ring-1 focus-visible:ring-[#39C5BB]"
           :class="[
             activeSection === link.href.replace('#', '')
-              ? 'text-[#6FF7EC] bg-[#39C5BB]/10 font-semibold border border-[#39C5BB]/30'
-              : 'text-[#7C9399] hover:text-[#EAF7F6] hover:bg-[#0E1722]'
+              ? 'text-[#6FF7EC] bg-[#39C5BB]/10 font-semibold'
+              : 'text-[#7C9399] hover:text-[#EAF7F6] hover:bg-[#0E1724]'
           ]"
           @click="handleLinkClick(link.href)"
           @mouseenter="soundManager.playHover()"
@@ -108,12 +104,12 @@ onUnmounted(() => {
         </a>
       </div>
 
-      <!-- Action items: Sound FX + CV PDF Download + Telegram + Mobile Toggle -->
-      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+      <!-- Action items: Sound FX + PDF Download + Telegram -->
+      <div class="flex items-center gap-2 shrink-0">
         <!-- Sound FX Button -->
         <button
           type="button"
-          class="p-1.5 sm:p-2 rounded-lg bg-[#0E1722] border border-[#162432] hover:border-[#39C5BB]/60 text-[#7C9399] hover:text-[#6FF7EC] transition-colors cursor-pointer"
+          class="p-2 rounded-lg bg-[#0E1724] border border-[#162436] hover:border-[#39C5BB]/50 text-[#7C9399] hover:text-[#6FF7EC] transition-colors cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#39C5BB]"
           :title="isMuted ? 'Unmute synthesized audio UI' : 'Mute audio UI'"
           @click="toggleSound"
           @mouseenter="soundManager.playHover()"
@@ -122,24 +118,24 @@ onUnmounted(() => {
           <VolumeX v-else class="w-3.5 h-3.5" />
         </button>
 
-        <!-- Direct PDF Download Link / Modal Trigger -->
+        <!-- Direct PDF Download Link -->
         <a
           href="/Ismail_Gayratov_Resume.pdf"
           download="Ismail_Gayratov_Resume.pdf"
-          class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-[#EAF7F6] bg-[#0E1722] border border-[#162432] hover:border-[#39C5BB] hover:bg-[#39C5BB]/10 hover:text-[#6FF7EC] transition-all cursor-pointer"
+          class="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-mono text-[#EAF7F6] bg-[#0E1724] border border-[#162436] hover:border-[#39C5BB]/50 hover:bg-[#39C5BB]/10 hover:text-[#6FF7EC] transition-all cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#39C5BB]"
           @click="soundManager.playClick()"
           @mouseenter="soundManager.playHover()"
         >
           <Download class="w-3.5 h-3.5 text-[#39C5BB]" />
-          <span>RESUME.PDF</span>
+          <span>RESUME</span>
         </a>
 
-        <!-- Direct Telegram CTA -->
+        <!-- Telegram CTA -->
         <a
           href="https://t.me/theiiisssaaa"
           target="_blank"
           rel="noopener"
-          class="flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-bold text-[#05080D] bg-[#39C5BB] hover:bg-[#6FF7EC] transition-all cursor-pointer shadow-[0_0_15px_rgba(57,197,187,0.35)]"
+          class="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-lg text-xs font-mono font-bold text-[#05080D] bg-[#39C5BB] hover:bg-[#6FF7EC] transition-all cursor-pointer shadow-[0_0_15px_rgba(57,197,187,0.35)] focus:outline-none focus-visible:ring-1 focus-visible:ring-[#6FF7EC]"
           @click="soundManager.playClick()"
           @mouseenter="soundManager.playHover()"
         >
@@ -150,7 +146,7 @@ onUnmounted(() => {
         <!-- Mobile Menu Toggle -->
         <button
           type="button"
-          class="md:hidden p-1.5 sm:p-2 rounded-lg bg-[#0E1722] border border-[#162432] text-[#EAF7F6] hover:text-[#39C5BB] transition-colors"
+          class="md:hidden p-2 rounded-lg bg-[#0E1724] border border-[#162436] text-[#EAF7F6] hover:text-[#39C5BB] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#39C5BB]"
           aria-label="Toggle navigation menu"
           @click="mobileMenuOpen = !mobileMenuOpen; soundManager.playClick()"
         >
@@ -171,32 +167,32 @@ onUnmounted(() => {
     >
       <div
         v-if="mobileMenuOpen"
-        class="pointer-events-auto absolute top-16 sm:top-20 left-3 right-3 bg-[#0A1118]/98 backdrop-blur-2xl border border-[#162432] rounded-2xl p-4 sm:p-5 shadow-[0_12px_40px_rgba(0,0,0,0.9)] md:hidden flex flex-col gap-1.5 z-50"
+        class="pointer-events-auto absolute top-16 sm:top-20 left-4 right-4 bg-[#0A1118]/98 backdrop-blur-2xl border border-[#162436] rounded-2xl p-4 sm:p-5 shadow-[0_12px_40px_rgba(0,0,0,0.9)] md:hidden flex flex-col gap-1.5 z-50"
       >
         <a
           v-for="link in navLinks"
           :key="link.name"
           :href="link.href"
-          class="px-4 py-3 rounded-xl font-mono text-xs tracking-wider flex items-center justify-between text-[#EAF7F6] hover:bg-[#0E1722] hover:text-[#6FF7EC] active:bg-[#0E1722] transition-colors"
+          class="px-4 py-3 rounded-xl font-mono text-xs tracking-wider flex items-center justify-between text-[#EAF7F6] hover:bg-[#0E1724] hover:text-[#6FF7EC] active:bg-[#0E1724] transition-colors focus:outline-none"
           @click="handleLinkClick(link.href)"
         >
           <span>{{ link.name }}</span>
           <span class="text-[#39C5BB]">→</span>
         </a>
 
-        <div class="pt-3 mt-1 border-t border-[#162432] flex flex-col gap-2">
+        <div class="pt-3 mt-1 border-t border-[#162436] flex flex-col gap-2">
           <a
             href="/Ismail_Gayratov_Resume.pdf"
             download="Ismail_Gayratov_Resume.pdf"
-            class="flex items-center gap-2 px-4 py-3 rounded-xl text-xs font-mono text-[#39C5BB] bg-[#0E1722] border border-[#162432] w-full justify-center active:bg-[#162432]"
+            class="flex items-center gap-2 px-4 py-3 rounded-xl text-xs font-mono text-[#39C5BB] bg-[#0E1724] border border-[#162436] w-full justify-center active:bg-[#162436] focus:outline-none"
             @click="soundManager.playClick()"
           >
             <Download class="w-4 h-4" />
-            <span>Download Resume (PDF)</span>
+            <span>Download Resume PDF</span>
           </a>
           <button
             type="button"
-            class="flex items-center gap-2 px-4 py-3 rounded-xl text-xs font-mono text-[#EAF7F6] bg-[#05080D] border border-[#162432] w-full justify-center active:bg-[#162432]"
+            class="flex items-center gap-2 px-4 py-3 rounded-xl text-xs font-mono text-[#EAF7F6] bg-[#05080D] border border-[#162436] w-full justify-center active:bg-[#162436] focus:outline-none"
             @click="emit('open-resume'); mobileMenuOpen = false; soundManager.playClick()"
           >
             <FileText class="w-4 h-4 text-[#39C5BB]" />

@@ -2,15 +2,16 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import Lenis from 'lenis'
 
+import MikuBackground from './components/MikuBackground.vue'
 import CursorGlow from './components/CursorGlow.vue'
 import Navbar from './components/Navbar.vue'
 import HeroSection from './components/HeroSection.vue'
 import MarqueeStrip from './components/MarqueeStrip.vue'
 import EqualizerDivider from './components/EqualizerDivider.vue'
-import AboutSection from './components/AboutSection.vue'
 import FintechShowcase from './components/FintechShowcase.vue'
 import ExperienceTimeline from './components/ExperienceTimeline.vue'
 import SkillsSection from './components/SkillsSection.vue'
+import AboutSection from './components/AboutSection.vue'
 import EducationLanguages from './components/EducationLanguages.vue'
 import ContactSection from './components/ContactSection.vue'
 import ResumeModal from './components/ResumeModal.vue'
@@ -60,18 +61,21 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="relative min-h-screen bg-[#05080D] text-[#EAF7F6] selection:bg-[#39C5BB]/30 selection:text-[#6FF7EC]">
+  <div class="relative min-h-screen bg-[#05080D] text-[#EAF7F6] selection:bg-[#39C5BB]/30 selection:text-[#6FF7EC] overflow-x-hidden">
     
+    <!-- Background Canvas & Studio Lighting -->
+    <MikuBackground />
+
     <!-- Dynamic Cursor Spotlight Glow -->
     <CursorGlow />
 
-    <!-- Top Pill Navbar -->
+    <!-- Floating Top Navigation -->
     <Navbar @open-resume="isResumeModalOpen = true" />
 
     <!-- Main Content Flow -->
     <main class="relative z-10">
       
-      <!-- 00 // Hero Section with Miku Cyber Card -->
+      <!-- Hero Section with Sculptural Type & Interactive Synth Console -->
       <HeroSection 
         @open-resume="isResumeModalOpen = true"
         @toast="triggerToast"
@@ -80,46 +84,42 @@ onUnmounted(() => {
       <!-- Infinite Marquee Ticker -->
       <MarqueeStrip />
 
-      <!-- 01 // Summary & Values -->
-      <AboutSection />
-
-      <!-- Equalizer Visualizer Divider -->
-      <EqualizerDivider label="02 // FINTECH_SYS_FREQ" />
-
-      <!-- 02 // Flagship Fintech & DBO Showcase -->
+      <!-- Selected Production Systems (Trustbank & Multicard) -->
       <FintechShowcase />
 
-      <!-- Equalizer Visualizer Divider -->
-      <EqualizerDivider label="03 // EXPERIENCE_FREQ" />
+      <EqualizerDivider />
 
-      <!-- 03 // Experience Timeline -->
+      <!-- Experience History -->
       <ExperienceTimeline />
 
-      <!-- Equalizer Visualizer Divider -->
-      <EqualizerDivider label="04 // TECH_STACK_FREQ" />
+      <EqualizerDivider />
 
-      <!-- 04 // Skills Arsenal -->
+      <!-- Capabilities & Tooling -->
       <SkillsSection />
 
-      <!-- Equalizer Visualizer Divider -->
-      <EqualizerDivider label="05 // ACADEMICS_FREQ" />
+      <EqualizerDivider />
 
-      <!-- 05 // Education & Languages -->
+      <!-- Engineering Philosophy -->
+      <AboutSection />
+
+      <EqualizerDivider />
+
+      <!-- Academic Background & Languages -->
       <EducationLanguages />
 
-      <!-- 06 // Contact & Footer -->
+      <!-- Contact & Direct Inquiries -->
       <ContactSection @toast="triggerToast" />
 
     </main>
 
-    <!-- Interactive Resume Modal -->
+    <!-- Resume Dossier Modal -->
     <ResumeModal
       :is-open="isResumeModalOpen"
       @close="isResumeModalOpen = false"
       @toast="triggerToast"
     />
 
-    <!-- Toast Notification Alerts -->
+    <!-- Toast Notification -->
     <ToastNotification
       :show="toastShow"
       :message="toastMessage"

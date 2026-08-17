@@ -34,8 +34,8 @@ const copyEmail = async () => {
     emit('toast', 'Email address copied to clipboard!')
     
     confetti({
-      particleCount: 35,
-      spread: 60,
+      particleCount: 30,
+      spread: 50,
       origin: { y: 0.85 },
       colors: ['#39C5BB', '#6FF7EC', '#FF6FA5', '#EAF7F6']
     })
@@ -73,37 +73,34 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <footer id="contact" class="pt-16 sm:pt-24 pb-12 sm:pb-16 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-t border-[#162432] bg-[#0A1118]/80 relative overflow-hidden">
+  <footer id="contact" class="pt-20 sm:pt-28 pb-16 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-t border-[#162436] bg-[#0A1118]/90 relative overflow-hidden">
     
-    <!-- Background Ambient Glow -->
-    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[320px] sm:w-[700px] h-[200px] sm:h-[300px] bg-[#39C5BB]/8 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none -z-10" />
-
-    <div class="max-w-5xl mx-auto text-center flex flex-col items-center">
+    <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
       
       <!-- Eyebrow -->
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[#05080D] border border-[#162432] text-[#39C5BB] font-mono text-xs tracking-wider uppercase mb-5 sm:mb-6 select-none">
-        <span>06 // INITIATE TRANSMISSION</span>
+      <div class="font-mono text-xs text-[#39C5BB] tracking-wider uppercase mb-4">
+        Direct Inquiries & Collaboration
       </div>
 
       <!-- Main Headline -->
-      <h2 class="font-display font-extrabold text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-[#EAF7F6] tracking-tight max-w-3xl leading-[1.1] sm:leading-[1.05]">
+      <h2 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#EAF7F6] tracking-tight max-w-3xl leading-[1.08]">
         Have a fintech product that needs a 
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#39C5BB] via-[#6FF7EC] to-[#39C5BB]">
           high-craft frontend
         </span>?
       </h2>
 
-      <p class="mt-4 sm:mt-5 text-[#7C9399] font-body text-xs sm:text-base md:text-lg max-w-xl leading-relaxed">
-        Currently available for full-time engineering positions, contract development, and technical consulting.
+      <p class="mt-4 text-[#7C9399] font-body text-sm sm:text-base md:text-lg max-w-xl leading-relaxed">
+        Currently open to full-time engineering positions, contract development, and technical consulting.
       </p>
 
       <!-- Primary Action Buttons -->
-      <div class="mt-8 sm:mt-10 flex flex-col xs:flex-row items-stretch xs:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
+      <div class="mt-8 flex flex-col xs:flex-row items-stretch xs:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
         
         <!-- Copyable Email CTA -->
         <button
           type="button"
-          class="group relative inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-[#39C5BB] hover:bg-[#6FF7EC] text-[#05080D] font-mono font-bold text-xs sm:text-sm tracking-wider glow-teal hover:glow-teal-lg transition-all duration-200 cursor-pointer shadow-lg"
+          class="group relative inline-flex items-center justify-center gap-3 px-7 py-3.5 sm:py-4 rounded-xl bg-[#39C5BB] hover:bg-[#6FF7EC] text-[#05080D] font-mono font-bold text-xs sm:text-sm tracking-wider glow-teal hover:glow-teal-lg transition-all duration-200 cursor-pointer shadow-lg"
           @click="copyEmail"
           @mouseenter="soundManager.playHover()"
         >
@@ -117,7 +114,7 @@ onUnmounted(() => {
           :href="portfolioData.telegram"
           target="_blank"
           rel="noopener"
-          class="group inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-[#05080D] border border-[#39C5BB]/60 hover:border-[#6FF7EC] text-[#EAF7F6] hover:text-[#6FF7EC] font-mono font-medium text-xs sm:text-sm tracking-wider transition-all duration-200 cursor-pointer"
+          class="group inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-xl bg-[#0E1724] border border-[#162436] hover:border-[#39C5BB] text-[#EAF7F6] hover:text-[#6FF7EC] font-mono font-medium text-xs sm:text-sm tracking-wider transition-all duration-200 cursor-pointer"
           @click="soundManager.playClick()"
           @mouseenter="soundManager.playHover()"
         >
@@ -129,12 +126,12 @@ onUnmounted(() => {
       </div>
 
       <!-- Quick Contact Badges Strip -->
-      <div class="mt-8 sm:mt-12 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 max-w-2xl w-full">
+      <div class="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 max-w-2xl w-full">
         
         <!-- Phone button -->
         <button
           type="button"
-          class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-lg bg-[#05080D] border border-[#162432] hover:border-[#39C5BB]/50 text-[11px] sm:text-xs font-mono text-[#EAF7F6] hover:text-[#6FF7EC] transition-all cursor-pointer"
+          class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#05080D] border border-[#162436] hover:border-[#39C5BB]/50 text-xs font-mono text-[#EAF7F6] hover:text-[#6FF7EC] transition-all cursor-pointer"
           @click="copyPhone"
           @mouseenter="soundManager.playHover()"
         >
@@ -148,7 +145,7 @@ onUnmounted(() => {
           :href="portfolioData.github"
           target="_blank"
           rel="noopener"
-          class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-lg bg-[#05080D] border border-[#162432] hover:border-[#39C5BB]/50 text-[11px] sm:text-xs font-mono text-[#EAF7F6] hover:text-[#6FF7EC] transition-all"
+          class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#05080D] border border-[#162436] hover:border-[#39C5BB]/50 text-xs font-mono text-[#EAF7F6] hover:text-[#6FF7EC] transition-all"
           @mouseenter="soundManager.playHover()"
         >
           <Github class="w-3.5 h-3.5 text-[#39C5BB]" />
@@ -161,7 +158,7 @@ onUnmounted(() => {
           :href="portfolioData.linkedin"
           target="_blank"
           rel="noopener"
-          class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-lg bg-[#05080D] border border-[#162432] hover:border-[#39C5BB]/50 text-[11px] sm:text-xs font-mono text-[#EAF7F6] hover:text-[#6FF7EC] transition-all"
+          class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#05080D] border border-[#162436] hover:border-[#39C5BB]/50 text-xs font-mono text-[#EAF7F6] hover:text-[#6FF7EC] transition-all"
           @mouseenter="soundManager.playHover()"
         >
           <Linkedin class="w-3.5 h-3.5 text-[#39C5BB]" />
@@ -171,25 +168,25 @@ onUnmounted(() => {
 
       </div>
 
-      <!-- Live Tashkent Clock & Status -->
-      <div class="mt-8 sm:mt-10 flex items-center justify-center gap-3 font-mono text-[11px] sm:text-xs text-[#7C9399]">
-        <div class="flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#05080D] border border-[#162432]">
+      <!-- Live Tashkent Clock -->
+      <div class="mt-8 flex items-center justify-center gap-3 font-mono text-xs text-[#7C9399]">
+        <div class="flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#05080D] border border-[#162436]">
           <Clock class="w-3.5 h-3.5 text-[#39C5BB]" />
-          <span>TASHKENT TIME:</span>
+          <span>Tashkent Time:</span>
           <span class="text-[#EAF7F6] font-semibold">{{ tashkentTime || '17:20:00' }}</span>
           <span class="text-[#39C5BB]">UTC+5</span>
         </div>
       </div>
 
-      <!-- Bottom Copyright & Signature -->
-      <div class="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-[#162432] w-full flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-[11px] sm:text-xs font-mono text-[#7C9399]">
+      <!-- Footer Signature -->
+      <div class="mt-12 pt-6 border-t border-[#162436] w-full flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-[#7C9399]">
         <div>
           © 2026 · Frontend & Full-Stack Engineer · Built in Tashkent.
         </div>
         <div class="flex items-center gap-2">
-          <span>CODE IDENTITY:</span>
-          <span class="text-[#39C5BB] font-semibold">MIKU PULSE // 01</span>
-          <span class="text-[#FF6FA5] font-bold">#39C5BB</span>
+          <span>Design Motif:</span>
+          <span class="text-[#39C5BB] font-semibold">Miku Pulse</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#FF6FA5]" />
         </div>
       </div>
 

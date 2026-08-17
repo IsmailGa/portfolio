@@ -1,102 +1,81 @@
 <script setup lang="ts">
 import { portfolioData } from '../data/portfolioData'
 import { soundManager } from '../utils/sound'
-import { Briefcase, MapPin, Calendar, ChevronRight } from 'lucide-vue-next'
+import { MapPin } from 'lucide-vue-next'
 
 const experiences = portfolioData.experiences
 </script>
 
 <template>
-  <section id="experience" class="py-16 sm:py-24 md:py-28 lg:py-32 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-7xl mx-auto relative">
+  <section id="experience" class="py-20 sm:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-6xl mx-auto relative">
     
-    <!-- Section Eyebrow & Title -->
-    <div class="mb-10 sm:mb-16">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#0A1118] border border-[#162432] text-[#39C5BB] font-mono text-xs tracking-wider uppercase mb-3 select-none">
-        <Briefcase class="w-3.5 h-3.5" />
-        <span>03 // TRACK RECORD & ROLES</span>
+    <!-- Section Header -->
+    <div class="mb-12 sm:mb-16">
+      <div class="font-mono text-xs text-[#39C5BB] tracking-wider uppercase mb-2">
+        Career History
       </div>
       <h2 class="font-display font-bold text-2xl sm:text-4xl md:text-5xl text-[#EAF7F6] tracking-tight">
-        Work history & <span class="text-[#39C5BB]">production impact</span>.
+        Experience & <span class="text-[#39C5BB]">production roles</span>.
       </h2>
-      <p class="mt-2 text-[#7C9399] font-body text-xs sm:text-sm md:text-base max-w-2xl">
-        High-load banking systems, merchant payment networks, and performant web products shipped across 2+ years.
+      <p class="mt-2 text-[#7C9399] font-body text-sm sm:text-base max-w-2xl">
+        A progressive track record delivering customer-facing financial platforms, internal management portals, and e-commerce applications.
       </p>
     </div>
 
-    <!-- Timeline Container -->
-    <div class="relative pl-5 sm:pl-8 lg:pl-10 space-y-8 sm:space-y-10">
-      
-      <!-- Clean Static Left Accent Line -->
-      <div class="absolute left-[6px] sm:left-[10px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-[#39C5BB] via-[#162432] to-[#162432]/30" />
-
-      <!-- Experience Cards -->
+    <!-- Timeline Entries -->
+    <div class="space-y-6">
       <div 
         v-for="exp in experiences" 
         :key="exp.id"
-        class="relative group"
+        class="glass-surface p-6 sm:p-8 rounded-2xl border border-[#162436] hover:border-[#39C5BB]/45 transition-all duration-200 group relative"
+        @mouseenter="soundManager.playHover()"
       >
-        <!-- Static Precision Node on Timeline Line -->
-        <div 
-          class="absolute -left-[24px] sm:-left-[33px] top-5 sm:top-6 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded bg-[#05080D] border-2 border-[#39C5BB] group-hover:border-[#6FF7EC] transition-all duration-200"
-        />
-
-        <!-- Glass Panel Experience Card -->
-        <div 
-          class="glass-panel p-4 sm:p-6 md:p-8 rounded-2xl border border-[#162432] hover:border-[#39C5BB]/50 hover:bg-[#0E1722] transition-all duration-200 shadow-md group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.6)] corner-crosshair"
-          @mouseenter="soundManager.playHover()"
-        >
-          <!-- Top Row: Date & Domain Badge -->
-          <div class="flex flex-wrap items-center justify-between gap-2 sm:gap-3 mb-3">
-            <div class="inline-flex items-center gap-1.5 font-mono text-[11px] sm:text-xs text-[#39C5BB] bg-[#05080D] px-2.5 sm:px-3 py-1 rounded-md border border-[#162432]">
-              <Calendar class="w-3.5 h-3.5" />
-              <span>{{ exp.period }}</span>
-            </div>
-
-            <div class="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-mono text-[#7C9399]">
-              <MapPin class="w-3.5 h-3.5 text-[#39C5BB] shrink-0" />
-              <span>{{ exp.location }}</span>
-              <span class="text-[#162432]">|</span>
-              <span class="text-[#EAF7F6]/80">{{ exp.category }}</span>
-            </div>
-          </div>
-
-          <!-- Company & Role -->
-          <div class="mb-3 sm:mb-4">
-            <h3 class="font-display font-bold text-xl sm:text-2xl md:text-3xl text-[#EAF7F6] group-hover:text-[#6FF7EC] transition-colors flex flex-wrap items-center gap-2 sm:gap-3">
-              <span>{{ exp.company }}</span>
-              <span class="text-[11px] sm:text-xs font-mono font-normal px-2 sm:px-2.5 py-0.5 rounded bg-[#39C5BB]/10 text-[#39C5BB] border border-[#39C5BB]/20">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 sm:gap-4 mb-4 pb-4 border-b border-[#162436]">
+          <div>
+            <div class="flex flex-wrap items-center gap-3">
+              <h3 class="font-display font-bold text-xl sm:text-2xl text-[#EAF7F6] group-hover:text-[#6FF7EC] transition-colors">
+                {{ exp.company }}
+              </h3>
+              <span class="font-mono text-xs text-[#39C5BB] px-2.5 py-0.5 rounded bg-[#39C5BB]/10 border border-[#39C5BB]/20">
                 {{ exp.role }}
               </span>
-            </h3>
+            </div>
+            <div class="text-xs font-mono text-[#7C9399] mt-1 flex items-center gap-2">
+              <MapPin class="w-3.5 h-3.5 text-[#39C5BB]" />
+              <span>{{ exp.location }}</span>
+              <span>·</span>
+              <span>{{ exp.category }}</span>
+            </div>
           </div>
 
-          <!-- Bullet Points -->
-          <ul class="space-y-2 mb-4 sm:mb-6">
-            <li 
-              v-for="(bullet, bIdx) in exp.description" 
-              :key="bIdx"
-              class="flex items-start gap-2 sm:gap-2.5 text-xs sm:text-sm md:text-base text-[#7C9399] leading-relaxed group/bullet hover:text-[#EAF7F6] transition-colors"
-            >
-              <ChevronRight class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#39C5BB] shrink-0 mt-0.5 opacity-70 group-hover/bullet:opacity-100 transition-opacity" />
-              <span>{{ bullet }}</span>
-            </li>
-          </ul>
-
-          <!-- Tech Stack Tags -->
-          <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-3 sm:pt-4 border-t border-[#162432]">
-            <span class="text-[11px] sm:text-xs font-mono text-[#7C9399] mr-1">Stack:</span>
-            <span 
-              v-for="tag in exp.tags" 
-              :key="tag"
-              class="font-mono text-[10px] sm:text-xs text-[#EAF7F6] bg-[#05080D] border border-[#162432] hover:border-[#39C5BB]/60 hover:text-[#6FF7EC] px-2 sm:px-3 py-0.5 sm:py-1 rounded-md transition-all duration-200"
-            >
-              #{{ tag }}
-            </span>
+          <div class="font-mono text-xs text-[#EAF7F6] bg-[#05080D] px-3 py-1.5 rounded-lg border border-[#162436] shrink-0 self-start md:self-auto">
+            {{ exp.period }}
           </div>
+        </div>
 
+        <!-- Bullets -->
+        <ul class="space-y-2 mb-5">
+          <li 
+            v-for="(bullet, bIdx) in exp.description" 
+            :key="bIdx"
+            class="text-xs sm:text-sm text-[#7C9399] leading-relaxed flex items-start gap-2.5 group-hover:text-[#EAF7F6]/90 transition-colors"
+          >
+            <span class="text-[#39C5BB] font-mono shrink-0 mt-0.5">―</span>
+            <span>{{ bullet }}</span>
+          </li>
+        </ul>
+
+        <!-- Tags -->
+        <div class="flex flex-wrap items-center gap-1.5 pt-3 border-t border-[#162436]/60">
+          <span 
+            v-for="tag in exp.tags" 
+            :key="tag"
+            class="font-mono text-[11px] sm:text-xs text-[#7C9399] bg-[#05080D] px-2.5 py-0.5 rounded border border-[#162436] group-hover:text-[#39C5BB] transition-colors"
+          >
+            #{{ tag }}
+          </span>
         </div>
       </div>
-
     </div>
 
   </section>

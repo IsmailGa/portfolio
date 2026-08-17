@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { portfolioData } from '../data/portfolioData'
 import { soundManager } from '../utils/sound'
-import { FileDown, Send, ArrowUpRight, Code2 } from 'lucide-vue-next'
+import { FileDown, Send, ArrowUpRight, Music } from 'lucide-vue-next'
 
 const emit = defineEmits<{
   (e: 'open-resume'): void
@@ -10,90 +10,139 @@ const emit = defineEmits<{
 }>()
 
 const isLoaded = ref(false)
+const synthCanvas = ref<HTMLCanvasElement | null>(null)
+const activePad = ref<number | null>(null)
+
+// Musical pentatonic scale matching Miku's sonic character (A4, C5, D5, E5, G5)
+const synthPads = [
+  { note: 'A4', freq: 440, label: '440 Hz' },
+  { note: 'C5', freq: 523.25, label: '523 Hz' },
+  { note: 'D5', freq: 587.33, label: '587 Hz' },
+  { note: 'E5', freq: 659.25, label: '659 Hz' },
+  { note: 'G5', freq: 783.99, label: '784 Hz' }
+]
+
+let oscStep = 0
+let animFrame: number | null = null
+let energy = 0.2
+
+const playPad = (idx: number) => {
+  activePad.value = idx
+  energy = 1.0
+  soundManager.playSynthNote(synthPads[idx].freq, 'sine', 0.4)
+  setTimeout(() => {
+    if (activePad.value === idx) activePad.value = null
+  }, 350)
+}
+
+const renderOscilloscope = () => {
+  const canvas = synthCanvas.value
+  if (canvas) {
+    const ctx = canvas.getContext('2d')
+    if (ctx) {
+      const w = canvas.width
+      const h = canvas.height
+      ctx.clearRect(0, 0, w, h)
+
+      oscStep += 0.04
+      energy += (0.15 - energy) * 0.05
+
+      ctx.beginPath()
+      ctx.lineWidth = 1.5
+      ctx.strokeStyle = energy > 0.4 ? '#6FF7EC' : 'rgba(57, 197, 187, 0.6)'
+
+      for (let x = 0; x < w; x += 4) {
+        const envelope = Math.sin((x / w) * Math.PI)
+        const y = (h / 2) + Math.sin(x * 0.04 + oscStep) * (18 * energy) * envelope + Math.cos(x * 0.08 - oscStep) * (8 * energy) * envelope
+        if (x === 0) ctx.moveTo(x, y)
+        else ctx.lineTo(x, y)
+      }
+      ctx.stroke()
+    }
+  }
+  animFrame = requestAnimationFrame(renderOscilloscope)
+}
 
 onMounted(() => {
   setTimeout(() => {
     isLoaded.value = true
   }, 100)
+  animFrame = requestAnimationFrame(renderOscilloscope)
+})
+
+onUnmounted(() => {
+  if (animFrame) cancelAnimationFrame(animFrame)
 })
 </script>
 
 <template>
   <section
     id="hero"
-    class="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-24 sm:pt-28 pb-12 sm:pb-16 overflow-hidden bg-cyber-grid"
+    class="relative min-h-[90vh] sm:min-h-screen flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-24 sm:pt-32 pb-16 overflow-hidden"
   >
-    <!-- Background Ambient Glow Spotlights -->
-    <div class="absolute top-1/4 right-1/4 w-[280px] sm:w-[500px] h-[280px] sm:h-[500px] bg-[#39C5BB]/8 rounded-full blur-[90px] sm:blur-[120px] pointer-events-none -z-10" />
-    <div class="absolute bottom-10 left-10 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-[#0E1722]/80 rounded-full blur-[70px] sm:blur-[90px] pointer-events-none -z-10" />
-
-    <div class="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center my-auto">
+    <div class="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto">
       
-      <!-- Left Column: Typography & Action CTAs (7 cols) -->
-      <div class="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1">
+      <!-- Left Column: Typographic Thesis & CTAs (7 cols) -->
+      <div class="lg:col-span-7 flex flex-col justify-center">
         
-        <!-- Top Technical Decal & Status -->
+        <!-- Status Tag -->
         <div 
-          class="flex flex-wrap items-center gap-2 sm:gap-3 px-3 sm:px-3.5 py-1.5 rounded-lg bg-[#0A1118] border border-[#162432] w-fit mb-5 sm:mb-6 transition-all duration-700 transform select-none"
+          class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-[#0E1724] border border-[#162436] w-fit mb-6 transition-all duration-700 select-none"
           :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
         >
-          <span class="font-mono text-[10px] sm:text-[11px] text-[#39C5BB] font-semibold tracking-wider">
-            [SYS:MIKU_01]
+          <span class="w-2 h-2 rounded-full bg-[#39C5BB]" />
+          <span class="font-mono text-xs text-[#EAF7F6] tracking-wider uppercase">
+            Available for Full-time & Remote Roles
           </span>
-          <span class="text-[#162432] hidden xs:inline">|</span>
-          <span class="font-mono text-[10px] sm:text-xs text-[#EAF7F6] tracking-wider">
-            AVAILABLE FOR CONTRACT & FULL-TIME
-          </span>
-          <span class="text-[#162432] hidden sm:inline">|</span>
-          <span class="font-mono text-[10px] sm:text-xs text-[#7C9399] hidden sm:inline">
-            TASHKENT (UTC+5)
+          <span class="text-[#162436]">·</span>
+          <span class="font-mono text-xs text-[#7C9399]">
+            Tashkent (UTC+5)
           </span>
         </div>
 
-        <!-- Sculptural Display Title (haoqi.design / zalak-patel) -->
+        <!-- Sculptural Display Headline -->
         <div 
-          class="transition-all duration-700 delay-100 transform"
+          class="transition-all duration-700 delay-100"
           :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
         >
           <h1 
-            class="font-display font-extrabold tracking-[-0.035em] uppercase text-[#EAF7F6] leading-[0.9] sm:leading-[0.88] select-none text-[42px] xs:text-[54px] sm:text-[76px] md:text-[96px] lg:text-[104px] xl:text-[124px] break-words"
+            class="font-display font-extrabold tracking-[-0.035em] uppercase text-[#EAF7F6] leading-[0.88] select-none text-[44px] xs:text-[56px] sm:text-[76px] md:text-[96px] lg:text-[108px] xl:text-[120px] break-words"
           >
             ISMAIL
           </h1>
         </div>
 
-        <!-- Japanese Aesthetic Sub-Decal & Role -->
+        <!-- Role Subhead -->
         <div 
-          class="mt-4 sm:mt-6 flex flex-wrap items-center gap-2 sm:gap-3 transition-all duration-700 delay-200 transform"
+          class="mt-5 flex items-center gap-2.5 transition-all duration-700 delay-200"
           :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
         >
-          <div class="flex items-center gap-2 px-2.5 sm:px-3 py-1 rounded bg-[#0E1722] border border-[#162432] text-[#39C5BB] font-mono text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider">
-            <Code2 class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#39C5BB] shrink-0" />
-            <span>&lt;FRONTEND / FULL-STACK DEVELOPER /&gt;</span>
+          <div class="font-mono text-xs sm:text-sm font-semibold text-[#39C5BB] px-2.5 py-1 rounded bg-[#0E1724] border border-[#162436]">
+            Frontend / Full-Stack Developer
           </div>
-          <span class="text-[#7C9399] font-mono text-[11px] sm:text-xs">
-            初音ミク · FINTECH DBO SPECIALIST
+          <span class="text-[#7C9399] font-mono text-xs hidden sm:inline">
+            Fintech & DBO Platforms
           </span>
         </div>
 
-        <!-- Summary Pitch -->
+        <!-- Narrative Pitch -->
         <p 
-          class="mt-4 sm:mt-6 max-w-xl text-[#7C9399] text-sm sm:text-base md:text-lg leading-relaxed font-body font-normal transition-all duration-700 delay-300 transform"
+          class="mt-6 max-w-xl text-[#7C9399] text-sm sm:text-base md:text-lg leading-relaxed font-body font-normal transition-all duration-700 delay-300"
           :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
         >
-          2+ years building mission-critical client interfaces and multi-role admin panels for digital banking (DBO) platforms. Specializing in <span class="text-[#EAF7F6] font-medium">Vue 3</span>, <span class="text-[#EAF7F6] font-medium">TypeScript</span>, and <span class="text-[#EAF7F6] font-medium">React</span> with rigorous Vitest testing.
+          Building high-performance client interfaces and internal operations portals for digital banking platforms. Strong with <span class="text-[#EAF7F6] font-medium">Vue 3</span>, <span class="text-[#EAF7F6] font-medium">TypeScript</span>, and <span class="text-[#EAF7F6] font-medium">React</span>, backed by rigorous Vitest testing suites and containerized deployment.
         </p>
 
         <!-- CTAs -->
         <div 
-          class="mt-6 sm:mt-8 flex flex-col xs:flex-row items-stretch xs:items-center gap-3 sm:gap-4 transition-all duration-700 delay-400 transform w-full sm:w-auto"
+          class="mt-8 flex flex-col xs:flex-row items-stretch xs:items-center gap-3 sm:gap-4 transition-all duration-700 delay-400 w-full sm:w-auto"
           :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
         >
           <!-- Primary CTA: Direct Download PDF -->
           <a
             href="/Ismail_Gayratov_Resume.pdf"
             download="Ismail_Gayratov_Resume.pdf"
-            class="group relative inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-xl bg-[#39C5BB] hover:bg-[#6FF7EC] text-[#05080D] font-mono font-bold text-xs sm:text-sm tracking-wider glow-teal hover:glow-teal-lg transition-all duration-200 cursor-pointer"
+            class="group relative inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-xl bg-[#39C5BB] hover:bg-[#6FF7EC] text-[#05080D] font-mono font-bold text-xs sm:text-sm tracking-wider glow-teal hover:glow-teal-lg transition-all duration-200 cursor-pointer shadow-lg"
             @click="soundManager.playChime()"
             @mouseenter="soundManager.playHover()"
           >
@@ -104,19 +153,19 @@ onMounted(() => {
           <!-- View Dossier Modal Trigger -->
           <button
             type="button"
-            class="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-xl bg-[#0A1118] border border-[#162432] hover:border-[#39C5BB] text-[#EAF7F6] hover:text-[#6FF7EC] font-mono font-medium text-xs sm:text-sm tracking-wider transition-all duration-200 cursor-pointer"
+            class="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-xl bg-[#0E1724] border border-[#162436] hover:border-[#39C5BB] text-[#EAF7F6] hover:text-[#6FF7EC] font-mono font-medium text-xs sm:text-sm tracking-wider transition-all duration-200 cursor-pointer"
             @click="emit('open-resume'); soundManager.playClick()"
             @mouseenter="soundManager.playHover()"
           >
             <span>VIEW DOSSIER</span>
           </button>
 
-          <!-- Ghost Outline Button: Telegram -->
+          <!-- Telegram Contact -->
           <a
             :href="portfolioData.telegram"
             target="_blank"
             rel="noopener"
-            class="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-xl bg-[#0A1118] border border-[#162432] hover:border-[#39C5BB] text-[#EAF7F6] hover:text-[#6FF7EC] font-mono font-medium text-xs sm:text-sm tracking-wider transition-all duration-200 cursor-pointer"
+            class="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-xl bg-[#0E1724] border border-[#162436] hover:border-[#39C5BB] text-[#EAF7F6] hover:text-[#6FF7EC] font-mono font-medium text-xs sm:text-sm tracking-wider transition-all duration-200 cursor-pointer"
             @click="soundManager.playClick()"
             @mouseenter="soundManager.playHover()"
           >
@@ -126,84 +175,72 @@ onMounted(() => {
           </a>
         </div>
 
-        <!-- Quick Spec Telemetry Bar -->
-        <div 
-          class="mt-8 sm:mt-10 pt-5 sm:pt-6 border-t border-[#162432] grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 text-[11px] sm:text-xs font-mono text-[#7C9399] transition-all duration-700 delay-500 transform"
-          :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
-        >
-          <div class="flex items-center gap-1.5">
-            <span class="text-[#39C5BB]">CORE:</span>
-            <span class="text-[#EAF7F6]">Vue 3 (Composition API) / TS</span>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <span class="text-[#39C5BB]">TESTS:</span>
-            <span class="text-[#EAF7F6]">Vitest Unit & Integration</span>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <span class="text-[#39C5BB]">ENGLISH:</span>
-            <span class="text-[#6FF7EC]">C1 Advanced Verified</span>
-          </div>
-        </div>
-
       </div>
 
-      <!-- Right Column: Bespoke Miku Cyber Figure & Telemetry Card (5 cols) -->
+      <!-- Right Column: Interactive Synthesizer Console & Character Visual (5 cols) -->
       <div 
-        class="lg:col-span-5 flex justify-center transition-all duration-700 delay-300 transform order-1 lg:order-2"
+        class="lg:col-span-5 flex justify-center transition-all duration-700 delay-300"
         :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
       >
-        <div class="relative w-full max-w-[340px] xs:max-w-[380px] sm:max-w-md glass-panel p-3.5 sm:p-4 rounded-2xl border border-[#162432] hover:border-[#39C5BB]/60 transition-all duration-300 group shadow-2xl corner-crosshair">
+        <div class="w-full max-w-md glass-surface p-5 sm:p-6 rounded-2xl border border-[#162436] relative space-y-4">
           
-          <!-- Card Top Bar Decal -->
-          <div class="flex items-center justify-between px-2 pb-2.5 mb-2.5 border-b border-[#162432] font-mono text-[10px] sm:text-[11px]">
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-bold text-[#FF6FA5]">01</span>
-              <span class="text-[#7C9399]">VOCALOID_CANVAS // SYNTH</span>
+          <!-- Header Bar -->
+          <div class="flex items-center justify-between pb-3 border-b border-[#162436]">
+            <div class="flex items-center gap-2 font-mono text-xs text-[#EAF7F6]">
+              <Music class="w-4 h-4 text-[#39C5BB]" />
+              <span class="font-bold">SYNTH PULSE CONSOLE</span>
             </div>
-            <div class="text-[#39C5BB] font-semibold tracking-wider">
-              ONLINE
+            <span class="font-mono text-[10px] text-[#39C5BB] bg-[#05080D] px-2 py-0.5 rounded border border-[#162436]">
+              WEB AUDIO API
+            </span>
+          </div>
+
+          <!-- Live Oscilloscope Screen -->
+          <div class="h-20 w-full bg-[#05080D] rounded-xl border border-[#162436] overflow-hidden relative flex items-center justify-center">
+            <canvas ref="synthCanvas" width="360" height="80" class="w-full h-full" />
+            <div class="absolute top-2 left-2 text-[9px] font-mono text-[#7C9399]/60">
+              OSCILLOSCOPE // PENTATONIC
             </div>
           </div>
 
-          <!-- Miku Cyber Visual Image -->
-          <div class="relative w-full aspect-square rounded-xl overflow-hidden bg-[#05080D] border border-[#162432] group-hover:border-[#39C5BB]/40 transition-colors">
-            <img 
-              src="/assets/miku_hero.jpg" 
-              alt="Hatsune Miku Cyber Visual Aesthetic" 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            
-            <!-- Gradient Overlay Vignette -->
-            <div class="absolute inset-0 bg-gradient-to-t from-[#05080D] via-transparent to-transparent opacity-80" />
-
-            <!-- Bottom Audio Visualizer Decal on Image -->
-            <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between bg-[#0A1118]/90 backdrop-blur-md px-3 py-2 rounded-lg border border-[#162432]">
-              <div>
-                <div class="font-mono text-[9px] sm:text-[10px] text-[#7C9399]">AUDIO SPECTRUM VISOR</div>
-                <div class="font-display font-bold text-[11px] sm:text-xs text-[#EAF7F6]">MIKU PULSE ENGINE v2.6</div>
-              </div>
-              <div class="flex items-center gap-1">
-                <div class="w-1 h-3 bg-[#39C5BB] rounded-full" />
-                <div class="w-1 h-5 bg-[#6FF7EC] rounded-full" />
-                <div class="w-1 h-2 bg-[#FF6FA5] rounded-full" />
-                <div class="w-1 h-4 bg-[#39C5BB] rounded-full" />
-              </div>
+          <!-- Interactive Synth Tone Pads -->
+          <div>
+            <div class="text-[11px] font-mono text-[#7C9399] mb-2 flex justify-between">
+              <span>Interactive Pads (Click to test audio)</span>
+              <span class="text-[#39C5BB]">A MINOR</span>
+            </div>
+            <div class="grid grid-cols-5 gap-1.5">
+              <button
+                v-for="(pad, idx) in synthPads"
+                :key="pad.note"
+                type="button"
+                class="p-2.5 rounded-lg border font-mono text-center transition-all duration-150 cursor-pointer select-none active:scale-95"
+                :class="[
+                  activePad === idx
+                    ? 'bg-[#39C5BB] text-[#05080D] border-[#6FF7EC] shadow-[0_0_15px_#39C5BB]'
+                    : 'bg-[#05080D] text-[#EAF7F6] border-[#162436] hover:border-[#39C5BB] hover:text-[#6FF7EC]'
+                ]"
+                @click="playPad(idx)"
+              >
+                <div class="font-bold text-xs">{{ pad.note }}</div>
+                <div class="text-[9px] text-[#7C9399] mt-0.5">{{ pad.label }}</div>
+              </button>
             </div>
           </div>
 
-          <!-- Card Bottom Stats Grid -->
-          <div class="mt-3 grid grid-cols-3 gap-2 text-center font-mono">
-            <div class="p-2 rounded-lg bg-[#05080D] border border-[#162432]">
-              <div class="text-[9px] sm:text-[10px] text-[#7C9399]">EXPERIENCE</div>
-              <div class="font-bold text-[11px] sm:text-xs text-[#EAF7F6] mt-0.5">2+ YEARS</div>
+          <!-- Production Baseline Summary -->
+          <div class="pt-3 border-t border-[#162436] grid grid-cols-3 gap-2 text-center font-mono">
+            <div class="p-2 rounded-lg bg-[#05080D] border border-[#162436]">
+              <div class="text-[10px] text-[#7C9399]">FINTECH EXP</div>
+              <div class="font-bold text-xs text-[#EAF7F6] mt-0.5">2+ Years</div>
             </div>
-            <div class="p-2 rounded-lg bg-[#05080D] border border-[#162432]">
-              <div class="text-[9px] sm:text-[10px] text-[#7C9399]">ENGINEERING</div>
-              <div class="font-bold text-[11px] sm:text-xs text-[#39C5BB] mt-0.5">3.61 GPA</div>
+            <div class="p-2 rounded-lg bg-[#05080D] border border-[#162436]">
+              <div class="text-[10px] text-[#7C9399]">DEGREE GPA</div>
+              <div class="font-bold text-xs text-[#39C5BB] mt-0.5">3.61 / 5.0</div>
             </div>
-            <div class="p-2 rounded-lg bg-[#05080D] border border-[#162432]">
-              <div class="text-[9px] sm:text-[10px] text-[#7C9399]">LANGUAGES</div>
-              <div class="font-bold text-[11px] sm:text-xs text-[#6FF7EC] mt-0.5">C1 / RU / KR</div>
+            <div class="p-2 rounded-lg bg-[#05080D] border border-[#162436]">
+              <div class="text-[10px] text-[#7C9399]">ENGLISH</div>
+              <div class="font-bold text-xs text-[#6FF7EC] mt-0.5">C1 Fluent</div>
             </div>
           </div>
 
