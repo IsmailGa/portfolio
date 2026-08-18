@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { t } from '../i18n'
 import { portfolioData } from '../data/portfolioData'
 import { soundManager } from '../utils/sound'
 
 const selectedCategory = ref<string>('ALL')
 const categories = portfolioData.skillCategories
 
-const categoryTabs = [
-  { code: 'ALL', label: 'All Modules' },
+const categoryTabs = computed(() => [
+  { code: 'ALL', label: t.value.capabilities.allModules },
   ...categories.map(c => ({ code: c.code, label: c.title }))
-]
+])
 
 const filteredCategories = computed(() => {
   if (selectedCategory.value === 'ALL') {
@@ -30,13 +31,13 @@ const handleCategoryChange = (code: string) => {
     <!-- Section Header -->
     <div class="mb-10 sm:mb-12">
       <div class="font-mono text-xs text-[#39C5BB] tracking-wider uppercase mb-2">
-        Technical Capabilities
+        {{ t.capabilities.eyebrow }}
       </div>
       <h2 class="font-display font-bold text-2xl sm:text-4xl md:text-5xl text-[#EAF7F6] tracking-tight">
-        Core stack & <span class="text-[#39C5BB]">engineering tools</span>.
+        {{ t.capabilities.titleMain }} <span class="text-[#39C5BB]">{{ t.capabilities.titleAccent }}</span>
       </h2>
       <p class="mt-2 text-[#7C9399] font-body text-sm sm:text-base max-w-2xl">
-        A hands-on production toolkit spanning reactive UI frameworks, unit & integration test suites, containerization, and relational databases.
+        {{ t.capabilities.desc }}
       </p>
     </div>
 
@@ -74,7 +75,7 @@ const handleCategoryChange = (code: string) => {
               {{ category.title }}
             </h3>
             <span class="font-mono text-[11px] text-[#39C5BB]">
-              {{ category.skills.length }} items
+              {{ category.skills.length }} {{ t.capabilities.itemsCount }}
             </span>
           </div>
 
@@ -94,8 +95,8 @@ const handleCategoryChange = (code: string) => {
         </div>
 
         <div class="mt-4 pt-3 border-t border-[#162436]/60 flex items-center justify-between text-[11px] font-mono text-[#7C9399]">
-          <span>Production Ready</span>
-          <span class="text-[#39C5BB]">Verified</span>
+          <span>{{ t.capabilities.prodReady }}</span>
+          <span class="text-[#39C5BB]">{{ t.capabilities.verified }}</span>
         </div>
 
       </div>

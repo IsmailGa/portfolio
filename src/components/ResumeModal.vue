@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { t } from '../i18n'
 import { portfolioData } from '../data/portfolioData'
 import { soundManager } from '../utils/sound'
 import { X, Printer, Copy, Check, FileText, Download } from 'lucide-vue-next'
@@ -21,38 +22,39 @@ const handlePrint = () => {
 }
 
 const copyRawResume = async () => {
+  const trans = t.value
   const resumeText = `
 ISMAIL GAYRATOV
-Frontend / Full-Stack Developer
+${trans.hero.role}
 Tashkent, Uzbekistan | +998 77 488 7875 | gaismail777@gmail.com
 GitHub: https://github.com/IsmailGa | LinkedIn: https://linkedin.com/in/ismail-gayratov | Telegram: @theiiisssaaa
 
-SUMMARY
-${portfolioData.summary}
+${trans.modal.summary}
+${trans.about.summary}
 
-EXPERIENCE
-${portfolioData.experiences.map(e => `
+${trans.modal.experience}
+${trans.experience.items.map(e => `
 ${e.role} — ${e.company} (${e.period})
 ${e.location} | ${e.category}
 ${e.description.map(d => `• ${d}`).join('\n')}
 Stack: ${e.tags.join(', ')}
 `).join('\n')}
 
-EDUCATION
-${portfolioData.education.map(ed => `
+${trans.modal.education}
+${trans.education.items.map(ed => `
 ${ed.degree} (${ed.period})
 ${ed.institution} — ${ed.department} ${ed.score ? `[${ed.score}]` : ''}
 `).join('\n')}
 
-LANGUAGES
-${portfolioData.languages.map(l => `• ${l.name}: ${l.level} (${l.description})`).join('\n')}
+${trans.modal.languages}
+${trans.education.languagesList.map(l => `• ${l.name}: ${l.level} (${l.description})`).join('\n')}
   `.trim()
 
   try {
     await navigator.clipboard.writeText(resumeText)
     copied.value = true
     soundManager.playChime()
-    emit('toast', 'Full resume text copied to clipboard!')
+    emit('toast', 'Resume text copied to clipboard!')
     setTimeout(() => {
       copied.value = false
     }, 3000)
@@ -69,20 +71,20 @@ ${portfolioData.languages.map(l => `• ${l.name}: ${l.level} (${l.description})
     @click.self="emit('close'); soundManager.playClick()"
   >
     <div 
-      class="relative w-full max-w-4xl max-h-[92vh] bg-[#0A1118] border border-[#162432] rounded-2xl sm:rounded-3xl shadow-[0_24px_80px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden text-left"
+      class="relative w-full max-w-4xl max-h-[92vh] bg-[#0A1118] border border-[#162436] rounded-2xl sm:rounded-3xl shadow-[0_24px_80px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden text-left"
     >
       <!-- Modal Top Bar -->
-      <div class="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-[#162432] bg-[#0E1722]/80">
+      <div class="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-[#162436] bg-[#0E1724]/80">
         <div class="flex items-center gap-2.5 sm:gap-3">
           <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#05080D] border border-[#39C5BB]/40 flex items-center justify-center">
             <FileText class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#39C5BB]" />
           </div>
           <div>
             <h3 class="font-display font-bold text-xs sm:text-base text-[#EAF7F6]">
-              Ismail_Gayratov_Resume.pdf
+              {{ t.modal.fileName }}
             </h3>
             <span class="font-mono text-[10px] sm:text-[11px] text-[#39C5BB] hidden xs:inline-block">
-              Verified Candidate Dossier · 2026 Edition
+              {{ t.modal.dossierSub }}
             </span>
           </div>
         </div>
@@ -97,179 +99,179 @@ ${portfolioData.languages.map(l => `• ${l.name}: ${l.level} (${l.description})
             title="Download PDF file"
           >
             <Download class="w-3.5 h-3.5" />
-            <span>Download PDF</span>
+            <span>{{ t.modal.downloadPdf }}</span>
           </a>
 
-          <!-- Copy Raw Text -->
+          <!-- Copy Button -->
           <button
             type="button"
-            class="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono text-[#EAF7F6] bg-[#05080D] border border-[#162432] hover:border-[#39C5BB] transition-colors cursor-pointer"
+            class="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono text-[#EAF7F6] bg-[#05080D] border border-[#162436] hover:border-[#39C5BB] hover:text-[#6FF7EC] transition-all cursor-pointer"
             @click="copyRawResume"
-            title="Copy plain text version"
           >
             <component :is="copied ? Check : Copy" class="w-3.5 h-3.5 text-[#39C5BB]" />
-            <span class="hidden sm:inline">{{ copied ? 'Copied' : 'Copy' }}</span>
+            <span class="hidden sm:inline">{{ copied ? t.modal.copied : t.modal.copyText }}</span>
           </button>
 
           <!-- Print Button -->
           <button
             type="button"
-            class="hidden sm:flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono text-[#EAF7F6] bg-[#05080D] border border-[#162432] hover:border-[#39C5BB] transition-colors cursor-pointer"
+            class="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-mono text-[#7C9399] bg-[#05080D] border border-[#162436] hover:text-[#EAF7F6] transition-all cursor-pointer"
             @click="handlePrint"
-            title="Print"
+            title="Print Resume"
           >
-            <Printer class="w-3.5 h-3.5 text-[#39C5BB]" />
-            <span>Print</span>
+            <Printer class="w-3.5 h-3.5" />
+            <span>{{ t.modal.print }}</span>
           </button>
 
-          <!-- Close Modal -->
+          <!-- Close Button -->
           <button
             type="button"
-            class="p-1.5 sm:p-2 rounded-lg text-[#7C9399] hover:text-[#EAF7F6] hover:bg-[#05080D] transition-colors cursor-pointer"
-            aria-label="Close modal"
+            class="p-1.5 rounded-lg bg-[#05080D] border border-[#162436] hover:border-[#FF6FA5] text-[#7C9399] hover:text-[#FF6FA5] transition-all cursor-pointer"
             @click="emit('close'); soundManager.playClick()"
           >
-            <X class="w-5 h-5" />
+            <X class="w-4 h-4" />
           </button>
         </div>
       </div>
 
-      <!-- Resume Scrollable Content Body -->
-      <div class="p-4 sm:p-8 md:p-10 overflow-y-auto space-y-6 sm:space-y-8 print:p-0 print:text-black">
+      <!-- Modal Body / ATS Document Preview -->
+      <div class="flex-1 overflow-y-auto p-4 sm:p-8 space-y-6 sm:space-y-8 font-body text-[#EAF7F6]/90 text-sm leading-relaxed">
         
-        <!-- Resume Header -->
-        <div class="border-b border-[#162432] pb-5 sm:pb-6">
-          <h1 class="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-[#EAF7F6]">
-            {{ portfolioData.name }}
-          </h1>
-          <div class="text-[#39C5BB] font-mono text-xs sm:text-base font-semibold mt-1">
-            {{ portfolioData.role }}
-          </div>
-          <div class="flex flex-wrap items-center gap-2 sm:gap-4 text-[11px] sm:text-xs font-mono text-[#7C9399] mt-3">
-            <span>📍 {{ portfolioData.location }}</span>
-            <span>📞 {{ portfolioData.phone }}</span>
-            <span>✉️ {{ portfolioData.email }}</span>
-            <span>✈️ {{ portfolioData.telegramHandle }}</span>
+        <!-- Header Section -->
+        <div class="pb-6 border-b border-[#162436]">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+            <div>
+              <h1 class="font-display font-bold text-2xl sm:text-3xl tracking-tight text-[#EAF7F6]">
+                ISMAIL GAYRATOV
+              </h1>
+              <div class="font-mono text-xs sm:text-sm font-semibold text-[#39C5BB] mt-1">
+                {{ t.hero.role }}
+              </div>
+            </div>
+            <div class="font-mono text-xs text-[#7C9399] space-y-0.5 sm:text-right">
+              <div>Tashkent, Uzbekistan</div>
+              <div>+998 77 488 7875 · gaismail777@gmail.com</div>
+              <div class="text-[#39C5BB]">github.com/IsmailGa · @theiiisssaaa</div>
+            </div>
           </div>
         </div>
 
         <!-- Summary -->
-        <div>
-          <h4 class="font-mono text-xs text-[#39C5BB] tracking-wider uppercase font-bold mb-2">
-            // SUMMARY
-          </h4>
-          <p class="text-[#EAF7F6]/90 text-xs sm:text-sm md:text-base leading-relaxed font-body">
-            {{ portfolioData.summary }}
+        <div class="space-y-2">
+          <h2 class="font-mono text-xs font-bold text-[#39C5BB] tracking-wider uppercase">
+            {{ t.modal.summary }}
+          </h2>
+          <p class="text-xs sm:text-sm text-[#7C9399] leading-relaxed">
+            {{ t.about.summary }}
           </p>
         </div>
 
         <!-- Experience -->
-        <div>
-          <h4 class="font-mono text-xs text-[#39C5BB] tracking-wider uppercase font-bold mb-4">
-            // EXPERIENCE
-          </h4>
-          <div class="space-y-5 sm:space-y-6">
+        <div class="space-y-4">
+          <h2 class="font-mono text-xs font-bold text-[#39C5BB] tracking-wider uppercase">
+            {{ t.modal.experience }}
+          </h2>
+
+          <div class="space-y-5">
             <div 
-              v-for="exp in portfolioData.experiences" 
+              v-for="exp in t.experience.items" 
               :key="exp.id"
-              class="border-l-2 border-[#162432] pl-3.5 sm:pl-4 space-y-2"
+              class="p-4 sm:p-5 rounded-xl bg-[#05080D] border border-[#162436] space-y-2"
             >
-              <div class="flex flex-wrap items-center justify-between gap-1.5 sm:gap-2">
-                <div class="font-display font-bold text-sm sm:text-base md:text-lg text-[#EAF7F6]">
-                  {{ exp.role }} <span class="text-[#39C5BB]">@ {{ exp.company }}</span>
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                <div>
+                  <span class="font-bold text-[#EAF7F6] text-sm">{{ exp.role }}</span>
+                  <span class="text-[#7C9399]"> — </span>
+                  <span class="font-semibold text-[#39C5BB] text-sm">{{ exp.company }}</span>
                 </div>
-                <div class="font-mono text-[10px] sm:text-xs text-[#7C9399] bg-[#05080D] px-2 sm:px-2.5 py-0.5 rounded border border-[#162432]">
+                <div class="font-mono text-xs text-[#7C9399]">
                   {{ exp.period }}
                 </div>
               </div>
-              <div class="text-[11px] sm:text-xs font-mono text-[#7C9399]">
+
+              <div class="font-mono text-[11px] text-[#7C9399]/80">
                 {{ exp.location }} · {{ exp.category }}
               </div>
-              <ul class="space-y-1 sm:space-y-1.5 mt-2">
-                <li 
-                  v-for="(b, bIdx) in exp.description" 
-                  :key="bIdx"
-                  class="text-xs sm:text-sm text-[#7C9399] leading-relaxed flex items-start gap-2"
-                >
-                  <span class="text-[#39C5BB] font-mono mt-0.5">›</span>
-                  <span>{{ b }}</span>
+
+              <ul class="space-y-1.5 pt-2 text-xs sm:text-sm text-[#7C9399]">
+                <li v-for="(bullet, bIdx) in exp.description" :key="bIdx" class="flex items-start gap-2">
+                  <span class="text-[#39C5BB] font-mono shrink-0 mt-0.5">•</span>
+                  <span>{{ bullet }}</span>
                 </li>
               </ul>
-              <div class="flex flex-wrap gap-1.5 pt-2">
-                <span 
-                  v-for="t in exp.tags" 
-                  :key="t"
-                  class="text-[9px] sm:text-[10px] font-mono text-[#39C5BB] bg-[#05080D] px-2 py-0.5 rounded border border-[#162432]"
-                >
-                  {{ t }}
+
+              <div class="flex flex-wrap gap-1.5 pt-2 font-mono text-[11px] text-[#7C9399]">
+                <span class="text-[#39C5BB]">Stack:</span>
+                <span v-for="tag in exp.tags" :key="tag" class="text-[#EAF7F6]/80 bg-[#0E1724] px-2 py-0.5 rounded border border-[#162436]">
+                  {{ tag }}
                 </span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Skills Grid -->
-        <div>
-          <h4 class="font-mono text-xs text-[#39C5BB] tracking-wider uppercase font-bold mb-3">
-            // SKILLS & TOOLS
-          </h4>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
-            <div 
-              v-for="cat in portfolioData.skillCategories" 
-              :key="cat.code"
-              class="p-3 rounded-xl bg-[#05080D] border border-[#162432]"
-            >
-              <div class="font-mono text-[11px] font-bold text-[#EAF7F6] mb-1">
-                {{ cat.title }}:
-              </div>
-              <div class="text-[11px] sm:text-xs font-mono text-[#7C9399]">
-                {{ cat.skills.map(s => s.name).join(', ') }}
-              </div>
+        <!-- Skills -->
+        <div class="space-y-3">
+          <h2 class="font-mono text-xs font-bold text-[#39C5BB] tracking-wider uppercase">
+            {{ t.modal.skills }}
+          </h2>
+          <div class="p-4 rounded-xl bg-[#05080D] border border-[#162436] space-y-2 font-mono text-xs">
+            <div v-for="cat in portfolioData.skillCategories" :key="cat.code" class="flex flex-wrap items-baseline gap-2">
+              <span class="font-bold text-[#39C5BB] min-w-[140px]">{{ cat.title }}:</span>
+              <span class="text-[#EAF7F6]/80">{{ cat.skills.map(s => s.name).join(', ') }}</span>
             </div>
           </div>
         </div>
 
         <!-- Education -->
-        <div>
-          <h4 class="font-mono text-xs text-[#39C5BB] tracking-wider uppercase font-bold mb-3">
-            // EDUCATION
-          </h4>
-          <div class="space-y-2.5 sm:space-y-3">
+        <div class="space-y-3">
+          <h2 class="font-mono text-xs font-bold text-[#39C5BB] tracking-wider uppercase">
+            {{ t.modal.education }}
+          </h2>
+          <div class="space-y-2">
             <div 
-              v-for="(ed, idx) in portfolioData.education" 
+              v-for="(edu, idx) in t.education.items" 
               :key="idx"
-              class="p-3 sm:p-3.5 rounded-xl bg-[#05080D] border border-[#162432] flex flex-wrap items-center justify-between gap-2"
+              class="p-4 rounded-xl bg-[#05080D] border border-[#162436] flex flex-col sm:flex-row sm:items-center justify-between gap-1"
             >
               <div>
-                <div class="font-display font-semibold text-xs sm:text-sm text-[#EAF7F6]">
-                  {{ ed.degree }}
-                </div>
-                <div class="font-mono text-[11px] sm:text-xs text-[#7C9399]">
-                  {{ ed.institution }} — {{ ed.department }}
-                </div>
+                <div class="font-bold text-sm text-[#EAF7F6]">{{ edu.degree }}</div>
+                <div class="text-xs text-[#7C9399]">{{ edu.institution }} — {{ edu.department }}</div>
               </div>
-              <div class="text-right font-mono text-[11px] sm:text-xs">
-                <div class="text-[#39C5BB]">{{ ed.period }}</div>
-                <div v-if="ed.score" class="text-[#6FF7EC]">{{ ed.score }}</div>
+              <div class="font-mono text-xs text-[#39C5BB] sm:text-right">
+                <div>{{ edu.period }}</div>
+                <div v-if="edu.score" class="text-[#6FF7EC] font-semibold">{{ edu.score }}</div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Languages -->
-        <div>
-          <h4 class="font-mono text-xs text-[#39C5BB] tracking-wider uppercase font-bold mb-2">
-            // LANGUAGES
-          </h4>
-          <div class="flex flex-wrap gap-2 sm:gap-3 text-xs font-mono text-[#EAF7F6]">
-            <span v-for="l in portfolioData.languages" :key="l.name" class="px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#05080D] border border-[#162432]">
-              <strong class="text-[#39C5BB]">{{ l.name }}:</strong> {{ l.level }}
-            </span>
+        <div class="space-y-3">
+          <h2 class="font-mono text-xs font-bold text-[#39C5BB] tracking-wider uppercase">
+            {{ t.modal.languages }}
+          </h2>
+          <div class="p-4 rounded-xl bg-[#05080D] border border-[#162436] flex flex-wrap gap-4 font-mono text-xs">
+            <div v-for="lang in t.education.languagesList" :key="lang.name">
+              <span class="font-bold text-[#39C5BB]">{{ lang.name }}:</span>
+              <span class="text-[#EAF7F6] ml-1">{{ lang.level }}</span>
+              <span class="text-[#7C9399] ml-1">({{ lang.description }})</span>
+            </div>
           </div>
         </div>
 
       </div>
 
+      <!-- Modal Footer -->
+      <div class="px-6 py-3.5 border-t border-[#162436] bg-[#0E1724]/80 flex items-center justify-between font-mono text-xs text-[#7C9399]">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[#39C5BB]" />
+          <span>Status: Verified ATS Standard</span>
+        </div>
+        <div class="text-[#39C5BB]">
+          Ismail Gayratov · 2026
+        </div>
+      </div>
     </div>
   </div>
 </template>

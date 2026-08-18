@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { t } from '../i18n'
 import { soundManager } from '../utils/sound'
 import { CheckCircle2 } from 'lucide-vue-next'
 
@@ -17,13 +18,13 @@ const handleTab = (tab: 'trustbank' | 'multicard') => {
     <!-- Section Header -->
     <div class="mb-10 sm:mb-14">
       <div class="font-mono text-xs text-[#39C5BB] tracking-wider uppercase mb-2">
-        Selected Production Systems
+        {{ t.systems.eyebrow }}
       </div>
       <h2 class="font-display font-bold text-2xl sm:text-4xl md:text-5xl text-[#EAF7F6] tracking-tight">
-        Digital banking & <span class="text-[#39C5BB]">fintech architecture</span>.
+        {{ t.systems.titleMain }} <span class="text-[#39C5BB]">{{ t.systems.titleAccent }}</span>
       </h2>
       <p class="mt-3 text-[#7C9399] font-body text-sm sm:text-base max-w-2xl leading-relaxed">
-        Engineered client interfaces and internal operations portals for licensed digital banking platforms, with focus on zero-regression test coverage and high runtime performance.
+        {{ t.systems.desc }}
       </p>
     </div>
 
@@ -40,7 +41,7 @@ const handleTab = (tab: 'trustbank' | 'multicard') => {
         @click="handleTab('trustbank')"
         @mouseenter="soundManager.playHover()"
       >
-        Trustbank Digital Banking (DBO)
+        {{ t.systems.tabTrustbank }}
       </button>
 
       <button
@@ -54,7 +55,7 @@ const handleTab = (tab: 'trustbank' | 'multicard') => {
         @click="handleTab('multicard')"
         @mouseenter="soundManager.playHover()"
       >
-        Multicard Payment Processing
+        {{ t.systems.tabMulticard }}
       </button>
     </div>
 
@@ -65,40 +66,37 @@ const handleTab = (tab: 'trustbank' | 'multicard') => {
       <div class="lg:col-span-5 space-y-6">
         <div>
           <div class="text-xs font-mono text-[#39C5BB] uppercase">
-            {{ activeTab === 'trustbank' ? 'Fintech / Digital Banking Platform' : 'Payment Gateways & Networks' }}
+            {{ activeTab === 'trustbank' ? t.systems.trustbankSubtitle : t.systems.multicardSubtitle }}
           </div>
           <h3 class="font-display font-bold text-2xl sm:text-3xl text-[#EAF7F6] mt-1">
-            {{ activeTab === 'trustbank' ? 'Trustbank DBO & Admin' : 'Multicard Payment System' }}
+            {{ activeTab === 'trustbank' ? t.systems.trustbankTitle : t.systems.multicardTitle }}
           </h3>
           <div class="text-xs font-mono text-[#7C9399] mt-2">
-            Tashkent, Uzbekistan · {{ activeTab === 'trustbank' ? 'Oct 2025 – Jun 2026' : 'Jul 2025 – Sep 2025' }}
+            {{ activeTab === 'trustbank' ? t.systems.trustbankPeriod : t.systems.multicardPeriod }}
           </div>
         </div>
 
         <p class="text-[#7C9399] text-sm leading-relaxed">
-          {{ activeTab === 'trustbank' 
-            ? 'Built customer-facing business logic for digital banking and maintained internal admin portals using Vue 3 and Vuetify in an Agile Scrum workflow.' 
-            : 'Delivered client-facing payment transaction logic for Multibank and Trustbank DBO networks and maintained containerized admin tools.' 
-          }}
+          {{ activeTab === 'trustbank' ? t.systems.trustbankSummary : t.systems.multicardSummary }}
         </p>
 
         <!-- Key Metrics Grid -->
         <div class="grid grid-cols-2 gap-3 pt-2 font-mono">
           <div class="p-3 rounded-xl bg-[#05080D] border border-[#162436]">
             <div class="text-[10px] text-[#7C9399] uppercase">Testing Suite</div>
-            <div class="text-xs sm:text-sm font-bold text-[#6FF7EC] mt-1">Vitest Coverage</div>
+            <div class="text-xs sm:text-sm font-bold text-[#6FF7EC] mt-1">{{ t.systems.metricTest }}</div>
           </div>
           <div class="p-3 rounded-xl bg-[#05080D] border border-[#162436]">
             <div class="text-[10px] text-[#7C9399] uppercase">Architecture</div>
-            <div class="text-xs sm:text-sm font-bold text-[#39C5BB] mt-1">Vue 3 + Pinia</div>
+            <div class="text-xs sm:text-sm font-bold text-[#39C5BB] mt-1">{{ t.systems.metricArch }}</div>
           </div>
           <div class="p-3 rounded-xl bg-[#05080D] border border-[#162436]">
             <div class="text-[10px] text-[#7C9399] uppercase">Environment</div>
-            <div class="text-xs sm:text-sm font-bold text-[#EAF7F6] mt-1">Docker Containers</div>
+            <div class="text-xs sm:text-sm font-bold text-[#EAF7F6] mt-1">{{ t.systems.metricEnv }}</div>
           </div>
           <div class="p-3 rounded-xl bg-[#05080D] border border-[#162436]">
             <div class="text-[10px] text-[#7C9399] uppercase">Methodology</div>
-            <div class="text-xs sm:text-sm font-bold text-[#EAF7F6] mt-1">Agile / Scrum</div>
+            <div class="text-xs sm:text-sm font-bold text-[#EAF7F6] mt-1">{{ t.systems.metricMethod }}</div>
           </div>
         </div>
       </div>
@@ -108,53 +106,31 @@ const handleTab = (tab: 'trustbank' | 'multicard') => {
         
         <div class="space-y-3">
           <div class="text-xs font-mono text-[#EAF7F6] uppercase font-bold tracking-wider">
-            Engineering Scope & Achievements
+            {{ t.systems.scopeHeader }}
           </div>
 
           <div v-if="activeTab === 'trustbank'" class="space-y-3">
-            <div class="p-4 rounded-xl bg-[#05080D] border border-[#162436] flex items-start gap-3">
+            <div 
+              v-for="(bullet, bIdx) in t.systems.trustbankBullets" 
+              :key="bIdx"
+              class="p-4 rounded-xl bg-[#05080D] border border-[#162436] flex items-start gap-3"
+            >
               <CheckCircle2 class="w-4 h-4 text-[#39C5BB] shrink-0 mt-0.5" />
               <div class="text-xs sm:text-sm text-[#EAF7F6]/90 leading-relaxed">
-                Built customer-facing business logic for digital banking and developed the internal back-office administration panel using <strong>Vue 3</strong> and <strong>Vuetify</strong>.
-              </div>
-            </div>
-            <div class="p-4 rounded-xl bg-[#05080D] border border-[#162436] flex items-start gap-3">
-              <CheckCircle2 class="w-4 h-4 text-[#39C5BB] shrink-0 mt-0.5" />
-              <div class="text-xs sm:text-sm text-[#EAF7F6]/90 leading-relaxed">
-                Refactored existing codebase to enhance system performance, scalability, and maintainability, significantly speeding up onboarding for new developers.
-              </div>
-            </div>
-            <div class="p-4 rounded-xl bg-[#05080D] border border-[#162436] flex items-start gap-3">
-              <CheckCircle2 class="w-4 h-4 text-[#39C5BB] shrink-0 mt-0.5" />
-              <div class="text-xs sm:text-sm text-[#EAF7F6]/90 leading-relaxed">
-                Introduced unit and integration testing with <strong>Vitest</strong>, raising release stability and reducing regressions across high-load financial modules.
-              </div>
-            </div>
-            <div class="p-4 rounded-xl bg-[#05080D] border border-[#162436] flex items-start gap-3">
-              <CheckCircle2 class="w-4 h-4 text-[#39C5BB] shrink-0 mt-0.5" />
-              <div class="text-xs sm:text-sm text-[#EAF7F6]/90 leading-relaxed">
-                Collaborated with backend, QA, and UI design teams in Scrum sprints to ship regulatory-compliant features on schedule.
+                {{ bullet }}
               </div>
             </div>
           </div>
 
           <div v-else class="space-y-3">
-            <div class="p-4 rounded-xl bg-[#05080D] border border-[#162436] flex items-start gap-3">
+            <div 
+              v-for="(bullet, bIdx) in t.systems.multicardBullets" 
+              :key="bIdx"
+              class="p-4 rounded-xl bg-[#05080D] border border-[#162436] flex items-start gap-3"
+            >
               <CheckCircle2 class="w-4 h-4 text-[#39C5BB] shrink-0 mt-0.5" />
               <div class="text-xs sm:text-sm text-[#EAF7F6]/90 leading-relaxed">
-                Developed client-facing transaction and payment logic for the digital banking systems (DBO) of Multibank and Trustbank.
-              </div>
-            </div>
-            <div class="p-4 rounded-xl bg-[#05080D] border border-[#162436] flex items-start gap-3">
-              <CheckCircle2 class="w-4 h-4 text-[#39C5BB] shrink-0 mt-0.5" />
-              <div class="text-xs sm:text-sm text-[#EAF7F6]/90 leading-relaxed">
-                Designed and maintained internal administrative interfaces using Vue.js, Vuetify, and containerized Docker environments.
-              </div>
-            </div>
-            <div class="p-4 rounded-xl bg-[#05080D] border border-[#162436] flex items-start gap-3">
-              <CheckCircle2 class="w-4 h-4 text-[#39C5BB] shrink-0 mt-0.5" />
-              <div class="text-xs sm:text-sm text-[#EAF7F6]/90 leading-relaxed">
-                Delivered direct technical support with rapid root-cause diagnosis and resolution of production anomalies.
+                {{ bullet }}
               </div>
             </div>
           </div>

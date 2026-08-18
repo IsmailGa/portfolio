@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import { t } from '../i18n'
 import { portfolioData } from '../data/portfolioData'
 import { soundManager } from '../utils/sound'
 import { FileDown, Send, ArrowUpRight, Music } from 'lucide-vue-next'
@@ -92,11 +93,11 @@ onUnmounted(() => {
         >
           <span class="w-2 h-2 rounded-full bg-[#39C5BB]" />
           <span class="font-mono text-xs text-[#EAF7F6] tracking-wider uppercase">
-            Available for Full-time & Remote Roles
+            {{ t.hero.statusAvailable }}
           </span>
           <span class="text-[#162436]">·</span>
           <span class="font-mono text-xs text-[#7C9399]">
-            Tashkent (UTC+5)
+            {{ t.hero.location }}
           </span>
         </div>
 
@@ -118,10 +119,10 @@ onUnmounted(() => {
           :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
         >
           <div class="font-mono text-xs sm:text-sm font-semibold text-[#39C5BB] px-2.5 py-1 rounded bg-[#0E1724] border border-[#162436]">
-            Frontend / Full-Stack Developer
+            {{ t.hero.role }}
           </div>
           <span class="text-[#7C9399] font-mono text-xs hidden sm:inline">
-            Fintech & DBO Platforms
+            {{ t.hero.subRole }}
           </span>
         </div>
 
@@ -130,7 +131,7 @@ onUnmounted(() => {
           class="mt-6 max-w-xl text-[#7C9399] text-sm sm:text-base md:text-lg leading-relaxed font-body font-normal transition-all duration-700 delay-300"
           :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
         >
-          Building high-performance client interfaces and internal operations portals for digital banking platforms. Strong with <span class="text-[#EAF7F6] font-medium">Vue 3</span>, <span class="text-[#EAF7F6] font-medium">TypeScript</span>, and <span class="text-[#EAF7F6] font-medium">React</span>, backed by rigorous Vitest testing suites and containerized deployment.
+          {{ t.hero.pitch }}
         </p>
 
         <!-- CTAs -->
@@ -142,22 +143,22 @@ onUnmounted(() => {
           <a
             href="/Ismail_Gayratov_Resume.pdf"
             download="Ismail_Gayratov_Resume.pdf"
-            class="group relative inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-xl bg-[#39C5BB] hover:bg-[#6FF7EC] text-[#05080D] font-mono font-bold text-xs sm:text-sm tracking-wider glow-teal hover:glow-teal-lg transition-all duration-200 cursor-pointer shadow-lg"
+            class="group relative inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-xl bg-[#39C5BB] hover:bg-[#6FF7EC] text-[#05080D] font-mono font-bold text-xs sm:text-sm tracking-wider glow-teal hover:glow-teal-lg transition-all duration-200 cursor-pointer shadow-lg focus:outline-none"
             @click="soundManager.playChime()"
             @mouseenter="soundManager.playHover()"
           >
             <FileDown class="w-4 h-4 text-[#05080D] group-hover:translate-y-0.5 transition-transform" />
-            <span>DOWNLOAD RESUME (PDF)</span>
+            <span>{{ t.hero.downloadResume }}</span>
           </a>
 
           <!-- View Dossier Modal Trigger -->
           <button
             type="button"
-            class="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-xl bg-[#0E1724] border border-[#162436] hover:border-[#39C5BB] text-[#EAF7F6] hover:text-[#6FF7EC] font-mono font-medium text-xs sm:text-sm tracking-wider transition-all duration-200 cursor-pointer"
+            class="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-xl bg-[#0E1724] border border-[#162436] hover:border-[#39C5BB] text-[#EAF7F6] hover:text-[#6FF7EC] font-mono font-medium text-xs sm:text-sm tracking-wider transition-all duration-200 cursor-pointer focus:outline-none"
             @click="emit('open-resume'); soundManager.playClick()"
             @mouseenter="soundManager.playHover()"
           >
-            <span>VIEW DOSSIER</span>
+            <span>{{ t.hero.viewDossier }}</span>
           </button>
 
           <!-- Telegram Contact -->
@@ -165,19 +166,19 @@ onUnmounted(() => {
             :href="portfolioData.telegram"
             target="_blank"
             rel="noopener"
-            class="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-xl bg-[#0E1724] border border-[#162436] hover:border-[#39C5BB] text-[#EAF7F6] hover:text-[#6FF7EC] font-mono font-medium text-xs sm:text-sm tracking-wider transition-all duration-200 cursor-pointer"
+            class="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-xl bg-[#0E1724] border border-[#162436] hover:border-[#39C5BB] text-[#EAF7F6] hover:text-[#6FF7EC] font-mono font-medium text-xs sm:text-sm tracking-wider transition-all duration-200 cursor-pointer focus:outline-none"
             @click="soundManager.playClick()"
             @mouseenter="soundManager.playHover()"
           >
             <Send class="w-4 h-4 text-[#39C5BB] group-hover:text-[#6FF7EC]" />
-            <span>TELEGRAM</span>
+            <span>{{ t.hero.telegram }}</span>
             <ArrowUpRight class="w-4 h-4 text-[#7C9399] group-hover:text-[#6FF7EC] transition-transform" />
           </a>
         </div>
 
       </div>
 
-      <!-- Right Column: Interactive Synthesizer Console & Character Visual (5 cols) -->
+      <!-- Right Column: Interactive Synthesizer Console (5 cols) -->
       <div 
         class="lg:col-span-5 flex justify-center transition-all duration-700 delay-300"
         :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
@@ -188,7 +189,7 @@ onUnmounted(() => {
           <div class="flex items-center justify-between pb-3 border-b border-[#162436]">
             <div class="flex items-center gap-2 font-mono text-xs text-[#EAF7F6]">
               <Music class="w-4 h-4 text-[#39C5BB]" />
-              <span class="font-bold">SYNTH PULSE CONSOLE</span>
+              <span class="font-bold">{{ t.hero.synthTitle }}</span>
             </div>
             <span class="font-mono text-[10px] text-[#39C5BB] bg-[#05080D] px-2 py-0.5 rounded border border-[#162436]">
               WEB AUDIO API
@@ -206,7 +207,7 @@ onUnmounted(() => {
           <!-- Interactive Synth Tone Pads -->
           <div>
             <div class="text-[11px] font-mono text-[#7C9399] mb-2 flex justify-between">
-              <span>Interactive Pads (Click to test audio)</span>
+              <span>{{ t.hero.synthPadsNote }}</span>
               <span class="text-[#39C5BB]">A MINOR</span>
             </div>
             <div class="grid grid-cols-5 gap-1.5">
@@ -214,7 +215,7 @@ onUnmounted(() => {
                 v-for="(pad, idx) in synthPads"
                 :key="pad.note"
                 type="button"
-                class="p-2.5 rounded-lg border font-mono text-center transition-all duration-150 cursor-pointer select-none active:scale-95"
+                class="p-2.5 rounded-lg border font-mono text-center transition-all duration-150 cursor-pointer select-none active:scale-95 focus:outline-none"
                 :class="[
                   activePad === idx
                     ? 'bg-[#39C5BB] text-[#05080D] border-[#6FF7EC] shadow-[0_0_15px_#39C5BB]'
@@ -231,16 +232,16 @@ onUnmounted(() => {
           <!-- Production Baseline Summary -->
           <div class="pt-3 border-t border-[#162436] grid grid-cols-3 gap-2 text-center font-mono">
             <div class="p-2 rounded-lg bg-[#05080D] border border-[#162436]">
-              <div class="text-[10px] text-[#7C9399]">FINTECH EXP</div>
-              <div class="font-bold text-xs text-[#EAF7F6] mt-0.5">2+ Years</div>
+              <div class="text-[10px] text-[#7C9399]">{{ t.hero.fintechExp }}</div>
+              <div class="font-bold text-xs text-[#EAF7F6] mt-0.5">{{ t.hero.years }}</div>
             </div>
             <div class="p-2 rounded-lg bg-[#05080D] border border-[#162436]">
-              <div class="text-[10px] text-[#7C9399]">DEGREE GPA</div>
+              <div class="text-[10px] text-[#7C9399]">{{ t.hero.degreeGpa }}</div>
               <div class="font-bold text-xs text-[#39C5BB] mt-0.5">3.61 / 5.0</div>
             </div>
             <div class="p-2 rounded-lg bg-[#05080D] border border-[#162436]">
-              <div class="text-[10px] text-[#7C9399]">ENGLISH</div>
-              <div class="font-bold text-xs text-[#6FF7EC] mt-0.5">C1 Fluent</div>
+              <div class="text-[10px] text-[#7C9399]">{{ t.hero.englishLevel }}</div>
+              <div class="font-bold text-xs text-[#6FF7EC] mt-0.5">{{ t.hero.c1Level }}</div>
             </div>
           </div>
 

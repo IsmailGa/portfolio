@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { portfolioData } from '../data/portfolioData'
+import { computed } from 'vue'
+import { t } from '../i18n'
 import { soundManager } from '../utils/sound'
 import { MapPin } from 'lucide-vue-next'
 
-const experiences = portfolioData.experiences
+const experiences = computed(() => t.value.experience.items)
 </script>
 
 <template>
@@ -12,13 +13,13 @@ const experiences = portfolioData.experiences
     <!-- Section Header -->
     <div class="mb-12 sm:mb-16">
       <div class="font-mono text-xs text-[#39C5BB] tracking-wider uppercase mb-2">
-        Career History
+        {{ t.experience.eyebrow }}
       </div>
       <h2 class="font-display font-bold text-2xl sm:text-4xl md:text-5xl text-[#EAF7F6] tracking-tight">
-        Experience & <span class="text-[#39C5BB]">production roles</span>.
+        {{ t.experience.titleMain }} <span class="text-[#39C5BB]">{{ t.experience.titleAccent }}</span>
       </h2>
       <p class="mt-2 text-[#7C9399] font-body text-sm sm:text-base max-w-2xl">
-        A progressive track record delivering customer-facing financial platforms, internal management portals, and e-commerce applications.
+        {{ t.experience.desc }}
       </p>
     </div>
 

@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { portfolioData } from '../data/portfolioData'
+import { computed } from 'vue'
+import { t } from '../i18n'
 import { soundManager } from '../utils/sound'
 import { GraduationCap, Languages, Award } from 'lucide-vue-next'
 
-const education = portfolioData.education
-const languages = portfolioData.languages
+const education = computed(() => t.value.education.items)
+const languages = computed(() => t.value.education.languagesList)
 </script>
 
 <template>
@@ -13,10 +14,10 @@ const languages = portfolioData.languages
     <!-- Section Header -->
     <div class="mb-12 sm:mb-16">
       <div class="font-mono text-xs text-[#39C5BB] tracking-wider uppercase mb-2">
-        Academic & Linguistic Background
+        {{ t.education.eyebrow }}
       </div>
       <h2 class="font-display font-bold text-2xl sm:text-4xl md:text-5xl text-[#EAF7F6] tracking-tight">
-        Education & <span class="text-[#39C5BB]">languages</span>.
+        {{ t.education.titleMain }} <span class="text-[#39C5BB]">{{ t.education.titleAccent }}</span>
       </h2>
     </div>
 
@@ -26,7 +27,7 @@ const languages = portfolioData.languages
       <div class="lg:col-span-7 space-y-5">
         <div class="flex items-center gap-2 mb-1">
           <GraduationCap class="w-4 h-4 text-[#39C5BB]" />
-          <h3 class="font-display font-bold text-xl text-[#EAF7F6]">Degrees & Education</h3>
+          <h3 class="font-display font-bold text-xl text-[#EAF7F6]">{{ t.education.degreesTitle }}</h3>
         </div>
 
         <div 
@@ -65,7 +66,7 @@ const languages = portfolioData.languages
       <div class="lg:col-span-5 space-y-5">
         <div class="flex items-center gap-2 mb-1">
           <Languages class="w-4 h-4 text-[#39C5BB]" />
-          <h3 class="font-display font-bold text-xl text-[#EAF7F6]">Language Fluency</h3>
+          <h3 class="font-display font-bold text-xl text-[#EAF7F6]">{{ t.education.languagesTitle }}</h3>
         </div>
 
         <div class="glass-surface p-6 sm:p-7 rounded-2xl border border-[#162436] space-y-6">
@@ -102,7 +103,7 @@ const languages = portfolioData.languages
           <div class="p-4 rounded-xl bg-[#05080D] border border-[#162436] flex items-center gap-3">
             <Award class="w-5 h-5 text-[#39C5BB] shrink-0" />
             <div class="text-xs text-[#7C9399] leading-snug">
-              <strong class="text-[#EAF7F6]">International Readiness:</strong> English C1 verified for technical documentation, daily standups, and cross-border Scrum.
+              <strong class="text-[#EAF7F6]">{{ t.education.internationalBadge }}</strong> {{ t.education.internationalDesc }}
             </div>
           </div>
 

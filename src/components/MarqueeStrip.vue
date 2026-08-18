@@ -1,20 +1,17 @@
 <script setup lang="ts">
-import { portfolioData } from '../data/portfolioData'
+import { computed } from 'vue'
+import { t } from '../i18n'
 import { soundManager } from '../utils/sound'
 
-const items = portfolioData.tickerItems
+const items = computed(() => t.value.ticker)
 </script>
 
 <template>
   <div 
-    class="w-full bg-[#0A1118] border-y border-[#162432] py-2.5 sm:py-3.5 overflow-hidden select-none relative z-10 group"
+    class="w-full bg-[#0A1118] border-y border-[#162436] py-2.5 sm:py-3.5 overflow-hidden select-none relative z-10 group"
     @mouseenter="soundManager.playHover()"
   >
-    <!-- Background subtle cyan gradient accent -->
-    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#39C5BB]/5 to-transparent pointer-events-none" />
-
     <div class="animate-marquee flex items-center whitespace-nowrap">
-      <!-- Repeated ticker list for seamless loop -->
       <div v-for="loop in 2" :key="loop" class="flex items-center gap-6 sm:gap-8 px-2 sm:px-4">
         <div 
           v-for="(item, idx) in items" 
