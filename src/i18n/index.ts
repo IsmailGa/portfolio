@@ -30,7 +30,7 @@ export const translations = {
       location: 'Tashkent (UTC+5)',
       role: 'Frontend / Full-Stack Developer',
       subRole: 'Fintech & DBO Platforms',
-      pitch: 'Building high-performance client interfaces and internal operations portals for digital banking platforms. Strong with Vue 3, TypeScript, and React, backed by rigorous Vitest testing suites and containerized deployment.',
+      pitch: 'Building high-performance client interfaces and internal operations portals for digital banking platforms. Strong with Vue 3, React, Next.js, TypeScript, and Node.js, backed by rigorous Vitest testing suites and Docker deployment.',
       downloadResume: 'DOWNLOAD RESUME (PDF)',
       viewDossier: 'VIEW DOSSIER',
       telegram: 'TELEGRAM',
@@ -45,11 +45,11 @@ export const translations = {
     ticker: [
       'OPEN TO REMOTE WORK',
       'FLUENT ENGLISH C1',
-      'VUE 3 (COMPOSITION API)',
-      'REACT & NEXT.JS',
-      'TYPESCRIPT',
+      'VUE 3 & REACT',
+      'NEXT.JS & TYPESCRIPT',
       'FINTECH & DIGITAL BANKING (DBO)',
       'VITEST UNIT & INTEGRATION TESTING',
+      'DRIZZLE & TYPEORM',
       'DOCKER & CI/CD',
       'NODE.JS & POSTGRESQL',
       'TASHKENT UTC+5'
@@ -71,15 +71,17 @@ export const translations = {
       multicardSummary: 'Delivered client-facing payment transaction logic for Multibank and Trustbank DBO networks and maintained containerized admin tools.',
       scopeHeader: 'Engineering Scope & Achievements',
       trustbankBullets: [
-        'Built customer-facing business logic for digital banking and developed the internal back-office administration panel using Vue 3 and Vuetify.',
-        'Refactored existing codebase to enhance system performance, scalability, and maintainability, significantly speeding up onboarding for new developers.',
-        'Introduced unit and integration testing with Vitest, raising release stability and reducing regressions across high-load financial modules.',
-        'Collaborated with backend, QA, and UI design teams in Scrum sprints to ship regulatory-compliant features on schedule.'
+        'Built customer-facing business logic for a digital banking platform and developed and maintained the internal admin panel using Vue 3 and Vuetify.',
+        'Identified and fixed bugs and refactored existing code to improve system performance, scalability, and maintainability, making onboarding easier for new engineers.',
+        'Introduced unit and integration testing with Vitest to raise release stability and reduce regressions.',
+        'Provided technical support to customers and performed rapid root-cause analysis of production issues.',
+        'Collaborated with backend, QA, and design in an Agile/Scrum workflow to ship features aligned with business goals.'
       ],
       multicardBullets: [
-        'Developed client-facing transaction and payment logic for the digital banking systems (DBO) of Multibank and Trustbank.',
-        'Designed and maintained internal administrative interfaces using Vue.js, Vuetify, and containerized Docker environments.',
-        'Delivered direct technical support with rapid root-cause diagnosis and resolution of production anomalies.'
+        'Developed client-facing business logic for the digital banking systems (DBO) of Multibank and Trustbank, and designed and maintained the internal admin panel (Vue.js, Vuetify, Docker).',
+        'Proactively identified and resolved bugs; refactored code to improve performance, scalability, and new-developer onboarding.',
+        'Delivered technical support to clients with fast troubleshooting and issue resolution.',
+        'Worked closely with backend developers and QA engineers under Agile/Scrum methodology to meet shared release goals.'
       ],
       metricTest: 'Vitest Coverage',
       metricArch: 'Vue 3 + Pinia',
@@ -100,8 +102,8 @@ export const translations = {
           category: 'Fintech / Digital Banking',
           period: 'Oct 2025 – Jun 2026',
           description: [
-            'Built customer-facing business logic for a digital banking platform, and developed and maintained the internal admin panel using Vue 3 and Vuetify.',
-            'Identified and fixed bugs and refactored existing code to improve performance, scalability, and maintainability — making onboarding easier for new engineers.',
+            'Built customer-facing business logic for a digital banking platform and developed and maintained the internal admin panel using Vue 3 and Vuetify.',
+            'Identified and fixed bugs and refactored existing code to improve system performance, scalability, and maintainability, making onboarding easier for new engineers.',
             'Introduced unit and integration testing with Vitest to raise release stability and reduce regressions.',
             'Provided technical support to customers and performed rapid root-cause analysis of production issues.',
             'Collaborated with backend, QA, and design in an Agile/Scrum workflow to ship features aligned with business goals.'
@@ -155,7 +157,7 @@ export const translations = {
       eyebrow: 'Technical Capabilities',
       titleMain: 'Core stack &',
       titleAccent: 'engineering tools.',
-      desc: 'A hands-on production toolkit spanning reactive UI frameworks, unit & integration test suites, containerization, and relational databases.',
+      desc: 'A hands-on production toolkit spanning reactive UI frameworks, ORM & state layers, unit testing, and relational databases.',
       allModules: 'All Modules',
       itemsCount: 'items',
       prodReady: 'Production Ready',
@@ -165,7 +167,7 @@ export const translations = {
       eyebrow: 'Engineering Philosophy',
       titleMain: 'Architecture &',
       titleAccent: 'core values.',
-      summary: 'Frontend-leaning full-stack developer with 2+ years of experience building customer-facing and internal applications for the fintech sector, including digital banking (DBO) platforms. Strong with Vue 3 / React / Next.js, TypeScript, and Node.js, with hands-on experience in unit/integration testing, Docker, and CI/CD. Comfortable working in Agile/Scrum teams across frontend, backend, and QA. Currently completing a Bachelor\'s degree in Information System Engineering. Fluent in English (C1) and open to full-time remote or contract roles.',
+      summary: `Frontend-leaning full-stack developer with 2+ years of experience building customer-facing and internal applications for the fintech sector, including digital banking (DBO) platforms. Strong with Vue 3 / React / Next.js, TypeScript, and Node.js, with hands-on experience in unit/integration testing, Docker, and CI/CD. Comfortable working in Agile/Scrum teams across frontend, backend, and QA. Currently completing a Bachelor's degree in Information System Engineering. Fluent in English (C1) and open to full-time remote or contract roles.`,
       quote: 'Building software that scales reliably under load.',
       degreeLabel: 'Academic Degree:',
       englishLabel: 'English Proficiency:',
@@ -186,7 +188,7 @@ export const translations = {
         },
         {
           title: 'Containerization & CI/CD',
-          desc: 'Hands-on delivery with Docker, GitLab CI/CD, Nginx, and cloud virtualized environments (VMware), ensuring smooth staging-to-production pipelines.'
+          desc: 'Hands-on delivery with Docker, GitLab CI/CD, Nginx, and cloud virtualized environments, ensuring smooth staging-to-production pipelines.'
         }
       ]
     },
@@ -213,7 +215,7 @@ export const translations = {
           degree: 'Secondary Education',
           institution: 'School No. 10 named after Pushkin',
           department: 'Tashkent, Uzbekistan',
-          period: 'Graduated 2023',
+          period: '2023',
           status: 'Completed'
         }
       ],
@@ -264,7 +266,7 @@ export const translations = {
       location: 'Ташкент (UTC+5)',
       role: 'Frontend / Full-Stack Разработчик',
       subRole: 'Финтех и ДБО Платформы',
-      pitch: 'Разработка высоконагруженных клиентских интерфейсов и внутренних панелей управления для систем цифрового банкинга. Экспертиза в Vue 3, TypeScript и React, подтвержденная тестами Vitest и Docker-контейнеризацией.',
+      pitch: 'Разработка высоконагруженных клиентских интерфейсов и внутренних панелей управления для систем цифрового банкинга. Экспертиза в Vue 3, React, Next.js, TypeScript и Node.js, подтвержденная тестами Vitest и Docker-контейнеризацией.',
       downloadResume: 'СКАЧАТЬ РЕЗЮМЕ (PDF)',
       viewDossier: 'ОТКРЫТЬ ДОСЬЕ',
       telegram: 'ТЕЛЕГРАМ',
@@ -279,11 +281,11 @@ export const translations = {
     ticker: [
       'ОТКРЫТ К УДАЛЕННОЙ РАБОТЕ',
       'СВОБОДНЫЙ АНГЛИЙСКИЙ C1',
-      'VUE 3 (COMPOSITION API)',
-      'REACT И NEXT.JS',
-      'TYPESCRIPT',
+      'VUE 3 & REACT',
+      'NEXT.JS & TYPESCRIPT',
       'ФИНТЕХ И ЦИФРОВОЙ БАНКИНГ (ДБО)',
       'VITEST UNIT И ИНТЕГРАЦИОННЫЕ ТЕСТЫ',
+      'DRIZZLE & TYPEORM',
       'DOCKER И CI/CD',
       'NODE.JS И POSTGRESQL',
       'ТАШКЕНТ UTC+5'
@@ -306,14 +308,16 @@ export const translations = {
       scopeHeader: 'Задачи и Достижения',
       trustbankBullets: [
         'Разрабатывал клиентскую бизнес-логику для цифрового банкинга, проектировал и поддерживал внутреннюю админ-панель на Vue 3 и Vuetify.',
-        'Проводил рефакторинг кодовой базы для улучшения производительности, масштабируемости и ускорения онбординга новых инженеров.',
-        'Внедрил модульное и интеграционное тестирование с Vitest, повысив стабильность релизов и сократив регрессии в финансовых модулях.',
-        'Взаимодействовал с бэкендом, QA и дизайном в Scrum-спринтах для своевременного выпуска банковского функционала.'
+        'Выявлял и исправлял баги, проводил рефакторинг кодовой базы для повышения производительности, масштабируемости и ускорения онбординга новых инженеров.',
+        'Внедрил модульное и интеграционное тестирование с Vitest, повысив стабильность релизов и сократив число регрессий.',
+        'Оказывал техподдержку клиентам и проводил оперативный root-cause анализ инцидентов в продакшне.',
+        'Сотрудничал с командами бэкенда, QA и дизайна в Scrum-спринтах для своевременного выпуска банковского функционала.'
       ],
       multicardBullets: [
-        'Разрабатывал клиентскую логику транзакций и платежей для систем ДБО Multibank и Trustbank.',
-        'Проектировал и сопровождал внутренние админ-интерфейсы на Vue.js, Vuetify и Docker.',
-        'Оказывал техническую поддержку клиентам с оперативным анализом и устранением инцидентов в продакшне.'
+        'Разрабатывал клиентскую бизнес-логику для систем ДБО банков Multibank и Trustbank, проектировал и поддерживал внутреннюю админ-панель (Vue.js, Vuetify, Docker).',
+        'Проактивно устранял баги и рефакторил код для улучшения производительности и ускорения адаптации новых разработчиков.',
+        'Обеспечивал техническую поддержку клиентов с быстрым устранением неполадок.',
+        'Работал в тесной связке с бэкенд-разработчиками и QA-инженерами по методологии Agile/Scrum.'
       ],
       metricTest: 'Покрытие Vitest',
       metricArch: 'Vue 3 + Pinia',
@@ -389,7 +393,7 @@ export const translations = {
       eyebrow: 'Технический Арсенал',
       titleMain: 'Стек технологий и',
       titleAccent: 'инженерные инструменты.',
-      desc: 'Практический стек разработки: реактивные фреймворки, интеграционное тестирование, контейнеризация и базы данных.',
+      desc: 'Практический стек разработки: реактивные фреймворки, ORM, интеграционное тестирование, контейнеризация и базы данных.',
       allModules: 'Все Модули',
       itemsCount: 'технологий',
       prodReady: 'Продакшн Стек',
@@ -399,7 +403,7 @@ export const translations = {
       eyebrow: 'Инженерная Философия',
       titleMain: 'Архитектура и',
       titleAccent: 'ключевые ценности.',
-      summary: 'Frontend-разработчик с уклоном в full-stack с 2+ годами опыта создания клиентских и внутренних приложений в финтех-секторе, включая платформы цифрового банкинга (ДБО). Экспертиза в Vue 3 / React / Next.js, TypeScript и Node.js с практическим опытом тестирования на Vitest, Docker и CI/CD. Опыт работы в Agile/Scrum командах вместе с бэкендом и QA. Заканчивает бакалавриат по направлению «Инженерия информационных систем». Свободный английский (C1), открыт к предложениям о full-time и контрактной работе.',
+      summary: `Frontend-разработчик с уклоном в full-stack с 2+ годами опыта создания клиентских и внутренних приложений в финтех-секторе, включая платформы цифрового банкинга (ДБО). Экспертиза в Vue 3 / React / Next.js, TypeScript и Node.js с практическим опытом тестирования на Vitest, Docker и CI/CD. Опыт работы в Agile/Scrum командах вместе с бэкендом и QA. Заканчивает бакалавриат по направлению «Инженерия информационных систем». Свободный английский (C1), открыт к предложениям о full-time и контрактной работе.`,
       quote: 'Создание надежных веб-систем, выдерживающих высокие нагрузки.',
       degreeLabel: 'Высшее образование:',
       englishLabel: 'Уровень английского:',
@@ -420,7 +424,7 @@ export const translations = {
         },
         {
           title: 'Контейнеризация и CI/CD',
-          desc: 'Практический опыт с Docker, GitLab CI/CD, Nginx и виртуализацией (VMware), обеспечивающий надежный деплой.'
+          desc: 'Практический опыт с Docker, GitLab CI/CD, Nginx и виртуализацией, обеспечивающий надежный деплой.'
         }
       ]
     },
@@ -447,7 +451,7 @@ export const translations = {
           degree: 'Среднее Образование',
           institution: 'Школа №10 им. А.С. Пушкина',
           department: 'Ташкент, Узбекистан',
-          period: 'Выпуск 2023',
+          period: '2023',
           status: 'Завершено'
         }
       ],
@@ -498,7 +502,7 @@ export const translations = {
       location: 'Toshkent (UTC+5)',
       role: 'Frontend / Full-Stack Dasturchi',
       subRole: 'Fintech va DBO Tizimlari',
-      pitch: 'Raqamli bank platformalari uchun yuqori unumdorlikka ega mijoz interfeyslari va boshqaruv panellarini ishlab chiqish. Vue 3, TypeScript va React bo\'yicha chuqur tajriba, Vitest testlari va Docker infratuzilmasi.',
+      pitch: 'Raqamli bank platformalari uchun yuqori unumdorlikka ega mijoz interfeyslari va boshqaruv panellarini ishlab chiqish. Vue 3, React, Next.js, TypeScript va Node.js bo\'yicha chuqur tajriba, Vitest testlari va Docker infratuzilmasi.',
       downloadResume: 'REZYUMENI YUKLASH (PDF)',
       viewDossier: 'REZYUMENI KO\'RISH',
       telegram: 'TELEGRAM',
@@ -513,11 +517,11 @@ export const translations = {
     ticker: [
       'MASOFAVIY ISHGA TAYYOR',
       'RAVON INGLIZ TILI C1',
-      'VUE 3 (COMPOSITION API)',
-      'REACT VA NEXT.JS',
-      'TYPESCRIPT',
+      'VUE 3 & REACT',
+      'NEXT.JS & TYPESCRIPT',
       'FINTECH VA RAQAMLI BANKING (DBO)',
       'VITEST UNIT VA INTEGRATSION TESTLAR',
+      'DRIZZLE & TYPEORM',
       'DOCKER VA CI/CD',
       'NODE.JS VA POSTGRESQL',
       'TOSHKENT UTC+5'
@@ -623,7 +627,7 @@ export const translations = {
       eyebrow: 'Texnologik Arsenal',
       titleMain: 'Asosiy stek va',
       titleAccent: 'muhandislik vositalari.',
-      desc: 'Reaktiv freymvorklar, integratsion testlar, konteynerlash va ma\'lumotlar bazalarini qamrab olgan amaliy vositalar.',
+      desc: 'Reaktiv freymvorklar, ORM, integratsion testlar, konteynerlash va ma\'lumotlar bazalarini qamrab olgan amaliy vositalar.',
       allModules: 'Barcha Modullar',
       itemsCount: 'texnologiya',
       prodReady: 'Ishlab Chiqarish Steki',
@@ -633,7 +637,7 @@ export const translations = {
       eyebrow: 'Muhandislik Falsafasi',
       titleMain: 'Arxitektura va',
       titleAccent: 'asosiy qadriyatlar.',
-      summary: 'Fintech va raqamli bank (DBO) tizimlarida 2+ yillik tajribaga ega frontend/full-stack dasturchi. Vue 3 / React / Next.js, TypeScript va Node.js bo\'yicha chuqur amaliy bilim, Vitest testlari, Docker va CI/CD tajribasi. Axborot tizimlari muhandisligi yo\'nalishida bakalavr bosqichini yakunlamoqda. Ingliz tili C1 (ravon), full-time va masofaviy ish takliflariga tayyor.',
+      summary: `Fintech va raqamli bank (DBO) tizimlarida 2+ yillik tajribaga ega frontend/full-stack dasturchi. Vue 3 / React / Next.js, TypeScript va Node.js bo\'yicha chuqur amaliy bilim, Vitest testlari, Docker va CI/CD tajribasi. Axborot tizimlari muhandisligi yo\'nalishida bakalavr bosqichini yakunlamoqda. Ingliz tili C1 (ravon), full-time va masofaviy ish takliflariga tayyor.`,
       quote: 'Yuqori yuklamalarda ishonchli va barqaror ishlaydigan tizimlar yaratish.',
       degreeLabel: 'Oliy Ma\'lumot:',
       englishLabel: 'Ingliz Tili:',
@@ -681,7 +685,7 @@ export const translations = {
           degree: 'O\'rta Ta\'lim',
           institution: 'A.S. Pushkin nomidagi 10-sonli maktab',
           department: 'Toshkent, O\'zbekiston',
-          period: 'Bitirgan 2023',
+          period: '2023',
           status: 'Tugallangan'
         }
       ],

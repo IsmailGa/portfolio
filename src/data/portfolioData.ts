@@ -49,7 +49,7 @@ export const portfolioData = {
 
   keyMetrics: [
     { label: "Fintech & Banking Systems", value: "2+ Years", sub: "Production experience" },
-    { label: "Core Web Stack", value: "Vue 3 / TS", sub: "React / Node / Vitest" },
+    { label: "Core Web Stack", value: "Vue 3 / React / TS", sub: "Node.js / Vitest" },
     { label: "Engineering GPA", value: "3.61 / 5.0", sub: "KIUT Applied Informatics" },
     { label: "English Proficiency", value: "C1 Advanced", sub: "Fluent technical & spoken" },
   ],
@@ -64,11 +64,11 @@ export const portfolioData = {
       period: "Oct 2025 – Jun 2026",
       current: false,
       description: [
-        "Built customer-facing business logic for a digital banking platform and developed/maintained the internal admin panel using Vue 3 and Vuetify.",
+        "Built customer-facing business logic for a digital banking platform and developed and maintained the internal admin panel using Vue 3 and Vuetify.",
         "Identified and fixed bugs and refactored existing code to improve system performance, scalability, and maintainability, making onboarding easier for new engineers.",
-        "Introduced unit and integration testing with Vitest to raise release stability and reduce regressions across core financial modules.",
-        "Provided technical support to customers and performed rapid root-cause analysis of production issues in high-load banking environments.",
-        "Collaborated closely with backend, QA, and design in an Agile/Scrum workflow to ship features aligned with business goals."
+        "Introduced unit and integration testing with Vitest to raise release stability and reduce regressions.",
+        "Provided technical support to customers and performed rapid root-cause analysis of production issues.",
+        "Collaborated with backend, QA, and design in an Agile/Scrum workflow to ship features aligned with business goals."
       ],
       tags: ["Vue 3", "Vuetify", "TypeScript", "Vitest", "Docker", "Pinia", "REST API"]
     },
@@ -81,10 +81,9 @@ export const portfolioData = {
       period: "Jul 2025 – Sep 2025",
       current: false,
       description: [
-        "Developed client-facing business logic for the digital banking systems (DBO) of Multibank and Trustbank.",
-        "Designed and maintained the internal admin panel using Vue.js, Vuetify, and containerized Docker environments.",
-        "Proactively identified and resolved bugs; refactored code to improve performance, scalability, and new-developer onboarding speed.",
-        "Delivered direct technical support to clients with fast troubleshooting and issue resolution.",
+        "Developed client-facing business logic for the digital banking systems (DBO) of Multibank and Trustbank, and designed and maintained the internal admin panel (Vue.js, Vuetify, Docker).",
+        "Proactively identified and resolved bugs; refactored code to improve performance, scalability, and new-developer onboarding.",
+        "Delivered technical support to clients with fast troubleshooting and issue resolution.",
         "Worked closely with backend developers and QA engineers under Agile/Scrum methodology to meet shared release goals."
       ],
       tags: ["Vue.js", "Vuetify", "Docker", "JavaScript", "Fintech DBO", "Agile / Scrum"]
@@ -98,11 +97,11 @@ export const portfolioData = {
       period: "Sep 2023 – Apr 2024",
       current: false,
       description: [
-        "Built a corporate web application from scratch with React.js, with a strong focus on responsive, mobile-first design.",
-        "Implemented multi-page interfaces with React Router and integrated them with external REST APIs.",
+        "Built a corporate website from scratch with React.js, with a strong focus on responsive, mobile-first design.",
+        "Implemented multi-page interfaces with React Router and integrated them with external APIs.",
         "Improved application performance through image optimization, data caching, and efficient state management."
       ],
-      tags: ["React.js", "React Router", "REST API", "State Management", "Performance Optimization"]
+      tags: ["React.js", "React Router", "REST API", "State Management", "Performance"]
     },
     {
       id: "realsoft",
@@ -113,8 +112,7 @@ export const portfolioData = {
       period: "Jun 2022 – Dec 2022",
       current: false,
       description: [
-        "Developed web applications and responsive websites as part of an intensive software engineering internship program.",
-        "Gained foundational experience in clean frontend code structure, Git collaboration, and cross-browser UI development."
+        "Developed web applications and websites as part of an internship program, gaining foundational experience in frontend development."
       ],
       tags: ["HTML5", "CSS3 / BEM", "JavaScript", "Git", "Responsive Web"]
     }
@@ -122,44 +120,51 @@ export const portfolioData = {
 
   skillCategories: [
     {
-      title: "Core & Languages",
+      title: "Languages",
       code: "LANG",
       skills: [
-        { name: "TypeScript", featured: true },
-        { name: "JavaScript (ES6+)", featured: true },
-        { name: "HTML5", featured: false },
-        { name: "CSS3 / BEM", featured: false }
+        { name: "JavaScript", featured: true },
+        { name: "TypeScript", featured: true }
       ]
     },
     {
-      title: "Frontend & UI",
+      title: "Frontend",
       code: "FE",
       skills: [
-        { name: "Vue 3 (Composition API)", featured: true },
         { name: "React", featured: true },
         { name: "Next.js", featured: true },
+        { name: "Vue 3", featured: true },
         { name: "Vuetify", featured: false },
-        { name: "Tailwind CSS", featured: true },
-        { name: "Vite", featured: false }
+        { name: "HTML5", featured: false },
+        { name: "CSS3", featured: false },
+        { name: "BEM", featured: false }
       ]
     },
     {
-      title: "State & Testing",
-      code: "ARCH",
-      skills: [
-        { name: "Pinia", featured: true },
-        { name: "Zustand", featured: true },
-        { name: "Vitest (Unit & Integration)", featured: true }
-      ]
-    },
-    {
-      title: "Backend & APIs",
+      title: "Backend",
       code: "BE",
       skills: [
         { name: "Node.js", featured: true },
         { name: "Express.js", featured: false },
         { name: "FastAPI", featured: false },
-        { name: "REST API Integration", featured: true }
+        { name: "REST API", featured: true }
+      ]
+    },
+    {
+      title: "State Management",
+      code: "STATE",
+      skills: [
+        { name: "Zustand", featured: true },
+        { name: "Pinia", featured: true }
+      ]
+    },
+    {
+      title: "ORM",
+      code: "ORM",
+      skills: [
+        { name: "TypeORM", featured: true },
+        { name: "Drizzle", featured: true },
+        { name: "Pydantic", featured: false }
       ]
     },
     {
@@ -172,19 +177,24 @@ export const portfolioData = {
       ]
     },
     {
-      title: "DevOps & Infrastructure",
-      code: "OPS",
+      title: "Testing",
+      code: "TEST",
       skills: [
-        { name: "Docker", featured: true },
-        { name: "Git / GitHub / GitLab CI/CD", featured: true },
-        { name: "Nginx", featured: false },
-        { name: "Apache", featured: false },
-        { name: "VMware / VirtualBox", featured: false }
+        { name: "Vitest (unit & integration testing)", featured: true }
       ]
     },
     {
-      title: "CMS & CRM",
-      code: "PLATFORM",
+      title: "DevOps / Tools",
+      code: "DEVOPS",
+      skills: [
+        { name: "Docker", featured: true },
+        { name: "Nginx", featured: false },
+        { name: "Apache", featured: false }
+      ]
+    },
+    {
+      title: "CMS / CRM",
+      code: "CMS",
       skills: [
         { name: "WordPress", featured: false },
         { name: "amoCRM", featured: false }
@@ -205,7 +215,7 @@ export const portfolioData = {
       degree: "Secondary Education",
       institution: "School No. 10 named after Pushkin",
       department: "Tashkent, Uzbekistan",
-      period: "Graduated 2023",
+      period: "2023",
       status: "Completed"
     }
   ] as EducationItem[],
@@ -234,11 +244,11 @@ export const portfolioData = {
   tickerItems: [
     "OPEN TO REMOTE WORK",
     "FLUENT ENGLISH C1",
-    "VUE 3 (COMPOSITION API)",
-    "REACT & NEXT.JS",
-    "TYPESCRIPT",
+    "VUE 3 & REACT",
+    "NEXT.JS & TYPESCRIPT",
     "FINTECH & DIGITAL BANKING (DBO)",
     "VITEST UNIT & INTEGRATION TESTING",
+    "DRIZZLE & TYPEORM",
     "DOCKER & CI/CD",
     "NODE.JS & POSTGRESQL",
     "TASHKENT UTC+5"
