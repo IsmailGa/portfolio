@@ -141,15 +141,22 @@ onMounted(() => {
 
           <!-- Photo Container -->
           <div class="relative w-full h-full rounded-2xl overflow-hidden bg-[#05080D]">
-            <img
-              src="/isa-photo.png"
-              alt="Ismail Gayratov — Frontend & Full-Stack Developer"
-              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-              loading="eager"
-            />
+            <picture>
+              <source srcset="/isa-photo.webp" type="image/webp" />
+              <img
+                src="/isa-photo.png"
+                alt="Ismail Gayratov — Frontend & Full-Stack Developer"
+                width="675"
+                height="900"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </picture>
 
             <!-- Subtle Gradient Overlay for depth -->
-            <div class="absolute inset-0 bg-gradient-to-t from-[#05080D] via-transparent to-transparent opacity-80" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#05080D] via-transparent to-transparent opacity-80 pointer-events-none" />
 
             <!-- Bottom Floating Tag inside Photo -->
             <div class="absolute bottom-3.5 left-3.5 right-3.5 p-3 rounded-xl bg-[#05080D]/85 backdrop-blur-md border border-[#162436]/80 flex items-center justify-between font-mono text-xs">
