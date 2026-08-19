@@ -4,9 +4,7 @@ import { t, currentLang, setLanguage, type Language } from '../i18n'
 import { soundManager } from '../utils/sound'
 import { Volume2, VolumeX, Menu, X, FileDown, Send, ArrowUpRight } from 'lucide-vue-next'
 
-const emit = defineEmits<{
-  (e: 'open-resume'): void
-}>()
+
 
 const isMuted = ref(false)
 const isScrolled = ref(false)
@@ -14,16 +12,16 @@ const mobileMenuOpen = ref(false)
 const activeSection = ref('hero')
 
 const navLinks = computed(() => [
-  { name: t.value.nav.systems, href: '#systems', id: 'systems' },
-  { name: t.value.nav.experience, href: '#experience', id: 'experience' },
+  { name: t.value.nav.work, href: '#work', id: 'work' },
   { name: t.value.nav.capabilities, href: '#capabilities', id: 'capabilities' },
   { name: t.value.nav.about, href: '#about', id: 'about' },
+  { name: t.value.nav.education, href: '#education', id: 'education' },
   { name: t.value.nav.contact, href: '#contact', id: 'contact' }
 ])
 
 const languages: { code: Language; label: string }[] = [
-  { code: 'EN', label: 'EN' },
   { code: 'RU', label: 'RU' },
+  { code: 'EN', label: 'EN' },
   { code: 'UZ', label: 'UZ' }
 ]
 
@@ -61,7 +59,7 @@ watch(mobileMenuOpen, (isOpen) => {
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 20
 
-  const sections = ['contact', 'about', 'capabilities', 'experience', 'systems', 'hero']
+  const sections = ['contact', 'education', 'about', 'capabilities', 'work', 'hero']
   for (const section of sections) {
     const el = document.getElementById(section)
     if (el) {
@@ -293,21 +291,12 @@ onUnmounted(() => {
             <span>{{ t.nav.downloadPdf }}</span>
           </a>
 
-          <!-- View Resume Dossier -->
-          <button
-            type="button"
-            class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-[#0E1724] border border-[#162436] text-[#EAF7F6] font-mono text-xs tracking-wider"
-            @click="emit('open-resume'); mobileMenuOpen = false; soundManager.playClick()"
-          >
-            <span>{{ t.nav.viewDossier }}</span>
-          </button>
-
           <!-- Telegram -->
           <a
             href="https://t.me/theiiisssaaa"
             target="_blank"
             rel="noopener"
-            class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-[#05080D] border border-[#162436] text-[#6FF7EC] font-mono text-xs tracking-wider"
+            class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-[#05080D] border border-[#162436] text-[#6FF7EC] font-mono text-xs tracking-wider active:scale-[0.98]"
             @click="mobileMenuOpen = false"
           >
             <Send class="w-3.5 h-3.5" />

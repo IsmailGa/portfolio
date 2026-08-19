@@ -9,7 +9,7 @@ const languages = computed(() => t.value.education.languagesList)
 </script>
 
 <template>
-  <section id="education" class="py-20 sm:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-6xl mx-auto relative">
+  <section id="education" class="py-20 sm:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-7xl mx-auto relative scroll-mt-24">
     
     <!-- Section Header -->
     <div class="mb-12 sm:mb-16">

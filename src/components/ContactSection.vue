@@ -74,7 +74,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <footer id="contact" class="pt-20 sm:pt-28 pb-16 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-t border-[#162436] bg-[#0A1118]/90 relative overflow-hidden">
+  <footer id="contact" class="pt-20 sm:pt-28 pb-16 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-t border-[#162436] bg-[#0A1118]/90 relative overflow-hidden scroll-mt-24">
     
     <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
       

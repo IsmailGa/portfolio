@@ -8,16 +8,13 @@ import Navbar from './components/Navbar.vue'
 import HeroSection from './components/HeroSection.vue'
 import MarqueeStrip from './components/MarqueeStrip.vue'
 import EqualizerDivider from './components/EqualizerDivider.vue'
-import FintechShowcase from './components/FintechShowcase.vue'
-import ExperienceTimeline from './components/ExperienceTimeline.vue'
+import WorkExperienceSection from './components/WorkExperienceSection.vue'
 import SkillsSection from './components/SkillsSection.vue'
 import AboutSection from './components/AboutSection.vue'
 import EducationLanguages from './components/EducationLanguages.vue'
 import ContactSection from './components/ContactSection.vue'
-import ResumeModal from './components/ResumeModal.vue'
 import ToastNotification from './components/ToastNotification.vue'
 
-const isResumeModalOpen = ref(false)
 const toastShow = ref(false)
 const toastMessage = ref('')
 let toastTimer: number | null = null
@@ -70,31 +67,23 @@ onUnmounted(() => {
     <CursorGlow />
 
     <!-- Floating Top Navigation -->
-    <Navbar @open-resume="isResumeModalOpen = true" />
+    <Navbar />
 
     <!-- Main Content Flow -->
     <main class="relative z-10">
       
-      <!-- Hero Section with Sculptural Type & Interactive Synth Console -->
-      <HeroSection 
-        @open-resume="isResumeModalOpen = true"
-        @toast="triggerToast"
-      />
+      <!-- Hero Section with Sculptural Type & Interactive IDE Code Terminal -->
+      <HeroSection @toast="triggerToast" />
 
       <!-- Infinite Marquee Ticker -->
       <MarqueeStrip />
 
-      <!-- Selected Production Systems (Trustbank & Multicard) -->
-      <FintechShowcase />
+      <!-- Consolidated Interactive Work Experience & Flagship Systems -->
+      <WorkExperienceSection />
 
       <EqualizerDivider />
 
-      <!-- Experience History -->
-      <ExperienceTimeline />
-
-      <EqualizerDivider />
-
-      <!-- Capabilities & Tooling -->
+      <!-- 3-Column Structured Skills & Tech Stack -->
       <SkillsSection />
 
       <EqualizerDivider />
@@ -111,13 +100,6 @@ onUnmounted(() => {
       <ContactSection @toast="triggerToast" />
 
     </main>
-
-    <!-- Resume Dossier Modal -->
-    <ResumeModal
-      :is-open="isResumeModalOpen"
-      @close="isResumeModalOpen = false"
-      @toast="triggerToast"
-    />
 
     <!-- Toast Notification -->
     <ToastNotification
