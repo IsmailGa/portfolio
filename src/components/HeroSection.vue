@@ -144,10 +144,10 @@ onMounted(() => {
             <picture>
               <source srcset="/isa-photo.webp" type="image/webp" />
               <img
-                src="/isa-photo.png"
+                src="/isa-photo.jpg"
                 alt="Ismail Gayratov — Frontend & Full-Stack Developer"
-                width="675"
-                height="900"
+                width="750"
+                height="1000"
                 class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 loading="eager"
                 fetchpriority="high"
