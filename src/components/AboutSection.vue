@@ -42,7 +42,7 @@ const highlights = computed(() => {
         <div class="pt-4 border-t border-[#162436] space-y-2 font-mono text-xs">
           <div class="flex items-center justify-between p-3 rounded-lg bg-[#05080D] border border-[#162436]">
             <span class="text-[#7C9399]">{{ t.about.degreeLabel }}</span>
-            <span class="text-[#EAF7F6] font-semibold">KIUT ISE (GPA 3.61)</span>
+            <span class="text-[#EAF7F6] font-semibold">KIUT ISE (2027)</span>
           </div>
           <div class="flex items-center justify-between p-3 rounded-lg bg-[#05080D] border border-[#162436]">
             <span class="text-[#7C9399]">{{ t.about.englishLabel }}</span>

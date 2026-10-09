@@ -55,9 +55,6 @@ const languages = computed(() => t.value.education.languagesList)
 
           <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#162436] font-mono text-xs">
             <span class="text-[#7C9399]">{{ edu.period }}</span>
-            <span v-if="edu.score" class="text-[#6FF7EC] font-semibold bg-[#39C5BB]/10 px-2.5 py-0.5 rounded border border-[#39C5BB]/20">
-              {{ edu.score }}
-            </span>
           </div>
         </div>
       </div>

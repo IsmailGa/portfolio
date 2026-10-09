@@ -119,7 +119,7 @@ onMounted(() => {
           </div>
           <div class="p-2.5 rounded-xl bg-[#0A1118] border border-[#162436]">
             <div class="text-[10px] text-[#7C9399] uppercase">{{ t.hero.degreeGpa }}</div>
-            <div class="font-bold text-xs sm:text-sm text-[#39C5BB] mt-0.5">3.61 / 5.0</div>
+            <div class="font-bold text-xs sm:text-sm text-[#39C5BB] mt-0.5">−70%</div>
           </div>
           <div class="p-2.5 rounded-xl bg-[#0A1118] border border-[#162436]">
             <div class="text-[10px] text-[#7C9399] uppercase">{{ t.hero.englishLevel }}</div>

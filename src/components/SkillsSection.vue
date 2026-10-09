@@ -10,7 +10,8 @@ const frontendSkills = [
   { name: 'TypeScript', level: 'Advanced', featured: true },
   { name: 'JavaScript (ES6+)', level: 'Advanced', featured: true },
   { name: 'Vuetify', level: 'Advanced', featured: false },
-  { name: 'HTML5 & CSS3 / BEM', level: 'Advanced', featured: false }
+  { name: 'HTML5 & CSS3', level: 'Advanced', featured: false },
+  { name: 'Feature-Sliced Design', level: 'Advanced', featured: true }
 ]
 
 const backendDataSkills = [
@@ -18,9 +19,6 @@ const backendDataSkills = [
   { name: 'Express.js', level: 'Intermediate', featured: false },
   { name: 'FastAPI', level: 'Intermediate', featured: false },
   { name: 'REST API Design', level: 'Advanced', featured: true },
-  { name: 'TypeORM', level: 'Advanced', featured: true },
-  { name: 'Drizzle ORM', level: 'Advanced', featured: true },
-  { name: 'Pydantic', level: 'Intermediate', featured: false },
   { name: 'PostgreSQL', level: 'Advanced', featured: true },
   { name: 'MySQL & MongoDB', level: 'Intermediate', featured: false }
 ]
@@ -29,8 +27,8 @@ const testInfraSkills = [
   { name: 'Vitest (Unit & Integration)', level: 'Advanced', featured: true },
   { name: 'Pinia & Zustand', level: 'Advanced', featured: true },
   { name: 'Docker Containers', level: 'Advanced', featured: true },
-  { name: 'Nginx & Apache', level: 'Intermediate', featured: false },
-  { name: 'WordPress & amoCRM', level: 'Intermediate', featured: false }
+  { name: 'Git, GitHub & GitLab CI', level: 'Advanced', featured: true },
+  { name: 'Nginx', level: 'Intermediate', featured: false }
 ]
 </script>
 
@@ -86,7 +84,7 @@ const testInfraSkills = [
 
         <div class="pt-3 border-t border-[#162436]/60 flex items-center justify-between font-mono text-[11px] text-[#7C9399]">
           <span>Production Ready</span>
-          <span class="text-[#39C5BB]">7 Frameworks</span>
+          <span class="text-[#39C5BB]">8 Frameworks</span>
         </div>
       </div>
 
@@ -101,7 +99,7 @@ const testInfraSkills = [
               <h3 class="font-display font-bold text-lg text-[#EAF7F6]">
                 {{ t.capabilities.columns.backend }}
               </h3>
-              <span class="font-mono text-[10px] text-[#39C5BB]">APIs, ORM & Databases</span>
+              <span class="font-mono text-[10px] text-[#39C5BB]">APIs & Databases</span>
             </div>
           </div>
 
@@ -123,7 +121,7 @@ const testInfraSkills = [
 
         <div class="pt-3 border-t border-[#162436]/60 flex items-center justify-between font-mono text-[11px] text-[#7C9399]">
           <span>REST & Microservices</span>
-          <span class="text-[#39C5BB]">9 Tools</span>
+          <span class="text-[#39C5BB]">6 Tools</span>
         </div>
       </div>
 

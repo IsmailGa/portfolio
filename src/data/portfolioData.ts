@@ -34,10 +34,10 @@ export interface LanguageItem {
 
 export const portfolioData = {
   name: "ISMAIL GAYRATOV",
-  role: "FRONTEND / FULL-STACK DEVELOPER",
+  role: "FRONTEND DEVELOPER",
   location: "Tashkent, Uzbekistan",
   timezone: "UTC+5",
-  availability: "Open to Full-Time & Contract Roles",
+  availability: "Open to Full-Time Remote Roles",
   email: "gaismail777@gmail.com",
   phone: "+998 77 488 7875",
   github: "https://github.com/IsmailGa",
@@ -45,12 +45,12 @@ export const portfolioData = {
   telegram: "https://t.me/theiiisssaaa",
   telegramHandle: "@theiiisssaaa",
 
-  summary: `Frontend-leaning full-stack developer with 2+ years of experience building customer-facing and internal applications for the fintech sector, including digital banking (DBO) platforms. Strong with Vue 3 / React / Next.js, TypeScript, and Node.js, with hands-on experience in unit/integration testing, Docker, and CI/CD. Comfortable working in Agile/Scrum teams across frontend, backend, and QA. Currently completing a Bachelor's degree in Information System Engineering. Fluent in English (C1) and open to full-time remote or contract roles.`,
+  summary: `Frontend developer with 2 years of experience in fintech, building a digital banking platform used by 2,000+ business clients. Strong in Vue 3, React / Next.js and TypeScript, with practical Node.js experience. Introduced Feature-Sliced Design and automated testing into a production codebase, cutting build time by 70% and reducing client complaints by 35%. Seeking a full-time remote role.`,
 
   keyMetrics: [
     { label: "Fintech & Banking Systems", value: "2+ Years", sub: "Production experience" },
     { label: "Core Web Stack", value: "Vue 3 / React / TS", sub: "Node.js / Vitest" },
-    { label: "Engineering GPA", value: "3.61 / 5.0", sub: "KIUT Applied Informatics" },
+    { label: "Build Time Reduction", value: "-70%", sub: "5 min to 1.5 min at Trustbank" },
     { label: "English Proficiency", value: "C1 Advanced", sub: "Fluent technical & spoken" },
   ],
 
@@ -61,16 +61,17 @@ export const portfolioData = {
       company: "Trustbank",
       location: "Tashkent, Uzbekistan",
       category: "Fintech / Digital Banking",
-      period: "Oct 2025 – Jun 2026",
-      current: false,
+      period: "Oct 2025 – Present",
+      current: true,
       description: [
-        "Built customer-facing business logic for a digital banking platform and developed and maintained the internal admin panel using Vue 3 and Vuetify.",
-        "Identified and fixed bugs and refactored existing code to improve system performance, scalability, and maintainability, making onboarding easier for new engineers.",
-        "Introduced unit and integration testing with Vitest to raise release stability and reduce regressions.",
-        "Provided technical support to customers and performed rapid root-cause analysis of production issues.",
-        "Collaborated with backend, QA, and design in an Agile/Scrum workflow to ship features aligned with business goals."
+        "Developed client-facing features and the internal admin panel for a digital banking platform serving 2,000+ business customers (Vue 3, Vuetify, TypeScript).",
+        "Restructured the project with Feature-Sliced Design architecture, making the codebase easier to navigate and speeding up onboarding of new developers.",
+        "Removed legacy and dead code, reducing the codebase by ~20% and cutting build time from 5 min to 1.5 min.",
+        "Introduced automated testing with Vitest: 20 unit and integration tests on critical flows, reducing regressions after releases.",
+        "Performed root-cause analysis of production incidents; client complaints dropped by 35% over a year.",
+        "Worked in an Agile/Scrum team with backend, QA and design."
       ],
-      tags: ["Vue 3", "Vuetify", "TypeScript", "Vitest", "Docker", "Pinia", "REST API"]
+      tags: ["Vue 3", "Vuetify", "TypeScript", "Vitest", "Docker", "Feature-Sliced Design"]
     },
     {
       id: "multicard",
@@ -81,10 +82,9 @@ export const portfolioData = {
       period: "Jul 2025 – Sep 2025",
       current: false,
       description: [
-        "Developed client-facing business logic for the digital banking systems (DBO) of Multibank and Trustbank, and designed and maintained the internal admin panel (Vue.js, Vuetify, Docker).",
-        "Proactively identified and resolved bugs; refactored code to improve performance, scalability, and new-developer onboarding.",
-        "Delivered technical support to clients with fast troubleshooting and issue resolution.",
-        "Worked closely with backend developers and QA engineers under Agile/Scrum methodology to meet shared release goals."
+        "Refactored the payments module of the DBO systems of Multibank and Trustbank.",
+        "Maintained the internal admin panel (Vue 3, Vuetify, Docker).",
+        "Fixed 25 production bugs and refactored 2–3 modules to improve maintainability."
       ],
       tags: ["Vue.js", "Vuetify", "Docker", "JavaScript", "Fintech DBO", "Agile / Scrum"]
     },
@@ -137,7 +137,7 @@ export const portfolioData = {
         { name: "Vuetify", featured: false },
         { name: "HTML5", featured: false },
         { name: "CSS3", featured: false },
-        { name: "BEM", featured: false }
+        { name: "Feature-Sliced Design", featured: true }
       ]
     },
     {
@@ -145,7 +145,7 @@ export const portfolioData = {
       code: "BE",
       skills: [
         { name: "Node.js", featured: true },
-        { name: "Express.js", featured: false },
+        { name: "Express", featured: false },
         { name: "FastAPI", featured: false },
         { name: "REST API", featured: true }
       ]
@@ -156,15 +156,6 @@ export const portfolioData = {
       skills: [
         { name: "Zustand", featured: true },
         { name: "Pinia", featured: true }
-      ]
-    },
-    {
-      title: "ORM",
-      code: "ORM",
-      skills: [
-        { name: "TypeORM", featured: true },
-        { name: "Drizzle", featured: true },
-        { name: "Pydantic", featured: false }
       ]
     },
     {
@@ -180,7 +171,7 @@ export const portfolioData = {
       title: "Testing",
       code: "TEST",
       skills: [
-        { name: "Vitest (unit & integration testing)", featured: true }
+        { name: "Vitest", featured: true }
       ]
     },
     {
@@ -188,35 +179,20 @@ export const portfolioData = {
       code: "DEVOPS",
       skills: [
         { name: "Docker", featured: true },
-        { name: "Nginx", featured: false },
-        { name: "Apache", featured: false }
+        { name: "Git / GitHub", featured: false },
+        { name: "GitLab CI", featured: true },
+        { name: "Nginx", featured: false }
       ]
     },
-    {
-      title: "CMS / CRM",
-      code: "CMS",
-      skills: [
-        { name: "WordPress", featured: false },
-        { name: "amoCRM", featured: false }
-      ]
-    }
   ] as SkillCategory[],
 
   education: [
     {
-      degree: "Bachelor of Information System Engineering",
+      degree: "B.Sc. Information System Engineering",
       institution: "Kimyo International University in Tashkent",
       department: "School of Applied Informatics",
-      period: "Sep 2023 – May 2027 (expected)",
-      score: "GPA: 3.61 / 5.0",
+      period: "2023 – 2027 (expected)",
       status: "In Progress"
-    },
-    {
-      degree: "Secondary Education",
-      institution: "School No. 10 named after Pushkin",
-      department: "Tashkent, Uzbekistan",
-      period: "2023",
-      status: "Completed"
     }
   ] as EducationItem[],
 
@@ -232,12 +208,6 @@ export const portfolioData = {
       level: "C1 Advanced",
       percentage: 88,
       description: "Fluent spoken & technical communication"
-    },
-    {
-      name: "Korean",
-      level: "A1 Beginner",
-      percentage: 22,
-      description: "Basic grammar & vocabulary"
     }
   ] as LanguageItem[],
 
@@ -248,7 +218,7 @@ export const portfolioData = {
     "NEXT.JS & TYPESCRIPT",
     "FINTECH & DIGITAL BANKING (DBO)",
     "VITEST UNIT & INTEGRATION TESTING",
-    "DRIZZLE & TYPEORM",
+    "FEATURE-SLICED DESIGN",
     "DOCKER & CI/CD",
     "NODE.JS & POSTGRESQL",
     "TASHKENT UTC+5"

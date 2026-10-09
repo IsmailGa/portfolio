@@ -44,7 +44,7 @@ export const translations = {
       testPassed: 'Пройдено',
       testDuration: 'мс',
       fintechExp: 'ОПЫТ В ФИНТЕХЕ',
-      degreeGpa: 'СРЕДНИЙ БАЛЛ',
+      degreeGpa: 'СБОРКА',
       englishLevel: 'АНГЛИЙСКИЙ',
       years: '2+ Года',
       c1Level: 'C1 Свободный'
@@ -57,7 +57,7 @@ export const translations = {
       'TYPESCRIPT & NODE.JS',
       'ФИНТЕХ И ЦИФРОВОЙ БАНКИНГ (ДБО)',
       'VITEST UNIT И ИНТЕГРАЦИОННЫЕ ТЕСТЫ',
-      'DRIZZLE & TYPEORM',
+      'FEATURE-SLICED DESIGN',
       'DOCKER И CI/CD',
       'ТАШКЕНТ UTC+5'
     ],
@@ -76,20 +76,21 @@ export const translations = {
           company: 'Trustbank',
           location: 'Ташкент, Узбекистан',
           category: 'Финтех / Цифровой Банкинг',
-          period: 'Окт 2025 – Июн 2026',
+          period: 'Окт 2025 – Наст. время',
           badge: 'Флагманский проект',
           metrics: [
-            { label: 'Тестирование', value: 'Vitest Suite' },
-            { label: 'Фреймворк', value: 'Vue 3 + Pinia' },
-            { label: 'Инфраструктура', value: 'Docker Cont.' },
-            { label: 'Методология', value: 'Agile / Scrum' }
+            { label: 'Клиенты', value: '2 000+ бизнес' },
+            { label: 'Сборка', value: '5 → 1,5 мин' },
+            { label: 'Тесты', value: '20 Vitest' },
+            { label: 'Жалобы', value: '−35%' }
           ],
           description: [
-            'Разрабатывал клиентскую бизнес-логику для цифрового банкинга, проектировал и поддерживал внутреннюю админ-панель на Vue 3 и Vuetify.',
-            'Выявлял и исправлял баги, проводил рефакторинг кодовой базы для повышения производительности, масштабируемости и ускорения онбординга новых инженеров.',
-            'Внедрил модульное и интеграционное тестирование с Vitest, повысив стабильность релизов и сократив число регрессий.',
-            'Оказывал техподдержку клиентам и проводил оперативный root-cause анализ инцидентов в продакшне.',
-            'Сотрудничал с командами бэкенда, QA и дизайна в Scrum-спринтах для своевременного выпуска фичей.'
+            'Разрабатывал клиентские функции и внутреннюю админ-панель цифровой банковской платформы для 2 000+ бизнес-клиентов (Vue 3, Vuetify, TypeScript).',
+            'Перестроил проект по архитектуре Feature-Sliced Design: код стал понятнее, а онбординг новых разработчиков — быстрее.',
+            'Удалил устаревший и мёртвый код (~20% кодовой базы) и сократил время сборки с 5 до 1,5 минут.',
+            'Внедрил автотесты на Vitest: 20 unit- и интеграционных тестов на критичных сценариях, меньше регрессий после релизов.',
+            'Проводил root-cause анализ инцидентов в продакшне: жалобы клиентов снизились на 35% за год.',
+            'Работал в Agile/Scrum команде с бэкендом, QA и дизайном.'
           ],
           tags: ['Vue 3', 'Vuetify', 'TypeScript', 'Vitest', 'Docker', 'REST API']
         },
@@ -103,15 +104,14 @@ export const translations = {
           badge: 'Платежные шлюзы',
           metrics: [
             { label: 'Профиль', value: 'ДБО Платежи' },
-            { label: 'Стек', value: 'Vue.js + Docker' },
+            { label: 'Баги', value: '25 исправлено' },
             { label: 'Клиенты', value: 'Multibank & Trust' },
-            { label: 'Процесс', value: 'Scrum Sprints' }
+            { label: 'Стек', value: 'Vue 3 + Docker' }
           ],
           description: [
-            'Разрабатывал клиентскую бизнес-логику для систем ДБО банков Multibank и Trustbank, проектировал и поддерживал внутреннюю админ-панель (Vue.js, Vuetify, Docker).',
-            'Проактивно устранял баги и рефакторил код для улучшения производительности и ускорения адаптации новых разработчиков.',
-            'Обеспечивал техническую поддержку клиентов с быстрым устранением неполадок.',
-            'Работал в тесной связке с бэкенд-разработчиками и QA-инженерами по методологии Agile/Scrum.'
+            'Провёл рефакторинг платёжного модуля систем ДБО Multibank и Trustbank.',
+            'Поддерживал внутреннюю админ-панель (Vue 3, Vuetify, Docker).',
+            'Исправил 25 багов в продакшне и отрефакторил 2–3 модуля для улучшения поддерживаемости.'
           ],
           tags: ['Vue.js', 'Vuetify', 'Docker', 'JavaScript', 'Fintech DBO', 'Agile / Scrum']
         },
@@ -173,7 +173,7 @@ export const translations = {
       eyebrow: 'Инженерная Философия',
       titleMain: 'Архитектура и',
       titleAccent: 'ключевые ценности.',
-      summary: `Frontend-разработчик с уклоном в full-stack с 2+ годами опыта создания клиентских и внутренних приложений в финтех-секторе, включая платформы цифрового банкинга (ДБО). Экспертиза в Vue 3 / React / Next.js, TypeScript и Node.js с практическим опытом тестирования на Vitest, Docker и CI/CD. Опыт работы в Agile/Scrum командах вместе с бэкендом и QA. Заканчивает бакалавриат по направлению «Инженерия информационных систем». Свободный английский (C1), открыт к предложениям о full-time и контрактной работе.`,
+      summary: `Frontend-разработчик с 2 годами опыта в финтехе: разрабатываю платформу цифрового банкинга для 2 000+ бизнес-клиентов. Уверенно работаю с Vue 3, React / Next.js и TypeScript, есть практический опыт с Node.js. Внедрил Feature-Sliced Design и автотесты в продакшн-проект: время сборки сократилось на 70%, жалобы клиентов — на 35%. Ищу full-time удалённую позицию.`,
       quote: 'Создание надежных веб-систем, выдерживающих высокие нагрузки.',
       degreeLabel: 'Высшее образование:',
       englishLabel: 'Уровень английского:',
@@ -194,7 +194,7 @@ export const translations = {
         },
         {
           title: 'Контейнеризация и CI/CD',
-          desc: 'Практический опыт с Docker, GitLab CI/CD, Nginx и виртуализацией, обеспечивающий надежный деплой.'
+          desc: 'Практический опыт с Docker, GitLab CI/CD, Nginx, обеспечивающий надежный деплой.'
         }
       ]
     },
@@ -214,21 +214,12 @@ export const translations = {
           institution: 'Международный университет Кимё в Ташкенте (KIUT)',
           department: 'Факультет прикладной информатики',
           period: 'Сен 2023 – Май 2027 (ожидается)',
-          score: 'GPA: 3.61 / 5.0',
           status: 'В процессе'
-        },
-        {
-          degree: 'Среднее Образование',
-          institution: 'Школа №10 им. А.С. Пушкина',
-          department: 'Ташкент, Узбекистан',
-          period: '2023',
-          status: 'Завершено'
         }
       ],
       languagesList: [
         { name: 'Русский', level: 'Родной', percentage: 100, description: 'Свободный носитель языка' },
-        { name: 'Английский', level: 'C1 Advanced', percentage: 88, description: 'Свободное техническое и разговорное общение' },
-        { name: 'Корейский', level: 'A1 Beginner', percentage: 22, description: 'Базовая грамматика и лексика' }
+        { name: 'Английский', level: 'C1 Advanced', percentage: 88, description: 'Свободное техническое и разговорное общение' }
       ]
     },
     contact: {
@@ -286,7 +277,7 @@ export const translations = {
       testPassed: 'Passed',
       testDuration: 'ms',
       fintechExp: 'FINTECH EXP',
-      degreeGpa: 'DEGREE GPA',
+      degreeGpa: 'BUILD TIME',
       englishLevel: 'ENGLISH',
       years: '2+ Years',
       c1Level: 'C1 Fluent'
@@ -299,7 +290,7 @@ export const translations = {
       'TYPESCRIPT & NODE.JS',
       'FINTECH & DIGITAL BANKING (DBO)',
       'VITEST UNIT & INTEGRATION TESTING',
-      'DRIZZLE & TYPEORM',
+      'FEATURE-SLICED DESIGN',
       'DOCKER & CI/CD',
       'TASHKENT UTC+5'
     ],
@@ -318,20 +309,21 @@ export const translations = {
           company: 'Trustbank',
           location: 'Tashkent, Uzbekistan',
           category: 'Fintech / Digital Banking',
-          period: 'Oct 2025 – Jun 2026',
+          period: 'Oct 2025 – Present',
           badge: 'Flagship System',
           metrics: [
-            { label: 'Testing Suite', value: 'Vitest Coverage' },
-            { label: 'Framework', value: 'Vue 3 + Pinia' },
-            { label: 'Infrastructure', value: 'Docker Cont.' },
-            { label: 'Methodology', value: 'Agile / Scrum' }
+            { label: 'Clients', value: '2,000+ Business' },
+            { label: 'Build Time', value: '5 → 1.5 min' },
+            { label: 'Tests', value: '20 Vitest' },
+            { label: 'Complaints', value: '−35%' }
           ],
           description: [
-            'Built customer-facing business logic for a digital banking platform and developed and maintained the internal admin panel using Vue 3 and Vuetify.',
-            'Identified and fixed bugs and refactored existing code to improve performance, scalability, and maintainability — making onboarding easier for new engineers.',
-            'Introduced unit and integration testing with Vitest to raise release stability and reduce regressions.',
-            'Provided technical support to customers and performed rapid root-cause analysis of production issues.',
-            'Collaborated with backend, QA, and design in an Agile/Scrum workflow to ship features aligned with business goals.'
+            'Developed client-facing features and the internal admin panel for a digital banking platform serving 2,000+ business customers (Vue 3, Vuetify, TypeScript).',
+            'Restructured the project with Feature-Sliced Design architecture, making the codebase easier to navigate and speeding up onboarding of new developers.',
+            'Removed legacy and dead code, reducing the codebase by ~20% and cutting build time from 5 min to 1.5 min.',
+            'Introduced automated testing with Vitest: 20 unit and integration tests on critical flows, reducing regressions after releases.',
+            'Performed root-cause analysis of production incidents; client complaints dropped by 35% over a year.',
+            'Worked in an Agile/Scrum team with backend, QA and design.'
           ],
           tags: ['Vue 3', 'Vuetify', 'TypeScript', 'Vitest', 'Docker', 'Pinia', 'REST API']
         },
@@ -345,15 +337,14 @@ export const translations = {
           badge: 'Payment Network',
           metrics: [
             { label: 'Focus', value: 'DBO Payments' },
-            { label: 'Stack', value: 'Vue.js + Docker' },
+            { label: 'Bugs', value: '25 Fixed' },
             { label: 'Clients', value: 'Multibank & Trust' },
-            { label: 'Process', value: 'Scrum Sprints' }
+            { label: 'Stack', value: 'Vue 3 + Docker' }
           ],
           description: [
-            'Developed client-facing business logic for the digital banking systems (DBO) of Multibank and Trustbank, and designed and maintained the internal admin panel (Vue.js, Vuetify, Docker).',
-            'Proactively identified and resolved bugs; refactored code to improve performance, scalability, and new-developer onboarding.',
-            'Delivered technical support to clients with fast troubleshooting and issue resolution.',
-            'Worked closely with backend developers and QA engineers under Agile/Scrum methodology to meet shared release goals.'
+            'Refactored the payments module of the DBO systems of Multibank and Trustbank.',
+            'Maintained the internal admin panel (Vue 3, Vuetify, Docker).',
+            'Fixed 25 production bugs and refactored 2–3 modules to improve maintainability.'
           ],
           tags: ['Vue.js', 'Vuetify', 'Docker', 'JavaScript', 'Fintech DBO', 'Agile / Scrum']
         },
@@ -415,7 +406,7 @@ export const translations = {
       eyebrow: 'Engineering Philosophy',
       titleMain: 'Architecture &',
       titleAccent: 'core values.',
-      summary: `Frontend-leaning full-stack developer with 2+ years of experience building customer-facing and internal applications for the fintech sector, including digital banking (DBO) platforms. Strong with Vue 3 / React / Next.js, TypeScript, and Node.js, with hands-on experience in unit/integration testing, Docker, and CI/CD. Comfortable working in Agile/Scrum teams across frontend, backend, and QA. Currently completing a Bachelor's degree in Information System Engineering. Fluent in English (C1) and open to full-time remote or contract roles.`,
+      summary: `Frontend developer with 2 years of experience in fintech, building a digital banking platform used by 2,000+ business clients. Strong in Vue 3, React / Next.js and TypeScript, with practical Node.js experience. Introduced Feature-Sliced Design and automated testing into a production codebase, cutting build time by 70% and reducing client complaints by 35%. Seeking a full-time remote role.`,
       quote: 'Building software that scales reliably under load.',
       degreeLabel: 'Academic Degree:',
       englishLabel: 'English Proficiency:',
@@ -436,7 +427,7 @@ export const translations = {
         },
         {
           title: 'Containerization & CI/CD',
-          desc: 'Hands-on delivery with Docker, GitLab CI/CD, Nginx, and cloud virtualized environments, ensuring smooth staging-to-production pipelines.'
+          desc: 'Hands-on delivery with Docker, GitLab CI/CD, and Nginx, ensuring smooth staging-to-production pipelines.'
         }
       ]
     },
@@ -456,21 +447,12 @@ export const translations = {
           institution: 'Kimyo International University in Tashkent',
           department: 'School of Applied Informatics',
           period: 'Sep 2023 – May 2027 (expected)',
-          score: 'GPA: 3.61 / 5.0',
           status: 'In Progress'
-        },
-        {
-          degree: 'Secondary Education',
-          institution: 'School No. 10 named after Pushkin',
-          department: 'Tashkent, Uzbekistan',
-          period: '2023',
-          status: 'Completed'
         }
       ],
       languagesList: [
         { name: 'Russian', level: 'Native', percentage: 100, description: 'Fluent native speaker' },
-        { name: 'English', level: 'C1 Advanced', percentage: 88, description: 'Fluent spoken & technical communication' },
-        { name: 'Korean', level: 'A1 Beginner', percentage: 22, description: 'Basic grammar & vocabulary' }
+        { name: 'English', level: 'C1 Advanced', percentage: 88, description: 'Fluent spoken & technical communication' }
       ]
     },
     contact: {
@@ -528,7 +510,7 @@ export const translations = {
       testPassed: 'Muvaffaqiyatli',
       testDuration: 'ms',
       fintechExp: 'FINTECH TAJRIBA',
-      degreeGpa: 'O\'RTACHA BALL',
+      degreeGpa: 'BUILD VAQTI',
       englishLevel: 'INGLIZ TILI',
       years: '2+ Yil',
       c1Level: 'C1 Ravon'
@@ -541,7 +523,7 @@ export const translations = {
       'TYPESCRIPT & NODE.JS',
       'FINTECH VA RAQAMLI BANKING (DBO)',
       'VITEST UNIT VA INTEGRATSION TESTLAR',
-      'DRIZZLE & TYPEORM',
+      'FEATURE-SLICED DESIGN',
       'DOCKER VA CI/CD',
       'TOSHKENT UTC+5'
     ],
@@ -560,20 +542,21 @@ export const translations = {
           company: 'Trustbank',
           location: 'Toshkent, O\'zbekiston',
           category: 'Fintech / Raqamli Banking',
-          period: 'Okt 2025 – Iyun 2026',
+          period: 'Okt 2025 – Hozir',
           badge: 'Asosiy loyiha',
           metrics: [
-            { label: 'Testlash', value: 'Vitest Suite' },
-            { label: 'Freymvork', value: 'Vue 3 + Pinia' },
-            { label: 'Infratuzilma', value: 'Docker Cont.' },
-            { label: 'Metodologiya', value: 'Agile / Scrum' }
+            { label: 'Mijozlar', value: '2 000+ biznes' },
+            { label: 'Build', value: '5 → 1,5 daq' },
+            { label: 'Testlar', value: '20 Vitest' },
+            { label: 'Shikoyatlar', value: '−35%' }
           ],
           description: [
-            'Raqamli bank platformasi uchun mijoz biznes mantiqini yaratish, Vue 3 va Vuetify yordamida ichki admin panelni ishlab chiqish va qo\'llab-quvvatlash.',
-            'Tizim unumdorligi va kengayishini yaxshilash uchun kodni refaktoring qilish, yangi muhandislar integratsiyasini osonlashtirish.',
-            'Relizlar barqarorligini oshirish va regressiyalarni kamaytirish uchun Vitest bilan unit va integratsion testlarni joriy qilish.',
-            'Mijozlarga tezkor texnik yordam ko\'rsatish va yuzaga kelgan nosozliklarni tahlil qilish.',
-            'Biznes maqsadlariga mos funksiyalarni Agile/Scrum asosida backend, QA va dizayn jamoalari bilan birga yetkazib berish.'
+            '2 000+ biznes mijozga xizmat ko\'rsatuvchi raqamli bank platformasi uchun mijoz funksiyalari va ichki admin panelni ishlab chiqish (Vue 3, Vuetify, TypeScript).',
+            'Loyihani Feature-Sliced Design arxitekturasi bo\'yicha qayta tuzish: kod tushunarliroq bo\'ldi, yangi dasturchilar tezroq moslashadi.',
+            'Eskirgan va keraksiz kodni olib tashlash (~20% kod bazasi), build vaqtini 5 daqiqadan 1,5 daqiqagacha qisqartirish.',
+            'Vitest bilan avtotestlarni joriy qilish: muhim jarayonlar uchun 20 ta unit va integratsion test, relizlardan keyingi regressiyalar kamaydi.',
+            'Productiondagi nosozliklarni root-cause tahlil qilish: bir yil davomida mijozlar shikoyatlari 35% ga kamaydi.',
+            'Backend, QA va dizayn jamoalari bilan Agile/Scrum asosida ishlash.'
           ],
           tags: ['Vue 3', 'Vuetify', 'TypeScript', 'Vitest', 'Docker', 'Pinia', 'REST API']
         },
@@ -587,15 +570,14 @@ export const translations = {
           badge: 'To\'lov tizimi',
           metrics: [
             { label: 'Yo\'nalish', value: 'DBO To\'lovlar' },
-            { label: 'Stek', value: 'Vue.js + Docker' },
+            { label: 'Xatolar', value: '25 ta tuzatildi' },
             { label: 'Mijozlar', value: 'Multibank & Trust' },
-            { label: 'Jarayon', value: 'Scrum Sprints' }
+            { label: 'Stek', value: 'Vue 3 + Docker' }
           ],
           description: [
-            'Multibank va Trustbank DBO tizimlari uchun mijozlar biznes mantiqini ishlab chiqish, admin panelni yaratish (Vue.js, Vuetify, Docker).',
-            'Xatoliklarni proaktiv aniqlash va bartaraf etish, dasturchilar qo\'shilishini tezlashtirish.',
-            'Mijozlarga tezkor nosozliklarni bartaraf etish bo\'yicha texnik yordam ko\'rsatish.',
-            'Agile/Scrum metodologiyasi asosida backend dasturchilar va QA muhandislari bilan yaqindan ishlash.'
+            'Multibank va Trustbank DBO tizimlarining to\'lov modulini refaktoring qilish.',
+            'Ichki admin panelni qo\'llab-quvvatlash (Vue 3, Vuetify, Docker).',
+            'Productionda 25 ta xatoni tuzatish va 2–3 modulni qayta ishlash.'
           ],
           tags: ['Vue.js', 'Vuetify', 'Docker', 'JavaScript', 'Fintech DBO', 'Agile / Scrum']
         },
@@ -657,7 +639,7 @@ export const translations = {
       eyebrow: 'Muhandislik Falsafasi',
       titleMain: 'Arxitektura va',
       titleAccent: 'asosiy qadriyatlar.',
-      summary: `Fintech va raqamli bank (DBO) tizimlarida 2+ yillik tajribaga ega frontend/full-stack dasturchi. Vue 3 / React / Next.js, TypeScript va Node.js bo\'yicha chuqur amaliy bilim, Vitest testlari, Docker va CI/CD tajribasi. Axborot tizimlari muhandisligi yo\'nalishida bakalavr bosqichini yakunlamoqda. Ingliz tili C1 (ravon), full-time va masofaviy ish takliflariga tayyor.`,
+      summary: `Fintech sohasida 2 yillik tajribaga ega frontend dasturchi: 2 000+ biznes mijoz foydalanadigan raqamli bank platformasini ishlab chiqaman. Vue 3, React / Next.js va TypeScript bo\'yicha kuchli bilim, Node.js bilan amaliy tajriba. Production loyihaga Feature-Sliced Design va avtotestlarni joriy qilib, build vaqtini 70% ga, mijozlar shikoyatlarini 35% ga kamaytirdim. Full-time masofaviy ish izlayapman.`,
       quote: 'Yuqori yuklamalarda ishonchli va barqaror ishlaydigan tizimlar yaratish.',
       degreeLabel: 'Oliy Ma\'lumot:',
       englishLabel: 'Ingliz Tili:',
@@ -678,7 +660,7 @@ export const translations = {
         },
         {
           title: 'Konteynerlash va CI/CD',
-          desc: 'Docker, GitLab CI/CD, Nginx va VMware bilan ishlash, doimiy yetkazib berish jarayonini sozlash.'
+          desc: 'Docker, GitLab CI/CD, Nginx bilan ishlash, doimiy yetkazib berish jarayonini sozlash.'
         }
       ]
     },
@@ -698,21 +680,12 @@ export const translations = {
           institution: 'Toshkent shahridagi Kimyo Xalqaro Universiteti (KIUT)',
           department: 'Amaliy Informatika fakulteti',
           period: 'Sen 2023 – May 2027 (kutilmoqda)',
-          score: 'GPA: 3.61 / 5.0',
           status: 'Jarayonda'
-        },
-        {
-          degree: 'O\'rta Ta\'lim',
-          institution: 'A.S. Pushkin nomidagi 10-sonli maktab',
-          department: 'Toshkent, O\'zbekiston',
-          period: '2023',
-          status: 'Tugallangan'
         }
       ],
       languagesList: [
         { name: 'Rus tili', level: 'Ona tili', percentage: 100, description: 'Mukammal ravon muloqot' },
-        { name: 'Ingliz tili', level: 'C1 Advanced', percentage: 88, description: 'Erkin texnik va og\'zaki muloqot' },
-        { name: 'Koreys tili', level: 'A1 Beginner', percentage: 22, description: 'Boshlang\'ich grammatika va so\'zlar' }
+        { name: 'Ingliz tili', level: 'C1 Advanced', percentage: 88, description: 'Erkin texnik va og\'zaki muloqot' }
       ]
     },
     contact: {
