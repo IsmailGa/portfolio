@@ -27,22 +27,6 @@ onMounted(() => {
       
       <!-- Left Column: Editorial Headline, Pitch & CTAs (7 cols) -->
       <div class="lg:col-span-7 flex flex-col justify-center">
-        
-        <!-- Status Tag -->
-        <div 
-          class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#0E1724]/90 border border-[#162436] w-fit mb-5 transition-all duration-700 select-none backdrop-blur-md"
-          :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
-        >
-          <span class="w-2 h-2 rounded-full bg-[#39C5BB] animate-pulse" />
-          <span class="font-mono text-xs text-[#EAF7F6] tracking-wider uppercase font-semibold">
-            {{ t.hero.statusAvailable }}
-          </span>
-          <span class="text-[#162436]">·</span>
-          <span class="font-mono text-xs text-[#7C9399]">
-            {{ t.hero.location }}
-          </span>
-        </div>
-
         <!-- Sculptural Display Headline -->
         <div 
           class="transition-all duration-700 delay-100"
