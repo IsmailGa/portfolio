@@ -110,7 +110,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* No color fades while switching theme: everything flips in the same frame */
+/* Theme switch: kill all transitions for the switching frames so every element changes together */
+html.theme-switching,
 html.theme-switching *,
 html.theme-switching *::before,
 html.theme-switching *::after {

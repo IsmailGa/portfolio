@@ -25,7 +25,7 @@ onMounted(() => {
         
 
         <h1
-          class="font-display font-bold leading-[0.95] tracking-[-0.03em] text-[clamp(2.75rem,8.5vw,6.25rem)] transition-[opacity,transform] duration-700 delay-100"
+          class="font-display font-bold leading-[0.95] tracking-[-0.03em] text-[clamp(2.75rem,8.5vw,6.25rem)] transition-all duration-700 delay-100"
           :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
         >
           Ismail<br />
@@ -33,7 +33,7 @@ onMounted(() => {
         </h1>
 
         <div
-          class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 transition-[opacity,transform] duration-700 delay-200"
+          class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 transition-all duration-700 delay-200"
           :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
         >
           <span class="font-display text-lg font-semibold sm:text-xl">{{ t.hero.role }}</span>
@@ -42,14 +42,14 @@ onMounted(() => {
         </div>
 
         <p
-          class="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg transition-[opacity,transform] duration-700 delay-300"
+          class="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg transition-all duration-700 delay-300"
           :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
         >
           {{ t.hero.pitch }}
         </p>
 
         <div
-          class="mt-8 flex flex-wrap items-center gap-3 transition-[opacity,transform] duration-700 delay-[400ms]"
+          class="mt-8 flex flex-wrap items-center gap-3 transition-all duration-700 delay-[400ms]"
           :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
         >
           <a
@@ -77,7 +77,7 @@ onMounted(() => {
 
         <!-- Stats -->
         <dl
-          class="mt-12 grid max-w-xl grid-cols-3 divide-x divide-line border-t border-line pt-6 transition-[opacity,transform] duration-700 delay-500"
+          class="mt-12 grid max-w-xl grid-cols-3 divide-x divide-line border-t border-line pt-6 transition-all duration-700 delay-500"
           :class="isLoaded ? 'opacity-100' : 'opacity-0'"
         >
           <div class="pr-4">
@@ -97,7 +97,7 @@ onMounted(() => {
 
       <!-- Portrait -->
       <div
-        class="flex justify-center lg:col-span-5 lg:justify-end transition-[opacity,transform] duration-700 delay-300"
+        class="flex justify-center lg:col-span-5 lg:justify-end transition-all duration-700 delay-300"
         :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
       >
         <div class="relative w-full max-w-[400px]">

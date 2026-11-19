@@ -24,7 +24,6 @@ export const setTheme = (value: Theme) => {
   const root = document.documentElement
   root.classList.add('theme-switching')
   apply(value)
-  // Re-enable transitions after the new colors have painted
   requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove('theme-switching')))
   try {
     localStorage.setItem(STORAGE_KEY, value)

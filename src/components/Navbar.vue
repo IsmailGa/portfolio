@@ -84,14 +84,14 @@ onUnmounted(() => {
 
 <template>
   <header
-    class="fixed top-0 inset-x-0 z-40 transition-[padding,background-color,border-color,box-shadow] duration-300"
+    class="fixed top-0 inset-x-0 z-40 transition-all duration-300"
     :class="isScrolled ? 'py-2.5' : 'py-4 sm:py-5'"
   >
     <div
-      class="mx-auto max-w-7xl flex items-center justify-between gap-3 px-3 sm:px-4 lg:px-6 transition-[padding,background-color,border-color,box-shadow] duration-300"
+      class="mx-auto max-w-7xl flex items-center justify-between gap-3 px-3 sm:px-4 lg:px-6 transition-all duration-300"
     >
       <div
-        class="flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2 sm:px-4 transition-[padding,background-color,border-color,box-shadow] duration-300"
+        class="flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2 sm:px-4 transition-all duration-300"
         :class="isScrolled ? 'bg-surface/92 backdrop-blur-xl border border-line shadow-card' : 'border border-transparent'"
       >
         <!-- Brand -->
