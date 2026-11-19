@@ -36,7 +36,7 @@ const selectCompany = (id: string) => {
             type="button"
             role="tab"
             :aria-selected="selectedId === item.id"
-            class="group min-w-[250px] cursor-pointer rounded-2xl border p-4 text-left transition-all duration-200 lg:min-w-0"
+            class="group w-[82vw] max-w-[340px] shrink-0 cursor-pointer rounded-2xl border p-4 text-left transition-all duration-200 lg:w-auto lg:max-w-none lg:shrink"
             :class="
               selectedId === item.id
                 ? 'border-accent-solid bg-surface shadow-card ring-1 ring-accent-solid/30'
@@ -44,10 +44,10 @@ const selectCompany = (id: string) => {
             "
             @click="selectCompany(item.id)"
           >
-            <div class="flex items-start justify-between gap-3">
-              <h3 class="font-display text-lg font-semibold leading-snug">{{ item.company }}</h3>
+            <div class="flex flex-wrap items-start justify-between gap-x-3 gap-y-2">
+              <h3 class="min-w-0 font-display text-lg font-semibold leading-snug">{{ item.company }}</h3>
               <span
-                class="shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-semibold"
+                class="max-w-full rounded-full px-2.5 py-0.5 text-[11px] font-semibold"
                 :class="selectedId === item.id ? 'bg-accent-solid text-on-accent' : 'bg-surface-2 text-muted'"
               >
                 {{ item.badge }}
