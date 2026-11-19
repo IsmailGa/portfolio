@@ -2,12 +2,9 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import Lenis from 'lenis'
 
-import MikuBackground from './components/MikuBackground.vue'
-import CursorGlow from './components/CursorGlow.vue'
 import Navbar from './components/Navbar.vue'
 import HeroSection from './components/HeroSection.vue'
 import MarqueeStrip from './components/MarqueeStrip.vue'
-import EqualizerDivider from './components/EqualizerDivider.vue'
 import WorkExperienceSection from './components/WorkExperienceSection.vue'
 import SkillsSection from './components/SkillsSection.vue'
 import AboutSection from './components/AboutSection.vue'
@@ -28,10 +25,11 @@ const triggerToast = (msg: string) => {
   if (toastTimer) clearTimeout(toastTimer)
   toastTimer = window.setTimeout(() => {
     toastShow.value = false
-  }, 3500)
+  }, 3000)
 }
 
 onMounted(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
   try {
     lenis = new Lenis({
       duration: 1.1,
@@ -40,14 +38,13 @@ onMounted(() => {
       smoothWheel: true
     })
 
-    function raf(time: number) {
+    const raf = (time: number) => {
       lenis?.raf(time)
       rafId = requestAnimationFrame(raf)
     }
-
     rafId = requestAnimationFrame(raf)
   } catch {
-    // Graceful fallback
+    // Graceful fallback to native scroll
   }
 })
 
@@ -58,54 +55,23 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="relative min-h-screen bg-[#05080D] text-[#EAF7F6] selection:bg-[#39C5BB]/30 selection:text-[#6FF7EC] overflow-x-hidden">
-    
-    <!-- Background Canvas & Studio Lighting -->
-    <MikuBackground />
+  <div class="relative min-h-screen bg-bg text-fg overflow-x-hidden">
+    <!-- Ambient background (theme-aware, static, cheap) -->
+    <div class="pointer-events-none fixed inset-0 z-0 bg-ambient" aria-hidden="true" />
+    <div class="pointer-events-none absolute inset-x-0 top-0 z-0 h-[48rem] bg-dots" aria-hidden="true" />
 
-    <!-- Dynamic Cursor Spotlight Glow -->
-    <CursorGlow />
-
-    <!-- Floating Top Navigation -->
     <Navbar />
 
-    <!-- Main Content Flow -->
     <main class="relative z-10">
-      
-      <!-- Hero Section with Sculptural Type & Interactive IDE Code Terminal -->
-      <HeroSection @toast="triggerToast" />
-
-      <!-- Infinite Marquee Ticker -->
+      <HeroSection />
       <MarqueeStrip />
-
-      <!-- Consolidated Interactive Work Experience & Flagship Systems -->
       <WorkExperienceSection />
-
-      <EqualizerDivider />
-
-      <!-- 3-Column Structured Skills & Tech Stack -->
       <SkillsSection />
-
-      <EqualizerDivider />
-
-      <!-- Engineering Philosophy -->
       <AboutSection />
-
-      <EqualizerDivider />
-
-      <!-- Academic Background & Languages -->
       <EducationLanguages />
-
-      <!-- Contact & Direct Inquiries -->
       <ContactSection @toast="triggerToast" />
-
     </main>
 
-    <!-- Toast Notification -->
-    <ToastNotification
-      :show="toastShow"
-      :message="toastMessage"
-    />
-
+    <ToastNotification :show="toastShow" :message="toastMessage" />
   </div>
 </template>

@@ -2,14 +2,12 @@
 import { ref, computed } from 'vue'
 import { t } from '../i18n'
 import { soundManager } from '../utils/sound'
-import { CheckCircle2 } from 'lucide-vue-next'
+import { Check } from 'lucide-vue-next'
 
 const selectedId = ref('trustbank')
 
 const items = computed(() => t.value.work.items)
-const currentItem = computed(() => {
-  return items.value.find(i => i.id === selectedId.value) || items.value[0]
-})
+const currentItem = computed(() => items.value.find((i) => i.id === selectedId.value) || items.value[0])
 
 const selectCompany = (id: string) => {
   selectedId.value = id
@@ -18,138 +16,100 @@ const selectCompany = (id: string) => {
 </script>
 
 <template>
-  <section id="work" class="py-20 sm:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-7xl mx-auto relative scroll-mt-24">
-    
-    <!-- Section Header -->
-    <div class="mb-10 sm:mb-14">
-      <div class="font-mono text-xs text-[#39C5BB] tracking-wider uppercase mb-2">
-        {{ t.work.eyebrow }}
-      </div>
-      <h2 class="font-display font-bold text-2xl sm:text-4xl md:text-5xl text-[#EAF7F6] tracking-tight">
-        {{ t.work.titleMain }} <span class="text-[#39C5BB]">{{ t.work.titleAccent }}</span>
+  <section id="work" class="section-wrap">
+    <div class="mb-12 max-w-2xl sm:mb-16">
+      <div class="eyebrow mb-3">{{ t.work.eyebrow }}</div>
+      <h2 class="font-display text-3xl font-bold tracking-tight sm:text-5xl">
+        {{ t.work.titleMain }} <span class="text-accent">{{ t.work.titleAccent }}</span>
       </h2>
-      <p class="mt-3 text-[#7C9399] font-body text-sm sm:text-base max-w-2xl leading-relaxed">
-        {{ t.work.desc }}
-      </p>
+      <p class="mt-4 text-base leading-relaxed text-muted sm:text-lg">{{ t.work.desc }}</p>
     </div>
 
-    <!-- Main Interactive Grid (4 cols companies list + 8 cols active case study) -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-      
-      <!-- Left Column: Company Selector Cards (4 cols) -->
-      <div class="lg:col-span-4 space-y-2.5">
-        <div class="font-mono text-[11px] text-[#7C9399] uppercase mb-1">
-          {{ t.work.selectCompany }}
+    <div class="grid grid-cols-1 items-start gap-6 lg:grid-cols-12 lg:gap-8">
+      <!-- Company selector -->
+      <div class="lg:col-span-4 lg:sticky lg:top-28">
+        <div class="mb-3 text-xs font-medium text-faint">{{ t.work.selectCompany }}</div>
+        <div class="flex gap-2.5 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible lg:pb-0" role="tablist">
+          <button
+            v-for="item in items"
+            :key="item.id"
+            type="button"
+            role="tab"
+            :aria-selected="selectedId === item.id"
+            class="group min-w-[250px] cursor-pointer rounded-2xl border p-4 text-left transition-all duration-200 lg:min-w-0"
+            :class="
+              selectedId === item.id
+                ? 'border-accent-solid bg-surface shadow-card ring-1 ring-accent-solid/30'
+                : 'border-line bg-surface/50 hover:border-line-strong hover:bg-surface'
+            "
+            @click="selectCompany(item.id)"
+          >
+            <div class="flex items-start justify-between gap-3">
+              <h3 class="font-display text-lg font-semibold leading-snug">{{ item.company }}</h3>
+              <span
+                class="shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-semibold"
+                :class="selectedId === item.id ? 'bg-accent-solid text-on-accent' : 'bg-surface-2 text-muted'"
+              >
+                {{ item.badge }}
+              </span>
+            </div>
+            <div class="mt-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-xs">
+              <span class="font-medium text-accent">{{ item.role }}</span>
+              <span class="font-mono text-faint">{{ item.period }}</span>
+            </div>
+          </button>
         </div>
-
-        <button
-          v-for="item in items"
-          :key="item.id"
-          type="button"
-          class="w-full text-left p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-2 focus:outline-none"
-          :class="[
-            selectedId === item.id
-              ? 'bg-[#0E1724] border-[#39C5BB] shadow-[0_0_20px_rgba(57,197,187,0.25)]'
-              : 'bg-[#0A1118]/80 border-[#162436] hover:border-[#39C5BB]/40 hover:bg-[#0E1724]/60 text-[#7C9399]'
-          ]"
-          @click="selectCompany(item.id)"
-          @mouseenter="soundManager.playHover()"
-        >
-          <div class="flex items-center justify-between gap-2">
-            <h3 
-              class="font-display font-bold text-base sm:text-lg transition-colors"
-              :class="selectedId === item.id ? 'text-[#6FF7EC]' : 'text-[#EAF7F6]'"
-            >
-              {{ item.company }}
-            </h3>
-            <span 
-              class="font-mono text-[10px] px-2 py-0.5 rounded border"
-              :class="selectedId === item.id ? 'bg-[#39C5BB] text-[#05080D] font-bold border-[#6FF7EC]' : 'bg-[#05080D] text-[#7C9399] border-[#162436]'"
-            >
-              {{ item.badge }}
-            </span>
-          </div>
-
-          <div class="flex items-center justify-between text-xs font-mono">
-            <span class="text-[#39C5BB] font-semibold">{{ item.role }}</span>
-            <span class="text-[#7C9399] text-[11px]">{{ item.period }}</span>
-          </div>
-        </button>
       </div>
 
-      <!-- Right Column: Deep-Dive Dynamic Case Study (8 cols) -->
+      <!-- Case study -->
       <div class="lg:col-span-8">
-        <div class="glass-surface p-6 sm:p-9 rounded-2xl sm:rounded-3xl border border-[#162436] space-y-6 animate-fade-in relative overflow-hidden">
-          
-          <!-- Case Study Top Header -->
-          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-5 border-b border-[#162436]">
+        <article :key="currentItem.id" class="card animate-fade-in space-y-8 p-6 sm:p-10" role="tabpanel">
+          <header class="flex flex-col gap-4 border-b border-line pb-6 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <div class="font-mono text-xs text-[#39C5BB] uppercase tracking-wider mb-1">
-                {{ currentItem.category }}
-              </div>
-              <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-[#EAF7F6]">
-                {{ currentItem.company }} · <span class="text-[#6FF7EC]">{{ currentItem.role }}</span>
+              <div class="eyebrow mb-2">{{ currentItem.category }}</div>
+              <h3 class="font-display text-2xl font-bold tracking-tight sm:text-3xl">
+                {{ currentItem.company }}
+                <span class="text-muted font-medium">· {{ currentItem.role }}</span>
               </h3>
             </div>
-            
-            <div class="font-mono text-xs text-[#7C9399] bg-[#05080D] px-3 py-1.5 rounded-lg border border-[#162436] self-start sm:self-auto shrink-0">
+            <div class="shrink-0 rounded-lg bg-surface-2 px-3 py-2 font-mono text-xs text-muted">
               {{ currentItem.period }} · {{ currentItem.location }}
             </div>
-          </div>
+          </header>
 
-          <!-- Key Metrics Grid -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 font-mono">
-            <div 
-              v-for="metric in currentItem.metrics" 
-              :key="metric.label"
-              class="p-3 rounded-xl bg-[#05080D] border border-[#162436]"
-            >
-              <div class="text-[10px] text-[#7C9399] uppercase">{{ metric.label }}</div>
-              <div class="text-xs sm:text-sm font-bold text-[#EAF7F6] mt-1">{{ metric.value }}</div>
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div v-for="metric in currentItem.metrics" :key="metric.label" class="rounded-xl bg-surface-2 p-4">
+              <div class="text-xs text-muted">{{ metric.label }}</div>
+              <div class="mt-1.5 font-display text-lg font-bold leading-tight">{{ metric.value }}</div>
             </div>
           </div>
 
-          <!-- Deliverables & Achievements List -->
-          <div class="space-y-3">
-            <div class="text-xs font-mono text-[#EAF7F6] uppercase font-bold tracking-wider">
-              {{ t.work.achievementsLabel }}
-            </div>
-
-            <div class="space-y-2.5">
-              <div 
-                v-for="(bullet, bIdx) in currentItem.description" 
-                :key="bIdx"
-                class="p-3.5 sm:p-4 rounded-xl bg-[#05080D] border border-[#162436] flex items-start gap-3 hover:border-[#39C5BB]/40 transition-colors"
-              >
-                <CheckCircle2 class="w-4 h-4 text-[#39C5BB] shrink-0 mt-0.5" />
-                <div class="text-xs sm:text-sm text-[#EAF7F6]/90 leading-relaxed font-body">
-                  {{ bullet }}
-                </div>
-              </div>
-            </div>
+          <div>
+            <h4 class="mb-4 text-sm font-semibold">{{ t.work.achievementsLabel }}</h4>
+            <ul class="space-y-3">
+              <li v-for="(bullet, bIdx) in currentItem.description" :key="bIdx" class="flex items-start gap-3">
+                <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent-soft text-accent">
+                  <Check class="h-3 w-3" stroke-width="3" />
+                </span>
+                <span class="text-sm leading-relaxed text-muted sm:text-[15px]">{{ bullet }}</span>
+              </li>
+            </ul>
           </div>
 
-          <!-- Tech Stack Badges Strip -->
-          <div class="pt-4 border-t border-[#162436]">
-            <div class="text-[11px] font-mono text-[#7C9399] uppercase mb-2">
-              {{ t.work.techStackLabel }}
-            </div>
+          <div class="border-t border-line pt-6">
+            <div class="mb-3 text-xs font-medium text-faint">{{ t.work.techStackLabel }}</div>
             <div class="flex flex-wrap gap-2">
-              <span 
-                v-for="tag in currentItem.tags" 
+              <span
+                v-for="tag in currentItem.tags"
                 :key="tag"
-                class="px-3 py-1 rounded-lg bg-[#05080D] border border-[#162436] font-mono text-xs text-[#39C5BB] hover:text-[#6FF7EC] hover:border-[#39C5BB]/60 transition-colors cursor-default"
-                @mouseenter="soundManager.playHover()"
+                class="rounded-full border border-line bg-surface-2 px-3 py-1 font-mono text-xs text-fg"
               >
-                #{{ tag }}
+                {{ tag }}
               </span>
             </div>
           </div>
-
-        </div>
+        </article>
       </div>
-
     </div>
-
   </section>
 </template>

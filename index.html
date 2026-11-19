@@ -1,21 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate icon" href="/favicon.ico" />
     <link rel="preload" as="image" href="/isa-photo.webp" type="image/webp" fetchpriority="high" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
     <title>Ismail Gayratov — Frontend & Full-Stack Developer</title>
     <meta name="description" content="Portfolio of Ismail Gayratov — Frontend & Full-Stack Developer specializing in Vue 3, React, TypeScript, and high-performance fintech & digital banking platforms." />
-    
+
+    <!-- Apply theme before first paint to avoid a flash -->
+    <script>
+      (function () {
+        try {
+          var s = localStorage.getItem('user_theme');
+          var t = s === 'dark' ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500,400&display=swap" rel="stylesheet" />
   </head>
-  <body class="bg-[#05080D] text-[#EAF7F6] font-sans antialiased selection:bg-[#39C5BB]/30 selection:text-[#6FF7EC] overflow-x-hidden min-h-screen">
+  <body class="bg-bg text-fg font-sans antialiased min-h-screen">
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
