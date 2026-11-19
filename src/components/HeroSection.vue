@@ -108,8 +108,8 @@ onMounted(() => {
               <img
                 src="/isa-photo.jpg"
                 alt="Ismail Gayratov — Frontend & Full-Stack Developer"
-                width="750"
-                height="1000"
+                width="900"
+                height="1200"
                 class="h-full w-full rounded-[1.25rem] object-cover object-center"
                 loading="eager"
                 fetchpriority="high"
