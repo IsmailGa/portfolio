@@ -3,7 +3,6 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { t } from '../i18n'
 import { portfolioData } from '../data/portfolioData'
 import { soundManager } from '../utils/sound'
-import confetti from 'canvas-confetti'
 import { Mail, Send, Phone, Github, Linkedin, Copy, Check, Clock, ArrowUpRight } from 'lucide-vue-next'
 
 const emit = defineEmits<{
@@ -34,6 +33,7 @@ const copyEmail = async () => {
     soundManager.playChime()
     emit('toast', 'Email address copied to clipboard!')
     
+    const { default: confetti } = await import('canvas-confetti')
     confetti({
       particleCount: 30,
       spread: 50,

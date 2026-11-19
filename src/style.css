@@ -110,14 +110,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Smooth theme switch (disabled when user prefers reduced motion) */
-@media (prefers-reduced-motion: no-preference) {
-  html.theme-anim,
-  html.theme-anim *,
-  html.theme-anim *::before,
-  html.theme-anim *::after {
-    transition: background-color 0.35s ease, border-color 0.35s ease, color 0.25s ease, fill 0.25s ease !important;
-  }
+/* No color fades while switching theme: everything flips in the same frame */
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: none !important;
 }
 
 ::selection { background: var(--accent-soft); color: var(--accent); }

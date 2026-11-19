@@ -44,43 +44,54 @@ watch(mobileMenuOpen, (isOpen) => {
   document.body.style.overflow = isOpen ? 'hidden' : ''
 })
 
-const handleScroll = () => {
-  isScrolled.value = window.scrollY > 20
+const sectionIds = ['hero', 'work', 'capabilities', 'about', 'education', 'contact']
+let observer: IntersectionObserver | null = null
+let ticking = false
 
-  const sections = ['contact', 'education', 'about', 'capabilities', 'work', 'hero']
-  for (const section of sections) {
-    const el = document.getElementById(section)
-    if (el) {
-      const rect = el.getBoundingClientRect()
-      if (rect.top <= 300 && rect.bottom >= 100) {
-        activeSection.value = section
-        break
-      }
-    }
-  }
+const onScroll = () => {
+  if (ticking) return
+  ticking = true
+  requestAnimationFrame(() => {
+    const scrolled = window.scrollY > 20
+    if (scrolled !== isScrolled.value) isScrolled.value = scrolled
+    ticking = false
+  })
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll, { passive: true })
-  handleScroll()
+  window.addEventListener('scroll', onScroll, { passive: true })
+  onScroll()
+
+  // Active section = the one crossing the upper third of the viewport
+  observer = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) if (e.isIntersecting) activeSection.value = e.target.id
+    },
+    { rootMargin: '-30% 0px -60% 0px' }
+  )
+  sectionIds.forEach((id) => {
+    const el = document.getElementById(id)
+    if (el) observer!.observe(el)
+  })
 })
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('scroll', onScroll)
+  observer?.disconnect()
   document.body.style.overflow = ''
 })
 </script>
 
 <template>
   <header
-    class="fixed top-0 inset-x-0 z-40 transition-all duration-300"
+    class="fixed top-0 inset-x-0 z-40 transition-[padding,background-color,border-color,box-shadow] duration-300"
     :class="isScrolled ? 'py-2.5' : 'py-4 sm:py-5'"
   >
     <div
-      class="mx-auto max-w-7xl flex items-center justify-between gap-3 px-3 sm:px-4 lg:px-6 transition-all duration-300"
+      class="mx-auto max-w-7xl flex items-center justify-between gap-3 px-3 sm:px-4 lg:px-6 transition-[padding,background-color,border-color,box-shadow] duration-300"
     >
       <div
-        class="flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2 sm:px-4 transition-all duration-300"
+        class="flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2 sm:px-4 transition-[padding,background-color,border-color,box-shadow] duration-300"
         :class="isScrolled ? 'bg-surface/92 backdrop-blur-xl border border-line shadow-card' : 'border border-transparent'"
       >
         <!-- Brand -->

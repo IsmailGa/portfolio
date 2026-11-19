@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-import Lenis from 'lenis'
+import { ref } from 'vue'
 
 import Navbar from './components/Navbar.vue'
 import HeroSection from './components/HeroSection.vue'
@@ -16,9 +15,6 @@ const toastShow = ref(false)
 const toastMessage = ref('')
 let toastTimer: number | null = null
 
-let lenis: Lenis | null = null
-let rafId: number | null = null
-
 const triggerToast = (msg: string) => {
   toastMessage.value = msg
   toastShow.value = true
@@ -27,31 +23,6 @@ const triggerToast = (msg: string) => {
     toastShow.value = false
   }, 3000)
 }
-
-onMounted(() => {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-  try {
-    lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      smoothWheel: true
-    })
-
-    const raf = (time: number) => {
-      lenis?.raf(time)
-      rafId = requestAnimationFrame(raf)
-    }
-    rafId = requestAnimationFrame(raf)
-  } catch {
-    // Graceful fallback to native scroll
-  }
-})
-
-onUnmounted(() => {
-  if (rafId) cancelAnimationFrame(rafId)
-  lenis?.destroy()
-})
 </script>
 
 <template>

@@ -36,7 +36,7 @@ const selectCompany = (id: string) => {
             type="button"
             role="tab"
             :aria-selected="selectedId === item.id"
-            class="group w-[82vw] max-w-[340px] shrink-0 cursor-pointer rounded-2xl border p-4 text-left transition-all duration-200 lg:w-auto lg:max-w-none lg:shrink"
+            class="group w-[82vw] max-w-[340px] shrink-0 cursor-pointer rounded-2xl border p-4 text-left transition-[background-color,border-color,box-shadow] duration-200 lg:w-auto lg:max-w-none lg:shrink"
             :class="
               selectedId === item.id
                 ? 'border-accent-solid bg-surface shadow-card ring-1 ring-accent-solid/30'

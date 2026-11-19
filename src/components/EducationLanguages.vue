@@ -59,7 +59,7 @@ const languages = computed(() => t.value.education.languagesList)
               :aria-label="lang.name"
             >
               <div
-                class="h-full rounded-full bg-gradient-to-r from-accent-solid to-accent-hover transition-all duration-1000"
+                class="h-full rounded-full bg-gradient-to-r from-accent-solid to-accent-hover transition-[width] duration-1000"
                 :style="{ width: `${lang.percentage}%` }"
               />
             </div>
