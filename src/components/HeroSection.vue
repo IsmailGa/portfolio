@@ -19,7 +19,7 @@ onMounted(() => {
     id="hero"
     class="relative mx-auto flex min-h-[92vh] w-full max-w-7xl flex-col justify-center px-4 pb-16 pt-28 sm:min-h-screen sm:px-6 sm:pt-32 lg:px-12 xl:px-16"
   >
-    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
+    <div data-parallax="0.12" class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
       <!-- Copy -->
       <div class="flex flex-col lg:col-span-7">
         

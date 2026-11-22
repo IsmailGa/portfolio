@@ -47,7 +47,7 @@ const selectCompany = (id: string) => {
       <!-- Company selector -->
       <div class="lg:col-span-4 lg:sticky lg:top-28">
         <div class="mb-3 text-xs font-medium text-faint">{{ t.work.selectCompany }}</div>
-        <div class="flex gap-2.5 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible lg:pb-0" role="tablist">
+        <div data-native-scroll class="flex gap-2.5 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible lg:pb-0" role="tablist">
           <button
             v-for="item in items"
             :key="item.id"
