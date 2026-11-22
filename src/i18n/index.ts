@@ -69,6 +69,8 @@ export const translations = {
       selectCompany: 'Выберите компанию для просмотра деталей:',
       achievementsLabel: 'Ключевые результаты и задачи:',
       techStackLabel: 'Используемый стек:',
+      screensLabel: 'Скриншоты проекта',
+      shots: { dashboard: 'Главная панель', auth: 'Вход в систему' },
       items: [
         {
           id: 'trustbank',
@@ -97,7 +99,7 @@ export const translations = {
         {
           id: 'multicard',
           role: 'Frontend Разработчик',
-          company: 'Multicard Payment',
+          company: 'Multicard (Rahmat)',
           location: 'Ташкент, Узбекистан',
           category: 'Платежи / Финтех',
           period: 'Июл 2025 – Сен 2025',
@@ -302,6 +304,8 @@ export const translations = {
       selectCompany: 'Select a company to view case details:',
       achievementsLabel: 'Key Scope & Deliverables:',
       techStackLabel: 'Applied Tech Stack:',
+      screensLabel: 'Project screens',
+      shots: { dashboard: 'Main dashboard', auth: 'Sign-in' },
       items: [
         {
           id: 'trustbank',
@@ -330,7 +334,7 @@ export const translations = {
         {
           id: 'multicard',
           role: 'Frontend Developer',
-          company: 'Multicard Payment',
+          company: 'Multicard (Rahmat)',
           location: 'Tashkent, Uzbekistan',
           category: 'Payments / Fintech',
           period: 'Jul 2025 – Sep 2025',
@@ -535,6 +539,8 @@ export const translations = {
       selectCompany: 'Kompaniyani tanlang:',
       achievementsLabel: 'Asosiy vazifalar va natijalar:',
       techStackLabel: 'Qo\'llanilgan texnologiyalar:',
+      screensLabel: 'Loyiha ekranlari',
+      shots: { dashboard: 'Asosiy panel', auth: 'Tizimga kirish' },
       items: [
         {
           id: 'trustbank',
@@ -563,7 +569,7 @@ export const translations = {
         {
           id: 'multicard',
           role: 'Frontend Dasturchi',
-          company: 'Multicard Payment',
+          company: 'Multicard (Rahmat)',
           location: 'Toshkent, O\'zbekiston',
           category: 'To\'lovlar / Fintech',
           period: 'Iyul 2025 – Sen 2025',

@@ -2,15 +2,33 @@
 import { ref, computed } from 'vue'
 import { t } from '../i18n'
 import { soundManager } from '../utils/sound'
-import { Check } from 'lucide-vue-next'
+import { Check, X, ZoomIn } from 'lucide-vue-next'
+import trustDashboard from '../assets/cases/trustbank/main-hero.png'
+import trustAuth from '../assets/cases/trustbank/trust-auth.png'
+import multicardAuth from '../assets/cases/multicard(rhmt)/mutlicard-auth.png'
+
+type ShotKey = 'dashboard' | 'auth'
+const shotsById: Record<string, { key: ShotKey; src: string; url: string }[]> = {
+  trustbank: [
+    { key: 'dashboard', src: trustDashboard, url: 'Trustbank DBO · Dashboard' },
+    { key: 'auth', src: trustAuth, url: 'Trustbank DBO · Login' }
+  ],
+  multicard: [{ key: 'auth', src: multicardAuth, url: 'Rahmat Hub · Login' }]
+}
 
 const selectedId = ref('trustbank')
 
 const items = computed(() => t.value.work.items)
 const currentItem = computed(() => items.value.find((i) => i.id === selectedId.value) || items.value[0])
 
+const shots = computed(() => shotsById[selectedId.value] ?? [])
+const activeShot = ref(0)
+const lightbox = ref(false)
+const shot = computed(() => shots.value[activeShot.value] ?? shots.value[0])
+
 const selectCompany = (id: string) => {
   selectedId.value = id
+  activeShot.value = 0
   soundManager.playClick()
 }
 </script>
@@ -84,6 +102,40 @@ const selectCompany = (id: string) => {
             </div>
           </div>
 
+          <div v-if="shots.length">
+            <div class="mb-3 flex items-center justify-between gap-3">
+              <h4 class="text-sm font-semibold">{{ t.work.screensLabel }}</h4>
+              <div v-if="shots.length > 1" class="flex gap-1 rounded-full bg-surface-2 p-1">
+                <button
+                  v-for="(s, i) in shots"
+                  :key="s.key"
+                  type="button"
+                  class="cursor-pointer rounded-full px-3 py-1 text-xs font-medium transition-colors"
+                  :class="activeShot === i ? 'bg-accent-solid text-on-accent' : 'text-muted hover:text-fg'"
+                  @click="activeShot = i; soundManager.playClick()"
+                >
+                  {{ t.work.shots[s.key] }}
+                </button>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border border-line bg-surface-2 text-left shadow-card"
+              @click="lightbox = true"
+            >
+              <div class="flex items-center gap-3 border-b border-line bg-surface px-3 py-2">
+                <span class="flex gap-1.5">
+                  <i class="h-2.5 w-2.5 rounded-full bg-line-strong" /><i class="h-2.5 w-2.5 rounded-full bg-line-strong" /><i class="h-2.5 w-2.5 rounded-full bg-line-strong" />
+                </span>
+                <span class="min-w-0 flex-1 truncate rounded-md bg-surface-2 px-3 py-0.5 text-center font-mono text-[11px] text-faint">{{ shot.url }}</span>
+              </div>
+              <img :key="shot.src" :src="shot.src" :alt="t.work.shots[shot.key]" loading="lazy" class="animate-fade-in block w-full" />
+              <span class="absolute bottom-3 right-3 grid h-9 w-9 place-items-center rounded-full bg-surface/90 text-fg opacity-0 shadow-card backdrop-blur transition-opacity group-hover:opacity-100">
+                <ZoomIn class="h-4 w-4" />
+              </span>
+            </button>
+          </div>
+
           <div>
             <h4 class="mb-4 text-sm font-semibold">{{ t.work.achievementsLabel }}</h4>
             <ul class="space-y-3">
@@ -111,5 +163,19 @@ const selectCompany = (id: string) => {
         </article>
       </div>
     </div>
+
+    <Teleport to="body">
+      <div
+        v-if="lightbox && shot"
+        class="fixed inset-0 z-[100] grid place-items-center bg-black/80 p-4 backdrop-blur-sm"
+        @click="lightbox = false"
+        @keydown.esc="lightbox = false"
+      >
+        <button type="button" class="absolute right-4 top-4 grid h-10 w-10 cursor-pointer place-items-center rounded-full bg-white/10 text-white hover:bg-white/20" aria-label="Close">
+          <X class="h-5 w-5" />
+        </button>
+        <img :src="shot.src" :alt="t.work.shots[shot.key]" class="max-h-[90vh] max-w-full rounded-lg shadow-2xl" />
+      </div>
+    </Teleport>
   </section>
 </template>

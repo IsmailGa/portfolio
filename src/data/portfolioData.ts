@@ -76,7 +76,7 @@ export const portfolioData = {
     {
       id: "multicard",
       role: "Frontend Developer",
-      company: "Multicard Payment",
+      company: "Multicard (Rahmat)",
       location: "Tashkent, Uzbekistan",
       category: "Payments / Fintech",
       period: "Jul 2025 – Sep 2025",
