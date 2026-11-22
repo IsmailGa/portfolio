@@ -103,7 +103,7 @@ onUnmounted(() => {
         </a>
 
         <!-- Desktop nav -->
-        <nav class="hidden md:flex items-center gap-1" aria-label="Primary">
+        <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
           <a
             v-for="link in navLinks"
             :key="link.id"
@@ -159,7 +159,7 @@ onUnmounted(() => {
           <a
             href="/Ismail_Gayratov_Resume.pdf"
             download="Ismail_Gayratov_Resume.pdf"
-            class="btn-primary hidden lg:inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold"
+            class="btn-primary hidden xl:inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold"
             @click="soundManager.playChime()"
           >
             <FileDown class="h-4 w-4" />
@@ -168,7 +168,7 @@ onUnmounted(() => {
 
           <button
             type="button"
-            class="md:hidden grid h-9 w-9 place-items-center rounded-lg border border-line bg-surface text-fg cursor-pointer"
+            class="lg:hidden grid h-9 w-9 place-items-center rounded-lg border border-line bg-surface text-fg cursor-pointer"
             aria-label="Open navigation menu"
             @click="mobileMenuOpen = true; soundManager.playClick()"
           >
@@ -191,7 +191,7 @@ onUnmounted(() => {
     >
       <div
         v-if="mobileMenuOpen"
-        class="fixed inset-0 z-[999] flex flex-col bg-bg text-fg md:hidden"
+        class="fixed inset-0 z-[999] flex flex-col bg-bg text-fg lg:hidden"
         role="dialog"
         aria-modal="true"
       >

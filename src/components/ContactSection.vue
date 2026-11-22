@@ -76,7 +76,6 @@ onUnmounted(() => {
 <template>
   <footer id="contact" class="relative z-10 scroll-mt-20 border-t border-line bg-alt px-4 pb-10 pt-20 sm:px-6 sm:pt-28 lg:px-12">
     <div class="mx-auto flex max-w-4xl flex-col items-center text-center">
-      <div class="eyebrow mb-4">{{ t.contact.eyebrow }}</div>
 
       <h2 class="max-w-3xl font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
         {{ t.contact.titleMain }}

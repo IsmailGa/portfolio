@@ -36,7 +36,6 @@ const selectCompany = (id: string) => {
 <template>
   <section id="work" class="section-wrap">
     <div class="mb-12 max-w-2xl sm:mb-16">
-      <div class="eyebrow mb-3">{{ t.work.eyebrow }}</div>
       <h2 class="font-display text-3xl font-bold tracking-tight sm:text-5xl">
         {{ t.work.titleMain }} <span class="text-accent">{{ t.work.titleAccent }}</span>
       </h2>
@@ -84,7 +83,6 @@ const selectCompany = (id: string) => {
         <article :key="currentItem.id" class="card animate-fade-in space-y-8 p-6 sm:p-10" role="tabpanel">
           <header class="flex flex-col gap-4 border-b border-line pb-6 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <div class="eyebrow mb-2">{{ currentItem.category }}</div>
               <h3 class="font-display text-2xl font-bold tracking-tight sm:text-3xl">
                 {{ currentItem.company }}
                 <span class="text-muted font-medium">· {{ currentItem.role }}</span>

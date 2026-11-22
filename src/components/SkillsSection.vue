@@ -42,7 +42,6 @@ const columns = [
 <template>
   <section id="capabilities" class="section-wrap">
     <div class="mb-12 max-w-2xl sm:mb-16">
-      <div class="eyebrow mb-3">{{ t.capabilities.eyebrow }}</div>
       <h2 class="font-display text-3xl font-bold tracking-tight sm:text-5xl">
         {{ t.capabilities.titleMain }} <span class="text-accent">{{ t.capabilities.titleAccent }}</span>
       </h2>

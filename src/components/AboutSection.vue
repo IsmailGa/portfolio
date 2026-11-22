@@ -13,7 +13,6 @@ const highlights = computed(() =>
 <template>
   <section id="about" class="section-wrap">
     <div class="mb-12 max-w-2xl sm:mb-16">
-      <div class="eyebrow mb-3">{{ t.about.eyebrow }}</div>
       <h2 class="font-display text-3xl font-bold tracking-tight sm:text-5xl">
         {{ t.about.titleMain }} <span class="text-accent">{{ t.about.titleAccent }}</span>
       </h2>

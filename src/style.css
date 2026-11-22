@@ -166,15 +166,6 @@ html.theme-switching *::after {
 }
 .btn-ghost:hover { border-color: var(--accent-solid); background: var(--accent-soft); transform: translateY(-1px); }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 600;
-}
-
 /* Section wrapper spacing */
 .section-wrap {
   max-width: 80rem;

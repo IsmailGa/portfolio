@@ -62,7 +62,6 @@ export const translations = {
       'ТАШКЕНТ UTC+5'
     ],
     work: {
-      eyebrow: 'Продакшн Опыт и Проекты',
       titleMain: 'Опыт работы и',
       titleAccent: 'банковские системы.',
       desc: 'Подтвержденный трек разработки клиентских финансовых платформ, систем цифрового банкинга (ДБО) и внутренних порталов администрирования.',
@@ -161,7 +160,6 @@ export const translations = {
       ]
     },
     capabilities: {
-      eyebrow: 'Технический Арсенал',
       titleMain: 'Стек технологий и',
       titleAccent: 'инженерные инструменты.',
       desc: 'Структурированный арсенал разработки: клиентские фреймворки, бэкенд и ORM, тестирование и инфраструктура.',
@@ -172,7 +170,6 @@ export const translations = {
       }
     },
     about: {
-      eyebrow: 'Инженерная Философия',
       titleMain: 'Архитектура и',
       titleAccent: 'ключевые ценности.',
       summary: `Frontend-разработчик с 2 годами опыта в финтехе: разрабатываю платформу цифрового банкинга для 2 000+ бизнес-клиентов. Уверенно работаю с Vue 3, React / Next.js и TypeScript, есть практический опыт с Node.js. Внедрил Feature-Sliced Design и автотесты в продакшн-проект: время сборки сократилось на 70%, жалобы клиентов — на 35%. Ищу full-time удалённую позицию.`,
@@ -201,7 +198,6 @@ export const translations = {
       ]
     },
     education: {
-      eyebrow: 'Образование и Языки',
       titleMain: 'Академическая база и',
       titleAccent: 'языковая мобильность.',
       degreesTitle: 'Дипломы и Образование',
@@ -225,7 +221,6 @@ export const translations = {
       ]
     },
     contact: {
-      eyebrow: 'Связь и Сотрудничество',
       titleMain: 'Ищете инженера для',
       titleAccent: 'финтех-продукта?',
       desc: 'Открыт к предложениям о постоянной работе (Full-time), контрактной разработке и техническому консультированию.',
@@ -297,7 +292,6 @@ export const translations = {
       'TASHKENT UTC+5'
     ],
     work: {
-      eyebrow: 'Production Track Record',
       titleMain: 'Work experience &',
       titleAccent: 'fintech systems.',
       desc: 'Proven delivery of customer-facing financial platforms, digital banking (DBO) platforms, and internal back-office administration portals.',
@@ -396,7 +390,6 @@ export const translations = {
       ]
     },
     capabilities: {
-      eyebrow: 'Technical Capabilities',
       titleMain: 'Core stack &',
       titleAccent: 'engineering tools.',
       desc: 'Structured production arsenal: client frameworks, backend & ORM layers, testing suites, and containerized deployment.',
@@ -407,7 +400,6 @@ export const translations = {
       }
     },
     about: {
-      eyebrow: 'Engineering Philosophy',
       titleMain: 'Architecture &',
       titleAccent: 'core values.',
       summary: `Frontend developer with 2 years of experience in fintech, building a digital banking platform used by 2,000+ business clients. Strong in Vue 3, React / Next.js and TypeScript, with practical Node.js experience. Introduced Feature-Sliced Design and automated testing into a production codebase, cutting build time by 70% and reducing client complaints by 35%. Seeking a full-time remote role.`,
@@ -436,7 +428,6 @@ export const translations = {
       ]
     },
     education: {
-      eyebrow: 'Academic & Linguistic Background',
       titleMain: 'Education &',
       titleAccent: 'languages.',
       degreesTitle: 'Degrees & Education',
@@ -460,7 +451,6 @@ export const translations = {
       ]
     },
     contact: {
-      eyebrow: 'Direct Inquiries & Collaboration',
       titleMain: 'Have a fintech product that needs a',
       titleAccent: 'high-craft frontend?',
       desc: 'Currently open to full-time engineering positions, contract development, and technical consulting.',
@@ -532,7 +522,6 @@ export const translations = {
       'TOSHKENT UTC+5'
     ],
     work: {
-      eyebrow: 'Ish Faoliyati va Loyihalar',
       titleMain: 'Tajriba va',
       titleAccent: 'ishlagan bank tizimlarim.',
       desc: 'Mijozlarga mo\'ljallangan moliyaviy platformalar, raqamli banking (DBO) va boshqaruv panellarini ishlab chiqish bo\'yicha tasdiqlangan tajriba.',
@@ -631,7 +620,6 @@ export const translations = {
       ]
     },
     capabilities: {
-      eyebrow: 'Texnologik Arsenal',
       titleMain: 'Asosiy stek va',
       titleAccent: 'muhandislik vositalari.',
       desc: 'Tuzilgan ishlab chiqarish vositalari: mijoz freymvorklari, backend va ORM, testlash va infratuzilma.',
@@ -642,7 +630,6 @@ export const translations = {
       }
     },
     about: {
-      eyebrow: 'Muhandislik Falsafasi',
       titleMain: 'Arxitektura va',
       titleAccent: 'asosiy qadriyatlar.',
       summary: `Fintech sohasida 2 yillik tajribaga ega frontend dasturchi: 2 000+ biznes mijoz foydalanadigan raqamli bank platformasini ishlab chiqaman. Vue 3, React / Next.js va TypeScript bo\'yicha kuchli bilim, Node.js bilan amaliy tajriba. Production loyihaga Feature-Sliced Design va avtotestlarni joriy qilib, build vaqtini 70% ga, mijozlar shikoyatlarini 35% ga kamaytirdim. Full-time masofaviy ish izlayapman.`,
@@ -671,7 +658,6 @@ export const translations = {
       ]
     },
     education: {
-      eyebrow: 'Ta\'lim va Tillar',
       titleMain: 'Akademik poydevor va',
       titleAccent: 'tillar bilish darajasi.',
       degreesTitle: 'Diplomlar va Ta\'lim',
@@ -695,7 +681,6 @@ export const translations = {
       ]
     },
     contact: {
-      eyebrow: 'Bog\'lanish va Hamkorlik',
       titleMain: 'Fintech loyihangiz uchun kuchli',
       titleAccent: 'frontend dasturchi kerakmi?',
       desc: 'Full-time ish takliflari, shartnoma asosidagi loyihalar va texnik konsultatsiyalar uchun ochiqman.',

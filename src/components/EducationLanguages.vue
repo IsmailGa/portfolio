@@ -10,7 +10,6 @@ const languages = computed(() => t.value.education.languagesList)
 <template>
   <section id="education" class="section-wrap">
     <div class="mb-12 max-w-2xl sm:mb-16">
-      <div class="eyebrow mb-3">{{ t.education.eyebrow }}</div>
       <h2 class="font-display text-3xl font-bold tracking-tight sm:text-5xl">
         {{ t.education.titleMain }} <span class="text-accent">{{ t.education.titleAccent }}</span>
       </h2>
